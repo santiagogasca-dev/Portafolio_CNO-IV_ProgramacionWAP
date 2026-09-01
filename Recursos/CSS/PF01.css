@@ -1,0 +1,162 @@
+.pf01-page {
+    min-height: 100vh;
+}
+
+.pf01-hero {
+    padding: 72px 6% 48px;
+    border-bottom: 1px solid rgba(0, 212, 255, .18);
+}
+
+.pf01-kicker {
+    display: inline-block;
+    margin-bottom: 14px;
+    font-size: .82rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    opacity: .7;
+}
+
+.pf01-hero h1 {
+    margin: 0 0 14px;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.05;
+}
+
+.pf01-hero p {
+    max-width: 780px;
+    margin: 0;
+    line-height: 1.75;
+    opacity: .82;
+}
+
+.pf01-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.pf01-chip {
+    padding: 8px 12px;
+    border: 1px solid rgba(0, 212, 255, .22);
+    border-radius: 999px;
+    font-size: .84rem;
+}
+
+.pf01-container {
+    width: min(1120px, 88%);
+    margin: 0 auto;
+}
+
+.pf01-section {
+    padding: 52px 0;
+}
+
+.pf01-section h2 {
+    margin: 0 0 18px;
+    font-size: clamp(1.45rem, 3vw, 2.1rem);
+}
+
+.pf01-section h3 {
+    margin-top: 28px;
+}
+
+.pf01-card {
+    padding: 28px;
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 18px;
+    background: rgba(255,255,255,.025);
+    box-shadow: 0 14px 40px rgba(0,0,0,.16);
+}
+
+.pf01-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.pf01-list {
+    padding-left: 22px;
+    line-height: 1.8;
+}
+
+.pf01-evidence {
+    margin-top: 28px;
+}
+
+.pf01-evidence figure {
+    margin: 0;
+}
+
+.pf01-evidence img {
+    display: block;
+    width: 100%;
+    max-height: 760px;
+    object-fit: contain;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,.1);
+    background: #0b1017;
+}
+
+.pf01-evidence figcaption {
+    padding: 10px 2px 0;
+    font-size: .88rem;
+    opacity: .7;
+}
+
+.pf01-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 28px;
+}
+
+.pf01-flow span {
+    padding: 13px 16px;
+    border: 1px solid rgba(0, 212, 255, .2);
+    border-radius: 12px;
+    background: rgba(0, 212, 255, .04);
+}
+
+.pf01-arrow {
+    opacity: .5;
+}
+
+.pf01-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    padding: 13px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 212, 255, .35);
+    text-decoration: none;
+}
+
+.pf01-back {
+    display: inline-block;
+    margin-top: 28px;
+    text-decoration: none;
+    opacity: .8;
+}
+
+.pf01-ref {
+    margin: 12px 0;
+    line-height: 1.65;
+}
+
+@media (max-width: 760px) {
+    .pf01-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pf01-hero {
+        padding-top: 48px;
+    }
+
+    .pf01-card {
+        padding: 21px;
+    }
+}
