@@ -2,20 +2,35 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="Proyecto 1 - De la teoría a la práctica: walkthrough en acción. Evidencia académica de Santiago Isaac Gasca López.">
+    <meta
+        name="description"
+        content="Proyecto 1 - De la teoría a la práctica: walkthrough en acción. Evidencia académica de Santiago Isaac Gasca López."
+    >
 
-    <meta name="author"
-        content="Santiago Isaac Gasca López">
+    <meta
+        name="author"
+        content="Santiago Isaac Gasca López"
+    >
 
-    <title>Proyecto 1 | De la teoría a la práctica | SantiagoGasca</title>
+    <title>
+        Proyecto 1 | De la teoría a la práctica | SantiagoGasca
+    </title>
 
-    <link rel="stylesheet" href="../Recursos/CSS/Styles.css">
-    <link rel="stylesheet" href="../Recursos/CSS/PF01.css">
+    <link
+        rel="stylesheet"
+        href="../Recursos/CSS/Styles.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../Recursos/CSS/PF01.css"
+    >
+
 </head>
 
 
@@ -23,26 +38,42 @@
 
 
     <!-- =====================================================
-         ENCABEZADO
+         ENCABEZADO Y NAVEGACIÓN
     ====================================================== -->
 
     <header class="site-header">
 
         <div class="header-container">
 
-            <a href="../index.html" class="logo">
-                <span class="logo-symbol">◈</span>
-                <span>SantiagoGasca</span>
+            <a
+                href="../index.html"
+                class="logo"
+            >
+
+                <span class="logo-symbol">
+                    ◈
+                </span>
+
+                <span>
+                    SantiagoGasca
+                </span>
+
             </a>
 
 
-            <nav class="navigation" aria-label="Navegación principal">
+            <nav
+                class="navigation"
+                aria-label="Navegación principal"
+            >
 
                 <a href="../index.html">
                     Inicio
                 </a>
 
-                <a href="./index.html">
+                <a
+                    href="./index.html"
+                    aria-current="page"
+                >
                     PF01
                 </a>
 
@@ -70,7 +101,7 @@
 
 
         <!-- =====================================================
-             PORTADA DE LA ACTIVIDAD
+             PORTADA
         ====================================================== -->
 
         <section class="pf01-hero">
@@ -89,9 +120,12 @@
 
 
                 <p>
-                    Proyecto de pruebas de penetración desarrollado sobre una
-                    máquina virtual vulnerable dentro de un laboratorio
-                    virtualizado y aislado.
+
+                    Ejercicio de pruebas de penetración realizado sobre
+                    una máquina virtual vulnerable perteneciente al
+                    laboratorio DigitalWorld.local: Snake Oil,
+                    disponible en VulnHub.
+
                 </p>
 
 
@@ -114,7 +148,7 @@
                     </span>
 
                     <span class="pf01-chip">
-                        31 de agosto de 2026
+                        8 de septiembre de 2026
                     </span>
 
                 </div>
@@ -126,7 +160,7 @@
 
 
         <!-- =====================================================
-             INFORMACIÓN GENERAL
+             DESCARGAR PDF
         ====================================================== -->
 
         <section class="pf01-section">
@@ -135,34 +169,33 @@
 
                 <div class="pf01-card">
 
+                    <span class="pf01-kicker">
+                        DOCUMENTO ORIGINAL
+                    </span>
+
+
                     <h2>
-                        Información de la actividad
+                        Proyecto completo en PDF
                     </h2>
 
-                    <p>
-                        <strong>Alumno:</strong>
-                        Gasca López Santiago Isaac - 184730
-                    </p>
 
                     <p>
-                        <strong>Materia:</strong>
-                        CNO IV WAP
+
+                        Consulta o descarga el documento original
+                        correspondiente a esta evidencia académica.
+
                     </p>
 
-                    <p>
-                        <strong>Docente:</strong>
-                        Mtro. Servando López Contreras
-                    </p>
 
-                    <p>
-                        <strong>Institución:</strong>
-                        Universidad Politécnica de San Luis Potosí
-                    </p>
+                    <a
+                        class="pf01-download"
+                        href="../Recursos/PDF/Proyecto1.pdf"
+                        download="Proyecto1.pdf"
+                    >
 
-                    <p>
-                        <strong>Fecha:</strong>
-                        31 de agosto de 2026
-                    </p>
+                        📄 Descargar PDF original
+
+                    </a>
 
                 </div>
 
@@ -186,44 +219,62 @@
                         01 / INTRODUCCIÓN
                     </span>
 
+
                     <h2>
                         Introducción
                     </h2>
 
-                    <p>
-                        En este proyecto se realizó un ejercicio de pruebas
-                        de penetración sobre una máquina virtual vulnerable
-                        perteneciente al laboratorio DigitalWorld.local:
-                        Snake Oil, disponible en VulnHub.
-                    </p>
 
                     <p>
-                        El propósito fue aplicar una metodología de pentesting
-                        que comprende las etapas de reconocimiento,
-                        enumeración, análisis de vulnerabilidades,
-                        explotación y post-explotación.
+
+                        En este proyecto se realizó un ejercicio de
+                        pruebas de penetración sobre una máquina virtual
+                        vulnerable perteneciente al laboratorio
+                        DigitalWorld.local: Snake Oil, disponible en
+                        VulnHub.
+
                     </p>
 
+
                     <p>
+
+                        El propósito fue aplicar una metodología de
+                        pentesting que comprende las etapas de
+                        reconocimiento, enumeración, análisis de
+                        vulnerabilidades, explotación y post-explotación.
+
+                    </p>
+
+
+                    <p>
+
                         El laboratorio se ejecutó dentro de un entorno
-                        virtualizado y aislado mediante máquinas virtuales,
-                        utilizando Kali Linux como equipo atacante y la
-                        máquina vulnerable como objetivo.
+                        virtualizado y aislado mediante máquinas
+                        virtuales, utilizando Kali Linux como equipo
+                        atacante y la máquina vulnerable como objetivo.
+
                     </p>
 
+
                     <p>
+
                         La comunicación entre ambas máquinas se realizó
-                        mediante una red de tipo Host-Only, evitando exponer
-                        deliberadamente el laboratorio a la red externa.
+                        mediante una red de tipo Host-Only, evitando
+                        exponer deliberadamente el laboratorio a la
+                        red externa.
+
                     </p>
 
+
                     <p>
-                        Durante el proceso se utilizaron herramientas como
-                        Nmap, cURL, Netcat y John the Ripper, además de
-                        técnicas de enumeración de servicios, análisis de
-                        endpoints web, identificación de credenciales y
-                        explotación de una vulnerabilidad de ejecución remota
-                        de comandos.
+
+                        Durante el proceso se utilizaron herramientas
+                        como Nmap, cURL, Netcat y John the Ripper,
+                        además de técnicas de enumeración de servicios,
+                        análisis de endpoints web, identificación de
+                        credenciales y explotación de una vulnerabilidad
+                        de ejecución remota de comandos.
+
                     </p>
 
                 </div>
@@ -235,7 +286,7 @@
 
 
         <!-- =====================================================
-             CONFIGURACIÓN DE MÁQUINAS VIRTUALES
+             CONFIGURACIÓN
         ====================================================== -->
 
         <section class="pf01-section">
@@ -245,8 +296,9 @@
                 <div class="pf01-card">
 
                     <span class="pf01-kicker">
-                        02 / CONFIGURACIÓN
+                        02 / CONFIGURACIÓN DEL LABORATORIO
                     </span>
+
 
                     <h2>
                         Configuración de Máquinas Virtuales
@@ -256,30 +308,44 @@
                     <ol class="pf01-list">
 
                         <li>
-                            Instalar la máquina virtual con el siguiente enlace:
+
+                            Instalar la máquina virtual con el siguiente
+                            enlace:
+
                             <br>
 
                             <a
                                 href="https://www.vulnhub.com/entry/digitalworldlocal-snakeoil,738/"
                                 target="_blank"
-                                rel="noopener noreferrer">
+                                rel="noopener noreferrer"
+                            >
 
                                 DigitalWorld.local - Snake Oil
 
                             </a>
+
                         </li>
 
 
                         <li>
+
                             En VirtualBox seleccionar
-                            <strong>Archivo → Importar</strong>
+                            <strong>
+                                Archivo → Importar
+                            </strong>
+
                             y seleccionar la máquina descargada.
+
                         </li>
 
 
                         <li>
+
                             Seleccionar
-                            <strong>Configuración → Red → Adaptador solo anfitrión</strong>.
+                            <strong>
+                                Configuración → Red → Adaptador solo anfitrión
+                            </strong>.
+
                         </li>
 
                     </ol>
@@ -293,7 +359,7 @@
 
 
         <!-- =====================================================
-             1.1 PREPARACIÓN
+             PREPARACIÓN DEL ENTORNO
         ====================================================== -->
 
         <section class="pf01-section">
@@ -303,37 +369,56 @@
                 <div class="pf01-card">
 
                     <span class="pf01-kicker">
-                        03 / RECONOCIMIENTO
+                        03 / PREPARACIÓN
                     </span>
+
 
                     <h2>
                         1.1 Preparación del entorno de pruebas
                     </h2>
 
+
                     <h3>
                         Identificación de la dirección IP del atacante
                     </h3>
 
+
                     <p>
-                        Como primer paso se verificó la configuración de red
-                        de la máquina atacante, correspondiente a Kali Linux.
+
+                        Como primer paso se verificó la configuración
+                        de red de la máquina atacante, correspondiente
+                        a Kali Linux.
+
+                    </p>
+
+
+                    <p>
+
                         Para ello se utilizó el comando
-                        <code>ip addr</code>, el cual permite consultar las
-                        interfaces de red disponibles y las direcciones IP
-                        asignadas a cada una de ellas.
+                        <code>ip addr</code>, el cual permite consultar
+                        las interfaces de red disponibles y las
+                        direcciones IP asignadas a cada una de ellas.
+
                     </p>
 
-                    <p>
-                        La finalidad de esta comprobación fue identificar la
-                        dirección IPv4 utilizada por Kali Linux dentro de la
-                        red virtual del laboratorio.
-                    </p>
 
                     <p>
-                        Debido a que las máquinas virtuales fueron configuradas
-                        mediante un adaptador de red de tipo solo-anfitrión
-                        (Host-Only), la comunicación entre los sistemas se
-                        mantiene dentro de una red virtual aislada.
+
+                        La finalidad de esta comprobación fue identificar
+                        la dirección IPv4 utilizada por Kali Linux dentro
+                        de la red virtual del laboratorio.
+
+                    </p>
+
+
+                    <p>
+
+                        Debido a que las máquinas virtuales fueron
+                        configuradas mediante un adaptador de red de
+                        tipo solo-anfitrión (Host-Only), la comunicación
+                        entre los sistemas se mantiene dentro de una
+                        red virtual aislada.
+
                     </p>
 
 
@@ -341,24 +426,35 @@
                         1.2 Comprobación de conectividad con la máquina objetivo
                     </h3>
 
+
                     <p>
-                        Una vez configuradas las máquinas virtuales dentro de
-                        una red de tipo Host-Only, se realizó una prueba de
-                        conectividad desde Kali Linux hacia la máquina
-                        vulnerable Snakeoil.
+
+                        Una vez configuradas las máquinas virtuales
+                        dentro de una red de tipo Host-Only, se realizó
+                        una prueba de conectividad desde Kali Linux hacia
+                        la máquina vulnerable Snakeoil.
+
                     </p>
+
 
                     <p>
                         Para ello se utilizó el comando:
                     </p>
 
+
                     <pre><code>ping -c 4 192.168.56.102</code></pre>
 
+
                     <p>
+
                         La dirección
-                        <strong>192.168.56.102</strong>
-                        fue establecida como la dirección IP de la máquina
-                        objetivo para las siguientes fases del análisis.
+                        <strong>
+                            192.168.56.102
+                        </strong>
+                        fue establecida como la dirección IP de la
+                        máquina objetivo para las siguientes fases
+                        del análisis.
+
                     </p>
 
                 </div>
@@ -370,7 +466,7 @@
 
 
         <!-- =====================================================
-             2. RECONOCIMIENTO
+             RECONOCIMIENTO
         ====================================================== -->
 
         <section class="pf01-section">
@@ -380,31 +476,43 @@
                 <div class="pf01-card">
 
                     <span class="pf01-kicker">
-                        04 / RECONOCIMIENTO DE SERVICIOS
+                        04 / RECONOCIMIENTO
                     </span>
+
 
                     <h2>
                         2.1 Escaneo inicial de puertos
                     </h2>
 
+
                     <p>
-                        Como primera actividad de reconocimiento se realizó un
-                        escaneo TCP contra la dirección IP
-                        <strong>192.168.56.102</strong>, correspondiente a la
-                        máquina objetivo.
+
+                        Como primera actividad de reconocimiento se
+                        realizó un escaneo TCP contra la dirección IP
+                        <strong>
+                            192.168.56.102
+                        </strong>,
+                        correspondiente a la máquina objetivo.
+
                     </p>
+
 
                     <p>
                         Para ello se utilizó Nmap mediante el comando:
                     </p>
 
+
                     <pre><code>nmap 192.168.56.102</code></pre>
 
+
                     <p>
-                        El resultado confirmó que el host se encontraba activo
-                        y que, dentro de los puertos TCP analizados, se
-                        encontraron tres puertos abiertos:
+
+                        El resultado confirmó que el host se encontraba
+                        activo y que, dentro de los puertos TCP
+                        analizados, se encontraron tres puertos abiertos:
+
                     </p>
+
 
                     <ul class="pf01-list">
 
@@ -423,35 +531,44 @@
                     </ul>
 
 
-
                     <h2>
                         2.2 Detección de servicios y versiones
                     </h2>
 
-                    <p>
-                        Después de identificar los puertos abiertos, se realizó
-                        una segunda etapa de reconocimiento utilizando Nmap
-                        con la opción <code>-sV</code>.
-                    </p>
 
                     <p>
-                        Se utilizó el comando:
+
+                        Después de identificar los puertos abiertos,
+                        se realizó una segunda etapa de reconocimiento
+                        utilizando Nmap con la opción
+                        <code>-sV</code>.
+
                     </p>
+
 
                     <pre><code>nmap -sV -p 22,80,8080 192.168.56.102</code></pre>
 
-                    <p>
-                        La opción <code>-sV</code> permite realizar detección
-                        de servicios y versiones, con el objetivo de determinar
-                        qué software se encuentra ejecutándose detrás de los
-                        puertos abiertos.
-                    </p>
 
                     <p>
+
+                        La opción
+                        <code>-sV</code>
+                        permite realizar detección de servicios y
+                        versiones, con el objetivo de determinar qué
+                        software se encuentra ejecutándose detrás de
+                        los puertos abiertos.
+
+                    </p>
+
+
+                    <p>
+
                         Por su parte,
                         <code>-p 22,80,8080</code>
-                        limita el análisis a los tres puertos previamente
-                        identificados durante el escaneo inicial.
+                        limita el análisis a los tres puertos
+                        previamente identificados durante el escaneo
+                        inicial.
+
                     </p>
 
                 </div>
@@ -463,7 +580,7 @@
 
 
         <!-- =====================================================
-             3. ENUMERACIÓN WEB
+             ENUMERACIÓN WEB
         ====================================================== -->
 
         <section class="pf01-section">
@@ -476,105 +593,159 @@
                         05 / ENUMERACIÓN WEB
                     </span>
 
+
                     <h2>
                         3.1 Enumeración de cabeceras HTTP
                     </h2>
 
-                    <p>
-                        Durante la fase de enumeración se analizaron las
-                        cabeceras HTTP de los servicios disponibles en los
-                        puertos 80 y 8080 mediante la herramienta curl.
-                    </p>
 
                     <p>
-                        Para ello se utilizó la opción <code>-I</code>,
-                        que permite solicitar únicamente las cabeceras de
-                        la respuesta HTTP sin descargar el contenido completo
-                        de la página.
+
+                        Durante la fase de enumeración se analizaron
+                        las cabeceras HTTP de los servicios disponibles
+                        en los puertos 80 y 8080 mediante la herramienta
+                        curl.
+
                     </p>
 
+
                     <p>
+
+                        Para ello se utilizó la opción
+                        <code>-I</code>,
+                        que permite solicitar únicamente las cabeceras
+                        de la respuesta HTTP sin descargar el contenido
+                        completo de la página.
+
+                    </p>
+
+
+                    <p>
+
                         En ambos puertos se obtuvo una respuesta
-                        <strong>HTTP/1.1 200 OK</strong>, confirmando que los
-                        dos servicios HTTP se encuentran disponibles y
-                        responden correctamente a las solicitudes realizadas
-                        desde la máquina atacante.
-                    </p>
+                        <strong>
+                            HTTP/1.1 200 OK
+                        </strong>,
+                        confirmando que los dos servicios HTTP se
+                        encuentran disponibles y responden correctamente
+                        a las solicitudes realizadas desde la máquina
+                        atacante.
 
+                    </p>
 
 
                     <h2>
                         3.2 Enumeración de la aplicación web
                     </h2>
 
-                    <p>
-                        Durante la enumeración de los servicios HTTP se
-                        identificó una diferencia significativa entre los
-                        puertos 80 y 8080.
-                    </p>
 
                     <p>
+
+                        Durante la enumeración de los servicios HTTP se
+                        identificó una diferencia significativa entre
+                        los puertos 80 y 8080.
+
+                    </p>
+
+
+                    <p>
+
                         Mientras que el puerto 80 presenta una página de
                         bienvenida denominada
-                        <strong>"Welcome to SNAKEOIL!"</strong>,
-                        el puerto 8080 aloja una aplicación web asociada con
-                        el proyecto
-                        <strong>"Good Tech Inc.'s Snake Oil Project"</strong>.
+                        <strong>
+                            "Welcome to SNAKEOIL!"
+                        </strong>,
+                        el puerto 8080 aloja una aplicación web asociada
+                        con el proyecto
+                        <strong>
+                            "Good Tech Inc.'s Snake Oil Project"
+                        </strong>.
+
                     </p>
+
 
                     <p>
-                        La aplicación disponible en el puerto 8080 presenta
-                        contenido adicional, incluyendo secciones relacionadas
-                        con la introducción del proyecto, sus reglas de
-                        funcionamiento y otros enlaces internos.
+
+                        La aplicación disponible en el puerto 8080
+                        presenta contenido adicional, incluyendo
+                        secciones relacionadas con la introducción del
+                        proyecto, sus reglas de funcionamiento y otros
+                        enlaces internos.
+
                     </p>
+
 
                     <p>
-                        Debido a que esta aplicación presenta una superficie
-                        de interacción mayor que la página disponible en el
-                        puerto 80, se estableció como objetivo prioritario
-                        para la fase de enumeración web.
-                    </p>
 
+                        Debido a que esta aplicación presenta una
+                        superficie de interacción mayor que la página
+                        disponible en el puerto 80, se estableció como
+                        objetivo prioritario para la fase de enumeración
+                        web.
+
+                    </p>
 
 
                     <h2>
                         3.3 Identificación de endpoints
                     </h2>
 
-                    <p>
-                        Durante el análisis del código HTML de la aplicación
-                        web disponible en el puerto 8080 se identificaron
-                        diversos endpoints mediante la extracción de los
-                        atributos <code>href</code> presentes en la página
-                        principal.
-                    </p>
 
                     <p>
-                        Entre los recursos encontrados se identificó el
-                        endpoint <code>/create</code>, asociado a la
-                        funcionalidad <strong>"New Post"</strong>.
+
+                        Durante el análisis del código HTML de la
+                        aplicación web disponible en el puerto 8080
+                        se identificaron diversos endpoints mediante
+                        la extracción de los atributos
+                        <code>href</code>
+                        presentes en la página principal.
+
                     </p>
 
-                    <p>
-                        Esto permitió determinar que la aplicación no se limita
-                        a presentar contenido estático, sino que incorpora
-                        funcionalidades para la creación de publicaciones.
-                    </p>
 
                     <p>
+
+                        Entre los recursos encontrados se identificó
+                        el endpoint
+                        <code>/create</code>,
+                        asociado a la funcionalidad
+                        <strong>
+                            "New Post"
+                        </strong>.
+
+                    </p>
+
+
+                    <p>
+
+                        Esto permitió determinar que la aplicación no
+                        se limita a presentar contenido estático,
+                        sino que incorpora funcionalidades para la
+                        creación de publicaciones.
+
+                    </p>
+
+
+                    <p>
+
                         Asimismo, se identificaron los recursos
                         <code>/1</code>,
-                        <code>/2</code> y
+                        <code>/2</code>
+                        y
                         <code>/4</code>,
                         correspondientes aparentemente a publicaciones
                         individuales.
+
                     </p>
 
+
                     <p>
-                        Para cada uno de estos recursos también se encontraron
-                        endpoints de edición:
+
+                        Para cada uno de estos recursos también se
+                        encontraron endpoints de edición:
+
                     </p>
+
 
                     <ul class="pf01-list">
 
@@ -601,7 +772,7 @@
 
 
         <!-- =====================================================
-             SSRF
+             ANÁLISIS DE VULNERABILIDAD
         ====================================================== -->
 
         <section class="pf01-section">
@@ -614,29 +785,42 @@
                         06 / ANÁLISIS DE VULNERABILIDADES
                     </span>
 
+
                     <h2>
                         Análisis del endpoint /run
                     </h2>
 
-                    <p>
-                        El endpoint <code>/run</code> acepta solicitudes POST
-                        y, ante una solicitud sin parámetros, devuelve un
-                        mensaje indicando que requiere una dirección en formato
-                        URL:puerto.
-                    </p>
 
                     <p>
-                        Este comportamiento sugiere que la aplicación realiza
-                        solicitudes de red desde el servidor hacia un recurso
-                        especificado por el usuario.
+
+                        El endpoint
+                        <code>/run</code>
+                        acepta solicitudes POST y, ante una solicitud
+                        sin parámetros, devuelve un mensaje indicando
+                        que requiere una dirección en formato URL:puerto.
+
                     </p>
 
+
                     <p>
-                        Se planteó como hipótesis la existencia de una posible
-                        vulnerabilidad de
-                        <strong>Server-Side Request Forgery (SSRF)</strong>,
-                        cuya explotación será validada mediante solicitudes
-                        controladas hacia servicios locales.
+
+                        Este comportamiento sugiere que la aplicación
+                        realiza solicitudes de red desde el servidor
+                        hacia un recurso especificado por el usuario.
+
+                    </p>
+
+
+                    <p>
+
+                        Se planteó como hipótesis la existencia de una
+                        posible vulnerabilidad de
+                        <strong>
+                            Server-Side Request Forgery (SSRF)
+                        </strong>,
+                        cuya explotación será validada mediante
+                        solicitudes controladas hacia servicios locales.
+
                     </p>
 
                 </div>
@@ -648,7 +832,7 @@
 
 
         <!-- =====================================================
-             4. AUTENTICACIÓN Y JWT
+             AUTENTICACIÓN Y JWT
         ====================================================== -->
 
         <section class="pf01-section">
@@ -661,55 +845,82 @@
                         07 / AUTENTICACIÓN
                     </span>
 
+
                     <h2>
                         4.1 Registro e inicio de sesión
                     </h2>
 
-                    <p>
-                        Durante el análisis de la aplicación se realizó el
-                        proceso correspondiente al registro e inicio de sesión.
-                    </p>
 
+                    <p>
+
+                        Durante el análisis de la aplicación se realizó
+                        el proceso correspondiente al registro e inicio
+                        de sesión.
+
+                    </p>
 
 
                     <h2>
                         4.2 Obtención de la clave secreta mediante JWT
                     </h2>
 
-                    <p>
-                        Durante el análisis del endpoint <code>/run</code>
-                        se identificó que la aplicación requiere un parámetro
-                        denominado <code>secret_key</code>.
-                    </p>
 
                     <p>
-                        Debido a que el endpoint <code>/secret</code>
+
+                        Durante el análisis del endpoint
+                        <code>/run</code>
+                        se identificó que la aplicación requiere un
+                        parámetro denominado
+                        <code>secret_key</code>.
+
+                    </p>
+
+
+                    <p>
+
+                        Debido a que el endpoint
+                        <code>/secret</code>
                         inicialmente respondía con un error HTTP 500,
                         se analizó el mecanismo de autenticación de la
                         aplicación.
+
                     </p>
 
-                    <p>
-                        Se comprobó que la aplicación permite el registro de
-                        nuevos usuarios y proporciona un token JWT después de
-                        la autenticación.
-                    </p>
 
                     <p>
+
+                        Se comprobó que la aplicación permite el
+                        registro de nuevos usuarios y proporciona un
+                        token JWT después de la autenticación.
+
+                    </p>
+
+
+                    <p>
+
                         El token puede utilizarse mediante la cookie
                         <code>access_token_cookie</code>
                         para acceder a recursos protegidos.
+
                     </p>
 
+
                     <p>
+
                         Al realizar una solicitud autenticada al endpoint
-                        <code>/secret</code>, la aplicación devuelve la clave
-                        requerida por <code>/run</code>.
+                        <code>/secret</code>,
+                        la aplicación devuelve la clave requerida por
+                        <code>/run</code>.
+
                     </p>
 
+
                     <p>
-                        Este comportamiento permitió continuar con el análisis
-                        de la funcionalidad de ejecución de comandos.
+
+                        Este comportamiento permitió continuar con el
+                        análisis de la funcionalidad de ejecución de
+                        comandos.
+
                     </p>
 
                 </div>
@@ -721,7 +932,7 @@
 
 
         <!-- =====================================================
-             4.3 / 4.4 / 4.5
+             COMMAND INJECTION
         ====================================================== -->
 
         <section class="pf01-section">
@@ -734,85 +945,129 @@
                         4.3 Acceso al endpoint protegido /secret
                     </h2>
 
+
                     <p>
-                        Después de autenticarse correctamente mediante el
-                        mecanismo JWT de la aplicación, se utilizó el
-                        <code>access_token</code> obtenido durante el inicio
-                        de sesión para acceder al endpoint
+
+                        Después de autenticarse correctamente mediante
+                        el mecanismo JWT de la aplicación, se utilizó el
+                        <code>access_token</code>
+                        obtenido durante el inicio de sesión para
+                        acceder al endpoint
                         <code>/secret</code>.
+
                     </p>
 
+
                     <p>
+
                         La solicitud fue aceptada mediante la cookie
-                        <code>access_token_cookie</code>, obteniéndose una
-                        respuesta HTTP 200 OK.
+                        <code>access_token_cookie</code>,
+                        obteniéndose una respuesta HTTP 200 OK.
+
                     </p>
+
 
                     <p>
-                        La aplicación reveló una clave denominada
-                        <code>secret_key</code>, cuyo valor es utilizado
-                        posteriormente por el endpoint <code>/run</code>.
-                    </p>
 
+                        La aplicación reveló una clave denominada
+                        <code>secret_key</code>,
+                        cuyo valor es utilizado posteriormente por el
+                        endpoint
+                        <code>/run</code>.
+
+                    </p>
 
 
                     <h2>
                         4.4 Explotación de Command Injection
                     </h2>
 
+
                     <p>
+
                         Se introdujo una sustitución de comandos mediante
-                        la entrada del parámetro <code>url</code>.
+                        la entrada del parámetro
+                        <code>url</code>.
+
                     </p>
 
+
                     <p>
+
                         La aplicación construye y ejecuta una llamada al
-                        binario curl utilizando <code>shell=True</code>,
-                        permitiendo que comandos adicionales sean interpretados
-                        por el sistema operativo.
+                        binario curl utilizando
+                        <code>shell=True</code>,
+                        permitiendo que comandos adicionales sean
+                        interpretados por el sistema operativo.
+
                     </p>
 
+
                     <p>
+
                         Como prueba de concepto se utilizó el comando
-                        <code>id</code>, cuya salida reveló que la ejecución
-                        se realiza bajo el usuario <strong>www-data</strong>.
+                        <code>id</code>,
+                        cuya salida reveló que la ejecución se realiza
+                        bajo el usuario
+                        <strong>
+                            www-data
+                        </strong>.
+
                     </p>
 
-                    <p>
-                        Esto demuestra la existencia de ejecución remota de
-                        comandos en el servidor.
-                    </p>
 
                     <p>
+
+                        Esto demuestra la existencia de ejecución remota
+                        de comandos en el servidor.
+
+                    </p>
+
+
+                    <p>
+
                         <strong>
                             Vulnerabilidad identificada:
                             Command Injection / Remote Command Execution.
                         </strong>
-                    </p>
 
+                    </p>
 
 
                     <h2>
                         4.5 Confirmación de ejecución remota de comandos
                     </h2>
 
+
                     <p>
+
                         Para comprobar que la vulnerabilidad identificada
-                        permitía interacción con recursos externos, se inició
-                        un listener TCP en el equipo atacante.
+                        permitía interacción con recursos externos, se
+                        inició un listener TCP en el equipo atacante.
+
                     </p>
 
+
                     <p>
+
                         El listener recibió una conexión proveniente de
-                        <strong>192.168.56.102</strong>, observándose una
-                        solicitud HTTP GET <code>/</code> y el agente de usuario
+                        <strong>
+                            192.168.56.102
+                        </strong>,
+                        observándose una solicitud HTTP GET
+                        <code>/</code>
+                        y el agente de usuario
                         <code>curl/7.64.0</code>.
+
                     </p>
 
+
                     <p>
-                        Esto confirma que el servidor vulnerable ejecutó el
-                        comando curl bajo su propio contexto y estableció
-                        comunicación con el equipo atacante.
+
+                        Esto confirma que el servidor vulnerable ejecutó
+                        el comando curl bajo su propio contexto y
+                        estableció comunicación con el equipo atacante.
+
                     </p>
 
                 </div>
@@ -837,92 +1092,134 @@
                         08 / POST-EXPLOTACIÓN
                     </span>
 
+
                     <h2>
-                        5.1 Inspección del sistema y extracción de credenciales
+                        5.1 Inspección del Sistema y extracción de credenciales
                     </h2>
 
+
                     <p>
+
                         Se exploró el sistema de archivos navegando por:
+
                     </p>
+
 
                     <pre><code>/home/patrick/flask_blog</code></pre>
 
-                    <p>
-                        Posteriormente se revisó el archivo principal de la
-                        aplicación <code>app.py</code>.
-                    </p>
 
                     <p>
-                        Al revisar el código fuente se encontraron las llaves
-                        de configuración almacenadas directamente en el código:
+
+                        y revisando el archivo principal de la aplicación
+                        <code>app.py</code>.
+
                     </p>
+
+
+                    <p>
+
+                        Al revisar el código fuente se encontraron las
+                        llaves de configuración almacenadas directamente
+                        en el código:
+
+                    </p>
+
 
                     <ul class="pf01-list">
 
                         <li>
-                            <code>SECRET_KEY = 'snakeoilisnotgoodforcorporations'</code>
+                            <code>
+                                SECRET_KEY = 'snakeoilisnotgoodforcorporations'
+                            </code>
                         </li>
 
                         <li>
-                            <code>JWT_SECRET_KEY = 'NOreasonableDOUBTthisPASSWORDisGOOD</code>
+                            <code>
+                                JWT_SECRET_KEY = 'NOreasonableDOUBTthisPASSWORDisGOOD
+                            </code>
                         </li>
 
                     </ul>
-
 
 
                     <h2>
                         5.2 Elevación de privilegios a root
                     </h2>
 
-                    <p>
-                        Se probó la segunda clave hallada contra el comando
-                        de superusuario.
-                    </p>
 
                     <p>
+
+                        Se probó la segunda clave hallada contra el
+                        comando de superusuario.
+
+                    </p>
+
+
+                    <p>
+
                         Al auditar el archivo de configuración
-                        <code>app.py</code>, se identificó la vulnerabilidad
-                        de uso de credenciales e información sensible.
+                        <code>app.py</code>,
+                        se identificó la vulnerabilidad de uso de
+                        credenciales e información sensible.
+
                     </p>
 
+
                     <p>
+
                         El desarrollador almacenó la clave secreta
                         <code>JWT_SECRET_KEY</code>
                         directamente en texto plano dentro del código.
+
                     </p>
 
+
                     <p>
+
                         Sumado a esto, existía una práctica severa de
                         reutilización de contraseñas, ya que la clave
                         criptográfica del JWT resultaba ser idéntica a la
                         contraseña del usuario del sistema operativo
-                        <strong>patrick</strong>.
+                        <strong>
+                            patrick
+                        </strong>.
+
                     </p>
+
 
                     <p>
-                        El usuario contaba con permisos ilimitados, permitiendo
-                        el compromiso total de la máquina objetivo.
-                    </p>
 
+                        El usuario contaba con permisos ilimitados,
+                        permitiendo el compromiso total de la máquina
+                        objetivo.
+
+                    </p>
 
 
                     <h2>
                         5.3 Lectura de la bandera final
                     </h2>
 
-                    <p>
-                        Con acceso completo de administrador, se accedió al
-                        directorio <code>/root</code> para leer el archivo de
-                        prueba final.
-                    </p>
 
                     <p>
-                        El mensaje de confirmación obtenido fue:
+
+                        Con acceso completo de administrador, se accedió
+                        al directorio
+                        <code>/root</code>
+                        para leer el archivo de prueba final.
+
                     </p>
+
+
+                    <p>
+                        Mensaje de confirmación:
+                    </p>
+
 
                     <blockquote>
+
                         Congratulations on obtaining a root shell on this machine! :-).
+
                     </blockquote>
 
                 </div>
@@ -934,7 +1231,7 @@
 
 
         <!-- =====================================================
-             EVIDENCIAS VISUALES
+             EVIDENCIAS VISUALES DEL DOCUMENTO
         ====================================================== -->
 
         <section class="pf01-section">
@@ -944,37 +1241,307 @@
                 <div class="pf01-card">
 
                     <span class="pf01-kicker">
-                        09 / EVIDENCIAS
+                        09 / EVIDENCIAS VISUALES
                     </span>
+
 
                     <h2>
                         Evidencias del proyecto
                     </h2>
 
-                    <p>
-                        Las evidencias visuales correspondientes al desarrollo
-                        del proyecto pueden incorporarse posteriormente en esta
-                        sección.
-                    </p>
 
                     <p>
-                        Esta sección queda preparada para agregar las capturas
-                        originales del documento conforme se organicen dentro
-                        de la carpeta de recursos del portafolio.
+
+                        A continuación se presenta el documento completo
+                        como evidencia visual. Las imágenes corresponden
+                        a las páginas originales del PDF.
+
                     </p>
 
-                    <!--
-                        Ejemplo para futuras imágenes:
 
-                        <figure class="pf01-evidence">
+                    <!-- Página 1 -->
+
+                    <div class="pf01-evidence">
+
+                        <figure>
+
                             <img
-                                src="../Recursos/Imagenes/Proyecto1/evidencia01.png"
-                                alt="Evidencia del proyecto">
+                                src="../Recursos/Imagenes/Proyecto1/pagina-01.png"
+                                alt="Página 1 del Proyecto 1"
+                                loading="lazy"
+                            >
+
                             <figcaption>
-                                Descripción de la evidencia.
+                                Página 1 — Portada del Proyecto 1.
                             </figcaption>
+
                         </figure>
-                    -->
+
+                    </div>
+
+
+
+                    <!-- Página 2 -->
+
+                    <div class="pf01-evidence">
+
+                        <figure>
+
+                            <img
+                                src="../Recursos/Imagenes/Proyecto1/pagina-02.png"
+                                alt="Página 2 del Proyecto 1"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                Página 2 — Introducción y configuración de máquinas virtuales.
+                            </figcaption>
+
+                        </figure>
+
+                    </div>
+
+
+
+                    <!-- Página 3 -->
+
+                    <div class="pf01-evidence">
+
+                        <figure>
+
+                            <img
+                                src="../Recursos/Imagenes/Proyecto1/pagina-03.png"
+                                alt="Página 3 del Proyecto 1"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                Página 3 — Preparación del entorno de pruebas.
+                            </figcaption>
+
+                        </figure>
+
+                    </div>
+
+
+
+                    <!-- Página 4 -->
+
+                    <div class="pf01-evidence">
+
+                        <figure>
+
+                            <img
+                                src="../Recursos/Imagenes/Proyecto1/pagina-04.png"
+                                alt="Página 4 del Proyecto 1"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                Página 4 — Escaneo inicial de puertos.
+                            </figcaption>
+
+                        </figure>
+
+                    </div>
+
+
+
+                    <!-- Página 5 -->
+
+                    <div class="pf01-evidence">
+
+                        <figure>
+
+                            <img
+                                src="../Recursos/Imagenes/Proyecto1/pagina-05.png"
+                                alt="Página 5 del Proyecto 1"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                Página 5 — Detección de servicios y enumeración HTTP.
+                            </figcaption>
+
+                        </figure>
+
+                    </div>
+
+
+
+                    <!-- Página 6 -->
+
+                    <div class="pf01-evidence">
+
+                        <figure>
+
+                            <img
+                                src="../Recursos/Imagenes/Proyecto1/pagina-06.png"
+                                alt="Página 6 del Proyecto 1"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                Página 6 — Enumeración de la aplicación web.
+                            </figcaption>
+
+                        </figure>
+
+                    </div>
+
+
+
+                    <!-- Página 7 -->
+
+                    <div class="pf01-evidence">
+
+                        <figure>
+
+                            <img
+                                src="../Recursos/Imagenes/Proyecto1/pagina-07.png"
+                                alt="Página 7 del Proyecto 1"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                Página 7 — Identificación de endpoints.
+                            </figcaption>
+
+                        </figure>
+
+                    </div>
+
+
+
+                    <!-- Página 8 -->
+
+                    <div class="pf01-evidence">
+
+                        <figure>
+
+                            <img
+                                src="../Recursos/Imagenes/Proyecto1/pagina-08.png"
+                                alt="Página 8 del Proyecto 1"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                Página 8 — Análisis del endpoint /run.
+                            </figcaption>
+
+                        </figure>
+
+                    </div>
+
+
+
+                    <!-- Página 9 -->
+
+                    <div class="pf01-evidence">
+
+                        <figure>
+
+                            <img
+                                src="../Recursos/Imagenes/Proyecto1/pagina-09.png"
+                                alt="Página 9 del Proyecto 1"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                Página 9 — Registro, inicio de sesión y JWT.
+                            </figcaption>
+
+                        </figure>
+
+                    </div>
+
+
+
+                    <!-- Página 10 -->
+
+                    <div class="pf01-evidence">
+
+                        <figure>
+
+                            <img
+                                src="../Recursos/Imagenes/Proyecto1/pagina-10.png"
+                                alt="Página 10 del Proyecto 1"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                Página 10 — Acceso al endpoint protegido y Command Injection.
+                            </figcaption>
+
+                        </figure>
+
+                    </div>
+
+
+
+                    <!-- Página 11 -->
+
+                    <div class="pf01-evidence">
+
+                        <figure>
+
+                            <img
+                                src="../Recursos/Imagenes/Proyecto1/pagina-11.png"
+                                alt="Página 11 del Proyecto 1"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                Página 11 — Confirmación de ejecución remota y post-explotación.
+                            </figcaption>
+
+                        </figure>
+
+                    </div>
+
+
+
+                    <!-- Página 12 -->
+
+                    <div class="pf01-evidence">
+
+                        <figure>
+
+                            <img
+                                src="../Recursos/Imagenes/Proyecto1/pagina-12.png"
+                                alt="Página 12 del Proyecto 1"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                Página 12 — Elevación de privilegios y lectura de la bandera final.
+                            </figcaption>
+
+                        </figure>
+
+                    </div>
+
+
+
+                    <!-- Página 13 -->
+
+                    <div class="pf01-evidence">
+
+                        <figure>
+
+                            <img
+                                src="../Recursos/Imagenes/Proyecto1/pagina-13.png"
+                                alt="Página 13 del Proyecto 1"
+                                loading="lazy"
+                            >
+
+                            <figcaption>
+                                Página 13 — Conclusión del proyecto.
+                            </figcaption>
+
+                        </figure>
+
+                    </div>
 
                 </div>
 
@@ -998,80 +1565,50 @@
                         10 / CONCLUSIÓN
                     </span>
 
+
                     <h2>
                         Conclusión
                     </h2>
 
-                    <p>
-                        El desarrollo del laboratorio permitió aplicar de
-                        manera práctica diferentes conceptos relacionados con
-                        la seguridad informática y las pruebas de penetración.
-                    </p>
 
                     <p>
-                        El proceso comenzó con el reconocimiento de la máquina
-                        objetivo y la identificación de los servicios
-                        disponibles, seguido de una fase de enumeración de la
-                        aplicación web.
+
+                        El desarrollo del laboratorio permitió aplicar
+                        de manera práctica diferentes conceptos
+                        relacionados con la seguridad informática y las
+                        pruebas de penetración.
+
                     </p>
+
 
                     <p>
-                        Durante la investigación se identificaron diferentes
-                        debilidades, incluyendo la exposición de información
-                        de usuarios, hashes y secretos utilizados por la
-                        aplicación.
+
+                        El proceso comenzó con el reconocimiento de la
+                        máquina objetivo y la identificación de los
+                        servicios disponibles, seguido de una fase de
+                        enumeración de la aplicación web.
+
                     </p>
+
 
                     <p>
-                        El análisis del endpoint <code>/run</code> permitió
-                        identificar una vulnerabilidad de inyección de comandos
-                        que finalmente fue comprobada mediante una conexión
-                        desde la máquina vulnerable hacia el equipo atacante.
+
+                        Durante la investigación se identificaron
+                        diferentes debilidades, incluyendo la exposición
+                        de información de usuarios, hashes y secretos
+                        utilizados por la aplicación.
+
                     </p>
 
-                </div>
 
-            </div>
+                    <p>
 
-        </section>
-
-
-
-        <!-- =====================================================
-             REFERENCIAS
-        ====================================================== -->
-
-        <section class="pf01-section">
-
-            <div class="pf01-container">
-
-                <div class="pf01-card">
-
-                    <span class="pf01-kicker">
-                        11 / REFERENCIAS
-                    </span>
-
-                    <h2>
-                        Referencias
-                    </h2>
-
-                    <p class="pf01-ref">
-
-                        VulnHub.
-                        <em>
-                            DigitalWorld.local - Snake Oil
-                        </em>.
-
-                        <br>
-
-                        <a
-                            href="https://www.vulnhub.com/entry/digitalworldlocal-snakeoil,738/"
-                            target="_blank"
-                            rel="noopener noreferrer">
-
-                            https://www.vulnhub.com/entry/digitalworldlocal-snakeoil,738/
-
-                        </a>
+                        El análisis del endpoint
+                        <code>/run</code>
+                        permitió identificar una vulnerabilidad de
+                        inyección de comandos que finalmente fue
+                        comprobada mediante una conexión desde la
+                        máquina vulnerable hacia el equipo atacante.
 
                     </p>
 
@@ -1084,7 +1621,7 @@
 
 
         <!-- =====================================================
-             DESCARGA DEL DOCUMENTO ORIGINAL
+             PDF FINAL + REGRESO
         ====================================================== -->
 
         <section class="pf01-section">
@@ -1094,32 +1631,42 @@
                 <div class="pf01-card">
 
                     <span class="pf01-kicker">
-                        DOCUMENTO ORIGINAL
+                        EVIDENCIA ORIGINAL
                     </span>
 
+
                     <h2>
-                        Evidencia completa en PDF
+                        Descargar actividad completa
                     </h2>
 
+
                     <p>
-                        Puedes conservar y descargar el documento original
-                        utilizado como evidencia académica.
+
+                        La versión HTML presenta el contenido de la
+                        actividad y sus evidencias visuales. También se
+                        conserva el documento original en formato PDF.
+
                     </p>
+
 
                     <a
                         class="pf01-download"
                         href="../Recursos/PDF/Proyecto1.pdf"
-                        download>
+                        download="Proyecto1.pdf"
+                    >
 
-                        📄 Descargar PDF original
+                        📥 Descargar Proyecto1.pdf
 
                     </a>
 
-                    <br>
+
+                    <br><br>
+
 
                     <a
                         class="pf01-back"
-                        href="./index.html">
+                        href="./index.html"
+                    >
 
                         ← Volver a PF01
 
@@ -1130,7 +1677,6 @@
             </div>
 
         </section>
-
 
     </main>
 
