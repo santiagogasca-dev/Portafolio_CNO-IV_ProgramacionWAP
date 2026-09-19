@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -8,9 +10,20 @@
         content="width=device-width, initial-scale=1.0"
     >
 
+    <meta
+        name="description"
+        content="Laboratorio 1 - File Path Traversal: Simple Case."
+    >
+
+    <meta
+        name="author"
+        content="Santiago Isaac Gasca López"
+    >
+
     <title>
         Lab 01 | File Path Traversal | SantiagoGasca
     </title>
+
 
     <link
         rel="stylesheet"
@@ -21,9 +34,16 @@
         rel="stylesheet"
         href="../Recursos/CSS/Roadmap.css"
     >
+
 </head>
 
+
 <body class="lab-page">
+
+
+    <!-- =====================================================
+         NAVEGACIÓN
+    ====================================================== -->
 
     <header class="site-header">
 
@@ -33,17 +53,38 @@
                 href="../index.html"
                 class="logo"
             >
-                <span class="logo-symbol">◈</span>
-                <span>SantiagoGasca</span>
+
+                <span class="logo-symbol">
+                    ◈
+                </span>
+
+                <span>
+                    SantiagoGasca
+                </span>
+
             </a>
+
 
             <nav
                 class="navigation"
                 aria-label="Navegación principal"
             >
-                <a href="../index.html">Inicio</a>
-                <a href="../PF01/index.html">PF01</a>
-                <a href="./index.html">Road to Hall of Fame</a>
+
+                <a href="../index.html">
+                    Inicio
+                </a>
+
+                <a href="../PF01/index.html">
+                    PF01
+                </a>
+
+                <a
+                    href="./index.html"
+                    aria-current="page"
+                >
+                    Road to Hall of Fame
+                </a>
+
             </nav>
 
         </div>
@@ -51,28 +92,50 @@
     </header>
 
 
+
     <main>
+
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
 
         <section class="lab-hero">
 
             <div class="lab-container">
 
                 <span class="lab-kicker">
-                    LABORATORIO 01
+                    LABORATORIO 01 · ACTIVIDAD 07
                 </span>
+
 
                 <h1>
                     File Path Traversal
                 </h1>
 
+
                 <p>
-                    Simple Case — pendiente
+                    Simple Case
+                </p>
+
+
+                <p>
+
+                    Laboratorio práctico enfocado en el análisis de una
+                    vulnerabilidad de File Path Traversal o Directory
+                    Traversal en una aplicación web.
+
                 </p>
 
             </div>
 
         </section>
 
+
+
+        <!-- =====================================================
+             INFORMACIÓN GENERAL
+        ====================================================== -->
 
         <section class="lab-section">
 
@@ -81,25 +144,55 @@
                 <article class="lab-card">
 
                     <h2>
-                        Estado
+                        Información del laboratorio
                     </h2>
 
-                    <p>
-                        Este laboratorio forma parte de la estructura
-                        inicial de Road to Hall of Fame.
-                    </p>
 
                     <p>
-                        La documentación, evidencias y análisis técnico
-                        se incorporarán posteriormente.
+                        <strong>Nombre del laboratorio:</strong>
+                        File Path Traversal, Simple Case
                     </p>
 
-                    <a
-                        class="lab-download"
-                        href="./index.html"
-                    >
-                        ← Volver a Road to Hall of Fame
-                    </a>
+
+                    <p>
+                        <strong>Nivel:</strong>
+                        Apprentice
+                    </p>
+
+
+                    <p>
+                        <strong>Tipo de explotación:</strong>
+                        File Path Traversal
+                    </p>
+
+
+                    <p>
+                        <strong>Plataforma:</strong>
+                        PortSwigger Web Security Academy
+                    </p>
+
+
+                    <p>
+                        <strong>Herramienta utilizada:</strong>
+                        Burp Suite
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Laboratorio:
+                        </strong>
+
+                        <a
+                            href="https://portswigger.net/web-security/file-path-traversal/lab-simple"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            File path traversal, simple case
+                        </a>
+
+                    </p>
 
                 </article>
 
@@ -107,24 +200,811 @@
 
         </section>
 
+
+
+        <!-- =====================================================
+             MARCO TEÓRICO
+        ====================================================== -->
+
+        <section class="lab-section">
+
+            <div class="lab-container">
+
+                <article class="lab-card">
+
+                    <h2>
+                        Marco teórico
+                    </h2>
+
+
+                    <p>
+
+                        La vulnerabilidad de File Path Traversal o
+                        Directory Traversal ocurre cuando una aplicación
+                        web utiliza entradas proporcionadas por el
+                        usuario de forma insegura para construir rutas
+                        del sistema de archivos, sin realizar una
+                        validación o sanitización adecuada.
+
+                    </p>
+
+
+                    <p>
+
+                        Su funcionamiento se basa en insertar secuencias
+                        de navegación de directorios, como
+                        <code></code> en sistemas Linux o
+                        <code></code> en sistemas Windows, con el
+                        objetivo de retroceder desde el directorio
+                        establecido por la aplicación y acceder a
+                        recursos fuera de la ubicación permitida.
+
+                    </p>
+
+
+                    <h3>
+                        Impacto en la tríada CIA
+                    </h3>
+
+
+                    <p>
+
+                        <strong>Confidencialidad:</strong>
+                        el impacto puede ser alto, ya que una
+                        vulnerabilidad de este tipo puede permitir la
+                        lectura no autorizada de código fuente, archivos
+                        de configuración, credenciales y otros datos
+                        sensibles del sistema.
+
+                    </p>
+
+
+                    <p>
+
+                        <strong>
+                            Integridad y disponibilidad:
+                        </strong>
+
+                        el impacto es menor cuando la vulnerabilidad
+                        solamente permite lectura de archivos, pero el
+                        riesgo puede aumentar si se combina con
+                        vulnerabilidades que permitan escritura
+                        arbitraria o el compromiso de credenciales.
+
+                    </p>
+
+
+                    <h3>
+                        Relación con OWASP
+                    </h3>
+
+
+                    <p>
+
+                        En el contexto de OWASP Top 10:2025, el documento
+                        relaciona esta vulnerabilidad con
+                        <strong>
+                            A01:2025 - Broken Access Control
+                        </strong>.
+                        OWASP mantiene esta categoría como una de las
+                        principales áreas de riesgo para aplicaciones web
+                        y contempla, entre sus debilidades relacionadas,
+                        distintos casos de Path Traversal.
+
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             OBJETIVO
+        ====================================================== -->
+
+        <section class="lab-section">
+
+            <div class="lab-container">
+
+                <article class="lab-card">
+
+                    <h2>
+                        1. Objetivo del laboratorio
+                    </h2>
+
+
+                    <p>
+
+                        El objetivo del laboratorio es recuperar y
+                        visualizar el contenido del archivo
+                        <code>/etc/passwd</code> del servidor mediante
+                        la vulnerabilidad de File Path Traversal.
+
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             VULNERABILIDAD
+        ====================================================== -->
+
+        <section class="lab-section">
+
+            <div class="lab-container">
+
+                <article class="lab-card">
+
+                    <h2>
+                        2. Vulnerabilidad identificada
+                    </h2>
+
+
+                    <p>
+
+                        La aplicación procesa la solicitud de imágenes
+                        mediante un parámetro denominado
+                        <code>filename</code>.
+
+                    </p>
+
+
+                    <p>
+
+                        El backend utiliza directamente este valor para
+                        resolver el recurso dentro del sistema de
+                        archivos sin restringir correctamente que la
+                        búsqueda permanezca dentro del directorio
+                        permitido.
+
+                    </p>
+
+
+                    <p>
+
+                        En el escenario documentado se considera como
+                        directorio esperado:
+
+                    </p>
+
+
+                    <pre class="lab-code"><code>/var/www/images/</code></pre>
+
+
+                    <p>
+
+                        La falta de validación adecuada permite
+                        manipular el parámetro y solicitar una ruta
+                        diferente a la prevista por la aplicación.
+
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PROCEDIMIENTO
+        ====================================================== -->
+
+        <section class="lab-section">
+
+            <div class="lab-container">
+
+                <article class="lab-card">
+
+                    <h2>
+                        3. Procedimiento
+                    </h2>
+
+
+                    <ol>
+
+                        <li>
+
+                            Abrir el laboratorio
+                            <strong>
+                                File Path Traversal, Simple Case
+                            </strong>
+                            en PortSwigger Web Security Academy.
+
+                        </li>
+
+
+                        <li>
+
+                            Interceptar mediante Burp Suite una solicitud
+                            HTTP asociada con la carga de una imagen.
+
+                        </li>
+
+
+                        <li>
+
+                            Localizar el parámetro
+                            <code>filename</code>
+                            dentro de la petición.
+
+                        </li>
+
+
+                        <li>
+
+                            Enviar la petición al módulo
+                            <strong>
+                                Repeater
+                            </strong>
+                            mediante la opción
+                            <strong>
+                                Send to Repeater
+                            </strong>.
+
+                        </li>
+
+
+                        <li>
+
+                            Analizar la petición y modificar el valor del
+                            parámetro vulnerable dentro del laboratorio.
+
+                        </li>
+
+
+                        <li>
+
+                            Enviar nuevamente la petición y revisar la
+                            respuesta generada por el servidor.
+
+                        </li>
+
+
+                        <li>
+
+                            Comprobar que el contenido solicitado fue
+                            devuelto y verificar el estado de
+                            <strong>
+                                Lab Solved
+                            </strong>.
+
+                        </li>
+
+                    </ol>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PAYLOAD
+        ====================================================== -->
+
+        <section class="lab-section">
+
+            <div class="lab-container">
+
+                <article class="lab-card">
+
+                    <h2>
+                        4. Payload utilizado
+                    </h2>
+
+
+                    <p>
+
+                        Para el laboratorio se utilizó el siguiente
+                        valor en el parámetro vulnerable:
+
+                    </p>
+
+
+                    <pre class="lab-code"><code>../../../etc/passwd</code></pre>
+
+
+                    <h3>
+                        Explicación
+                    </h3>
+
+
+                    <p>
+
+                        La secuencia
+                        <code></code>
+                        se utiliza para retroceder un nivel dentro de
+                        la estructura de directorios.
+
+                    </p>
+
+
+                    <p>
+
+                        En el escenario planteado:
+
+                    </p>
+
+
+                    <ul>
+
+                        <li>
+                            El primer
+                            <code></code>
+                            retrocede desde
+                            <code>/var/www/app/resources/</code>
+                            hacia
+                            <code>/var/www/app/</code>.
+                        </li>
+
+
+                        <li>
+                            El siguiente
+                            <code></code>
+                            continúa ascendiendo en la estructura de
+                            directorios.
+                        </li>
+
+
+                        <li>
+                            El tercer
+                            <code></code>
+                            permite alcanzar una ubicación superior
+                            desde la cual se solicita el recurso
+                            <code>/etc/passwd</code>.
+                        </li>
+
+                    </ul>
+
+
+                    <p>
+
+                        La parte
+                        <code>etc/passwd</code>
+                        especifica el recurso que se desea solicitar
+                        dentro del sistema de archivos.
+
+                    </p>
+
+
+                    <p>
+
+                        El problema se produce porque la aplicación
+                        no valida adecuadamente los caracteres utilizados
+                        para la navegación de directorios antes de
+                        resolver la ruta.
+
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             EXPLICACIÓN DEL RESULTADO
+        ====================================================== -->
+
+        <section class="lab-section">
+
+            <div class="lab-container">
+
+                <article class="lab-card">
+
+                    <h2>
+                        5. Resultado de la explotación
+                    </h2>
+
+
+                    <p>
+
+                        Después de modificar la solicitud y enviarla
+                        nuevamente, la aplicación devuelve el contenido
+                        del archivo solicitado.
+
+                    </p>
+
+
+                    <p>
+
+                        La obtención del archivo
+                        <code>/etc/passwd</code>
+                        confirma que la aplicación no está restringiendo
+                        correctamente la ruta proporcionada mediante el
+                        parámetro vulnerable.
+
+                    </p>
+
+
+                    <p>
+
+                        La evidencia visual del resultado se incorporará
+                        en esta sección.
+
+                    </p>
+
+
+                    <!--
+                        AQUÍ COLOCAREMOS LA CAPTURA DEL RESULTADO:
+
+                        <figure class="lab-evidence">
+
+                            <img
+                                src="../Recursos/Imagenes/RoadToHallOfFame/Lab01/04-respuesta-vulnerable.png"
+                                alt="Respuesta vulnerable del laboratorio"
+                            >
+
+                            <figcaption>
+                                Respuesta obtenida después de modificar
+                                la solicitud.
+                            </figcaption>
+
+                        </figure>
+                    -->
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             LAB SOLVED
+        ====================================================== -->
+
+        <section class="lab-section">
+
+            <div class="lab-container">
+
+                <article class="lab-card">
+
+                    <h2>
+                        6. Confirmación del laboratorio
+                    </h2>
+
+
+                    <p>
+
+                        Una vez realizada correctamente la prueba,
+                        PortSwigger muestra el estado
+                        <strong>
+                            Lab Solved
+                        </strong>,
+                        confirmando que el objetivo del laboratorio
+                        fue completado.
+
+                    </p>
+
+
+                    <!--
+                        AQUÍ COLOCAREMOS LA CAPTURA:
+
+                        <figure class="lab-evidence">
+
+                            <img
+                                src="../Recursos/Imagenes/RoadToHallOfFame/Lab01/05-lab-solved.png"
+                                alt="Confirmación Lab Solved"
+                            >
+
+                            <figcaption>
+                                Laboratorio solucionado correctamente.
+                            </figcaption>
+
+                        </figure>
+                    -->
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             MITIGACIÓN
+        ====================================================== -->
+
+        <section class="lab-section">
+
+            <div class="lab-container">
+
+                <article class="lab-card">
+
+                    <h2>
+                        7. Mitigación recomendada
+                    </h2>
+
+
+                    <p>
+
+                        Para prevenir vulnerabilidades de File Path
+                        Traversal se deben implementar controles que
+                        impidan que las entradas del usuario sean
+                        utilizadas directamente como rutas del sistema
+                        de archivos.
+
+                    </p>
+
+
+                    <h3>
+                        Evitar la entrada directa
+                    </h3>
+
+
+                    <p>
+
+                        No utilizar directamente nombres de archivos o
+                        rutas proporcionadas por el usuario en las APIs
+                        del sistema de archivos.
+
+                    </p>
+
+
+                    <p>
+
+                        Una alternativa consiste en utilizar
+                        identificadores numéricos o claves asociadas a
+                        recursos almacenados en una base de datos.
+
+                    </p>
+
+
+                    <h3>
+                        Validación
+                    </h3>
+
+
+                    <p>
+
+                        La entrada recibida debe validarse antes de ser
+                        procesada, evitando secuencias que permitan
+                        abandonar el directorio autorizado.
+
+                    </p>
+
+
+                    <h3>
+                        Verificación de ruta
+                    </h3>
+
+
+                    <p>
+
+                        La aplicación debe comprobar que la ruta final
+                        permanezca dentro del directorio permitido
+                        después de su normalización.
+
+                    </p>
+
+
+                    <p>
+
+                        También se recomienda aplicar el principio de
+                        mínimo privilegio para limitar el impacto en
+                        caso de que una aplicación llegue a presentar
+                        una vulnerabilidad de este tipo.
+
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CONCLUSIÓN
+        ====================================================== -->
+
+        <section class="lab-section">
+
+            <div class="lab-container">
+
+                <article class="lab-card">
+
+                    <h2>
+                        8. Conclusión
+                    </h2>
+
+
+                    <p>
+
+                        Este laboratorio permitió comprender de manera
+                        práctica cómo una aplicación web puede exponer
+                        archivos del sistema cuando utiliza rutas
+                        proporcionadas por el usuario sin realizar una
+                        validación adecuada.
+
+                    </p>
+
+
+                    <p>
+
+                        Mediante la modificación controlada de una
+                        solicitud HTTP fue posible comprobar el
+                        comportamiento de la aplicación frente a una
+                        entrada de tipo Path Traversal y observar el
+                        acceso al archivo
+                        <code>/etc/passwd</code>.
+
+                    </p>
+
+
+                    <p>
+
+                        La actividad también permitió reforzar la
+                        importancia de validar las rutas, aplicar el
+                        principio de mínimo privilegio y evitar que las
+                        entradas del usuario controlen directamente el
+                        acceso al sistema de archivos.
+
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             EVIDENCIAS
+        ====================================================== -->
+
+        <section class="lab-section">
+
+            <div class="lab-container">
+
+                <article class="lab-card">
+
+                    <h2>
+                        9. Evidencias
+                    </h2>
+
+
+                    <p>
+
+                        Las capturas correspondientes a la realización
+                        del laboratorio se incorporarán aquí para
+                        documentar visualmente el proceso.
+
+                    </p>
+
+
+                    <div class="roadmap-tags">
+
+                        <span class="roadmap-tag">
+                            Request interceptado
+                        </span>
+
+                        <span class="roadmap-tag">
+                            Payload
+                        </span>
+
+                        <span class="roadmap-tag">
+                            Respuesta vulnerable
+                        </span>
+
+                        <span class="roadmap-tag">
+                            Lab Solved
+                        </span>
+
+                        <span class="roadmap-tag">
+                            Repeater
+                        </span>
+
+                    </div>
+
+
+                    <!--
+                        LAS IMÁGENES SE AGREGARÁN AQUÍ CUANDO
+                        TENGAMOS LAS CAPTURAS DEFINITIVAS.
+                    -->
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             REGRESAR AL ROADMAP
+        ====================================================== -->
+
+        <section class="lab-section">
+
+            <div class="lab-container">
+
+                <a
+                    class="lab-download"
+                    href="./index.html"
+                >
+                    ← Volver a Road to Hall of Fame
+                </a>
+
+            </div>
+
+        </section>
+
+
     </main>
 
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
     <footer class="site-footer">
 
         <div class="footer-container">
 
             <div>
-                <strong>SantiagoGasca</strong>
+
+                <strong>
+                    SantiagoGasca
+                </strong>
 
                 <p>
                     Portafolio de Seguridad Informática · 2026
                 </p>
+
             </div>
+
+
+            <div>
+
+                <p>
+                    CNO IV – Seguridad Informática
+                </p>
+
+                <p>
+                    Universidad Politécnica de San Luis Potosí
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 Santiago Isaac Gasca López
+            </span>
+
+            <span>
+                Road to Hall of Fame · Lab 01
+            </span>
 
         </div>
 
     </footer>
 
+
 </body>
+
 </html>
