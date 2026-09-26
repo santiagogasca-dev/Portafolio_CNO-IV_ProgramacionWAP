@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PF02 · Actividad 01 · Portafolio Actividad 14 — Ciberseguridad en una mirada">
+  <title>PF02 · Actividad 01 | Ciberseguridad en una mirada</title>
+
+  <link rel="stylesheet" href="../Recursos/CSS/Styles.css">
+
+  <style>
+    .pf02-page {
+      --pf-accent: #00d9ff;
+      --pf-accent-soft: rgba(0, 217, 255, 0.12);
+      --pf-text-soft: #b9c7d3;
+      --pf-border: rgba(0, 217, 255, 0.20);
+
+      min-height: 100vh;
+
+      background:
+        radial-gradient(circle at top right, rgba(0, 217, 255, 0.08), transparent 32%),
+        linear-gradient(
+          180deg,
+          #081019 0%,
+          #0b141d 48%,
+          #f5f7f9 48%,
+          #f5f7f9 100%
+        );
+
+      color: #f4f7fa;
+    }
+
+    .pf02-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    /* =========================================================
+       NAVEGACIÓN SUPERIOR
+       ========================================================= */
+
+    .pf02-page .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(7, 16, 25, 0.88);
+      backdrop-filter: blur(14px);
+
+      border-bottom: 1px solid rgba(0, 217, 255, 0.14);
+
+      box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .pf02-page .header-container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+
+      min-height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .pf02-page .logo a {
+      text-decoration: none;
+      color: #ffffff;
+
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+
+      transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .pf02-page .logo a span {
+      color: var(--pf-accent);
+    }
+
+    .pf02-page .logo a:hover {
+      color: var(--pf-accent);
+      transform: translateY(-1px);
+    }
+
+    .pf02-page .navigation {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pf02-page .navigation a {
+      position: relative;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 10px 13px;
+
+      border: 1px solid transparent;
+      border-radius: 10px;
+
+      text-decoration: none;
+
+      color: #d6e3ea;
+      font-size: 0.91rem;
+      font-weight: 700;
+
+      transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .pf02-page .navigation a::after {
+      content: "";
+
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 5px;
+
+      height: 2px;
+
+      background: var(--pf-accent);
+
+      transform: scaleX(0);
+      transform-origin: center;
+
+      transition: transform 0.25s ease;
+    }
+
+    .pf02-page .navigation a:hover {
+      color: #ffffff;
+
+      background: rgba(0, 217, 255, 0.07);
+      border-color: rgba(0, 217, 255, 0.22);
+
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 8px 20px rgba(0, 217, 255, 0.08);
+    }
+
+    .pf02-page .navigation a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .pf02-page .navigation a.active {
+      color: #06131b;
+
+      background: var(--pf-accent);
+
+      border-color: var(--pf-accent);
+
+      box-shadow:
+        0 8px 24px rgba(0, 217, 255, 0.22);
+    }
+
+    .pf02-page .navigation a.active::after {
+      display: none;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .pf02-hero {
+      padding: 92px 0 54px;
+      position: relative;
+    }
+
+    .pf02-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-bottom: 16px;
+      padding: 8px 14px;
+
+      border: 1px solid var(--pf-border);
+      border-radius: 999px;
+
+      background: rgba(0, 217, 255, 0.06);
+
+      color: var(--pf-accent);
+
+      font-size: 0.78rem;
+      font-weight: 700;
+
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .pf02-kicker::before {
+      content: "";
+
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--pf-accent);
+
+      box-shadow:
+        0 0 12px rgba(0, 217, 255, 0.75);
+    }
+
+    .pf02-hero h1 {
+      max-width: 900px;
+
+      margin: 0 0 18px;
+
+      font-size: clamp(2.3rem, 5vw, 4.6rem);
+
+      line-height: 1.04;
+
+      letter-spacing: -0.035em;
+    }
+
+    .pf02-hero h1 span {
+      color: var(--pf-accent);
+    }
+
+    .pf02-subtitle {
+      max-width: 800px;
+
+      margin: 0;
+
+      color: var(--pf-text-soft);
+
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .pf02-meta {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 14px;
+
+      margin-top: 34px;
+    }
+
+    .pf02-meta-card {
+      padding: 18px;
+
+      border: 1px solid var(--pf-border);
+      border-radius: 16px;
+
+      background: rgba(255, 255, 255, 0.045);
+
+      backdrop-filter: blur(9px);
+
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .pf02-meta-card:hover {
+      transform: translateY(-4px);
+
+      border-color: rgba(0, 217, 255, 0.42);
+
+      box-shadow:
+        0 12px 30px rgba(0, 217, 255, 0.08);
+    }
+
+    .pf02-meta-label {
+      display: block;
+
+      margin-bottom: 7px;
+
+      color: #91a6b8;
+
+      font-size: 0.76rem;
+      font-weight: 700;
+
+      letter-spacing: 0.09em;
+
+      text-transform: uppercase;
+    }
+
+    .pf02-meta-value {
+      color: #f8fbfd;
+
+      font-weight: 650;
+
+      line-height: 1.45;
+    }
+
+    /* =========================================================
+       CONTENIDO
+       ========================================================= */
+
+    .pf02-content {
+      padding: 28px 0 84px;
+
+      color: #18212a;
+    }
+
+    .pf02-card {
+      margin-bottom: 22px;
+
+      padding: 30px;
+
+      border: 1px solid rgba(17, 32, 46, 0.08);
+
+      border-radius: 22px;
+
+      background: rgba(255, 255, 255, 0.94);
+
+      box-shadow:
+        0 18px 50px rgba(12, 24, 36, 0.08);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .pf02-card:hover {
+      transform: translateY(-4px);
+
+      border-color: rgba(0, 217, 255, 0.22);
+
+      box-shadow:
+        0 22px 55px rgba(12, 24, 36, 0.11);
+    }
+
+    .pf02-card-dark {
+      color: #edf5fa;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(11, 22, 32, 0.98),
+          rgba(15, 32, 45, 0.98)
+        );
+
+      border-color: var(--pf-border);
+    }
+
+    .pf02-card-dark:hover {
+      box-shadow:
+        0 22px 55px rgba(0, 217, 255, 0.09);
+    }
+
+    .pf02-section-title {
+      margin: 0 0 12px;
+
+      font-size: clamp(1.45rem, 3vw, 2rem);
+
+      line-height: 1.2;
+    }
+
+    .pf02-section-title span {
+      color: #009bbd;
+    }
+
+    .pf02-card-dark .pf02-section-title span {
+      color: var(--pf-accent);
+    }
+
+    .pf02-card p {
+      margin: 0 0 14px;
+
+      line-height: 1.8;
+    }
+
+    .pf02-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* =========================================================
+       GRID
+       ========================================================= */
+
+    .pf02-grid-2 {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 22px;
+    }
+
+    /* =========================================================
+       FLUJO
+       ========================================================= */
+
+    .pf02-flow {
+      display: grid;
+
+      grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+      gap: 10px;
+
+      align-items: stretch;
+
+      margin-top: 26px;
+    }
+
+    .pf02-flow-step {
+      position: relative;
+
+      padding: 19px 14px;
+
+      border: 1px solid rgba(0, 217, 255, 0.17);
+
+      border-radius: 16px;
+
+      background: rgba(255, 255, 255, 0.045);
+
+      text-align: center;
+    }
+
+    .pf02-flow-step:not(:last-child)::after {
+      content: "→";
+
+      position: absolute;
+
+      top: 50%;
+      right: -15px;
+
+      transform: translateY(-50%);
+
+      color: var(--pf-accent);
+
+      font-size: 1.25rem;
+      font-weight: 800;
+
+      z-index: 2;
+    }
+
+    .pf02-flow-step strong {
+      display: block;
+
+      margin-bottom: 7px;
+
+      color: #f6fbfe;
+
+      font-size: 0.96rem;
+
+      line-height: 1.3;
+    }
+
+    .pf02-flow-step span {
+      color: #9fb1bf;
+
+      font-size: 0.82rem;
+
+      line-height: 1.45;
+    }
+
+    /* =========================================================
+       RIESGOS
+       ========================================================= */
+
+    .pf02-risk-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 18px;
+
+      margin-top: 22px;
+    }
+
+    .pf02-risk {
+      padding: 22px;
+
+      border-radius: 18px;
+
+      border: 1px solid rgba(0, 217, 255, 0.16);
+
+      background: rgba(0, 217, 255, 0.045);
+
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .pf02-risk:hover {
+      transform: translateY(-5px);
+
+      border-color: rgba(0, 217, 255, 0.38);
+
+      box-shadow:
+        0 15px 30px rgba(0, 217, 255, 0.07);
+    }
+
+    .pf02-risk-number {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      width: 36px;
+      height: 36px;
+
+      margin-bottom: 14px;
+
+      border-radius: 50%;
+
+      background: var(--pf-accent-soft);
+
+      color: #0eb5d5;
+
+      font-weight: 800;
+    }
+
+    .pf02-risk h3,
+    .pf02-layer h3 {
+      margin: 0 0 9px;
+
+      font-size: 1.06rem;
+    }
+
+    .pf02-risk p,
+    .pf02-layer p {
+      margin: 0;
+
+      color: #526373;
+
+      font-size: 0.96rem;
+
+      line-height: 1.7;
+    }
+
+    /* =========================================================
+       CAPAS
+       ========================================================= */
+
+    .pf02-layer-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+      gap: 18px;
+
+      margin-top: 22px;
+    }
+
+    .pf02-layer {
+      padding: 24px;
+
+      border: 1px solid rgba(17, 32, 46, 0.08);
+
+      border-radius: 18px;
+
+      background: #fbfcfd;
+
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .pf02-layer:hover {
+      transform: translateY(-4px);
+
+      border-color: rgba(0, 217, 255, 0.25);
+    }
+
+    .pf02-layer strong {
+      display: block;
+
+      margin-top: 12px;
+
+      color: #18212a;
+    }
+
+    /* =========================================================
+       BOTONES
+       ========================================================= */
+
+    .pf02-actions {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 22px;
+    }
+
+    .pf02-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 9px;
+
+      min-height: 46px;
+
+      padding: 0 18px;
+
+      border-radius: 12px;
+
+      text-decoration: none;
+
+      font-weight: 750;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .pf02-button:hover {
+      transform: translateY(-3px);
+    }
+
+    .pf02-button-primary {
+      background: var(--pf-accent);
+
+      color: #04131a;
+
+      box-shadow:
+        0 8px 22px rgba(0, 217, 255, 0.22);
+    }
+
+    .pf02-button-primary:hover {
+      box-shadow:
+        0 14px 30px rgba(0, 217, 255, 0.30);
+    }
+
+    .pf02-button-secondary {
+      border: 1px solid rgba(0, 217, 255, 0.22);
+
+      background: transparent;
+
+      color: #087d99;
+    }
+
+    .pf02-card-dark .pf02-button-secondary {
+      color: #dff9ff;
+    }
+
+    .pf02-button-secondary:hover {
+      border-color: var(--pf-accent);
+
+      background: rgba(0, 217, 255, 0.07);
+    }
+
+    /* =========================================================
+       PDF
+       ========================================================= */
+
+    .pf02-pdf {
+      overflow: hidden;
+
+      min-height: 720px;
+
+      padding: 0;
+    }
+
+    .pf02-pdf-head {
+      padding: 26px 30px;
+
+      border-bottom:
+        1px solid rgba(0, 217, 255, 0.14);
+    }
+
+    .pf02-pdf-frame {
+      display: block;
+
+      width: 100%;
+
+      height: 760px;
+
+      border: 0;
+
+      background: #fff;
+    }
+
+    .pf02-source {
+      margin-top: 12px;
+
+      color: #5f7282;
+
+      font-size: 0.92rem;
+
+      line-height: 1.7;
+    }
+
+    .pf02-source a {
+      color: #087d99;
+
+      font-weight: 700;
+    }
+
+    .pf02-note {
+      margin-top: 18px;
+
+      padding: 16px 18px;
+
+      border-left: 3px solid var(--pf-accent);
+
+      border-radius: 10px;
+
+      background: rgba(0, 217, 255, 0.055);
+
+      color: #4e6070;
+
+      font-size: 0.94rem;
+
+      line-height: 1.65;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 960px) {
+
+      .pf02-meta {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .pf02-risk-grid,
+      .pf02-flow {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .pf02-flow-step:not(:last-child)::after {
+        display: none;
+      }
+
+      .pf02-page .header-container {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 14px 0;
+      }
+
+      .pf02-page .navigation {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 780px) {
+
+      .pf02-page {
+
+        background:
+          linear-gradient(
+            180deg,
+            #081019 0%,
+            #0b141d 44%,
+            #f5f7f9 44%,
+            #f5f7f9 100%
+          );
+      }
+
+      .pf02-hero {
+        padding-top: 54px;
+      }
+
+      .pf02-meta,
+      .pf02-grid-2,
+      .pf02-risk-grid,
+      .pf02-layer-grid,
+      .pf02-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .pf02-card {
+        padding: 22px;
+
+        border-radius: 18px;
+      }
+
+      .pf02-pdf {
+        min-height: 0;
+      }
+
+      .pf02-pdf-frame {
+        height: 620px;
+      }
+
+      .pf02-page .navigation {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 7px;
+      }
+
+      .pf02-page .navigation a {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+
+<body class="pf02-page">
+
+
+<!-- =========================================================
+     NAVEGACIÓN PRINCIPAL
+     ========================================================= -->
+
+<header class="site-header">
+
+  <div class="header-container">
+
+    <div class="logo">
+
+      <a
+        href="../index.html#inicio"
+        aria-label="Volver al inicio del portafolio">
+
+        Santiago<span>.dev</span>
+
+      </a>
+
+    </div>
+
+
+    <nav
+      class="navigation"
+      aria-label="Navegación principal">
+
+      <a href="../index.html#inicio">
+        Inicio
+      </a>
+
+      <a href="../PF01/index.html">
+        PF01
+      </a>
+
+      <a
+        href="index.html"
+        class="active">
+
+        PF02
+
+      </a>
+
+      <a href="../index.html#pf03">
+        PF03
+      </a>
+
+      <a href="../ROAD-TO-HALL-OF-FAME/index.html">
+        Road to Hall of Fame
+      </a>
+
+      <a href="../index.html#entrega-final">
+        Entrega final
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
+<section class="pf02-hero">
+
+  <div class="pf02-shell">
+
+    <div class="pf02-kicker">
+
+      PF02 · Actividad 01 · Portafolio Actividad 14
+
+    </div>
+
+
+    <h1>
+
+      Ciberseguridad
+      <span>en una mirada</span>
+
+    </h1>
+
+
+    <p class="pf02-subtitle">
+
+      Infografía profesional enfocada en
+      <strong>Ataques, conceptos y técnicas</strong>,
+      con énfasis en el funcionamiento de las amenazas,
+      los riesgos organizacionales y las medidas de
+      mitigación y defensa.
+
+    </p>
+
+
+    <div class="pf02-meta">
+
+
+      <div class="pf02-meta-card">
+
+        <span class="pf02-meta-label">
+          Estudiante
+        </span>
+
+        <div class="pf02-meta-value">
+          Santiago Isaac Gasca López
+        </div>
+
+      </div>
+
+
+      <div class="pf02-meta-card">
+
+        <span class="pf02-meta-label">
+          Parcial
+        </span>
+
+        <div class="pf02-meta-value">
+          I · Fundamentos de Ciberseguridad
+        </div>
+
+      </div>
+
+
+      <div class="pf02-meta-card">
+
+        <span class="pf02-meta-label">
+          Tema
+        </span>
+
+        <div class="pf02-meta-value">
+          Módulo 2 · Ataques, conceptos y técnicas
+        </div>
+
+      </div>
+
+
+      <div class="pf02-meta-card">
+
+        <span class="pf02-meta-label">
+          Producto
+        </span>
+
+        <div class="pf02-meta-value">
+          Infografía profesional · PDF
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTENIDO
+     ========================================================= -->
+
+<section class="pf02-content">
+
+  <div class="pf02-shell">
+
+
+    <!-- 01 -->
+
+    <article class="pf02-card">
+
+      <h2 class="pf02-section-title">
+
+        01 · ¿Qué es y por qué es
+        <span>relevante</span>?
+
+      </h2>
+
+
+      <p>
+
+        La ciberseguridad defensiva requiere comprender cómo
+        operan las amenazas modernas que buscan vulnerar la
+        <strong>confidencialidad, integridad y disponibilidad</strong>
+        de los sistemas, conocidas como la
+        <strong>Tríada CIA</strong>.
+
+      </p>
+
+
+      <p>
+
+        De acuerdo con la infografía, los ciberataques actuales
+        ya no solo explotan fallos de software: también
+        manipulan el comportamiento humano y pueden desplegar
+        código malicioso polimórfico, lo que vuelve relevante
+        la concientización organizacional.
+
+      </p>
+
+    </article>
+
+
+
+    <!-- 02 -->
+
+    <article class="pf02-card pf02-card-dark">
+
+      <h2 class="pf02-section-title">
+
+        02 · Esquema del
+        <span>vector de ataque</span>
+
+      </h2>
+
+
+      <p>
+
+        La representación visual de la actividad muestra una
+        secuencia que parte de un vector de entrada basado en
+        ingeniería social y termina en consecuencias para la
+        organización.
+
+      </p>
+
+
+      <div
+        class="pf02-flow"
+        aria-label="Flujo visual del ataque">
+
+
+        <div class="pf02-flow-step">
+
+          <strong>
+            Vector de entrada
+          </strong>
+
+          <span>
+            Ingeniería social
+          </span>
+
+        </div>
+
+
+        <div class="pf02-flow-step">
+
+          <strong>
+            Manipulación
+          </strong>
+
+          <span>
+            Del usuario
+          </span>
+
+        </div>
+
+
+        <div class="pf02-flow-step">
+
+          <strong>
+            Ejecución
+          </strong>
+
+          <span>
+            Carga útil (payload)
+          </span>
+
+        </div>
+
+
+        <div class="pf02-flow-step">
+
+          <strong>
+            Descarga
+          </strong>
+
+          <span>
+            Malware: ransomware, troyanos, etc.
+          </span>
+
+        </div>
+
+
+        <div class="pf02-flow-step">
+
+          <strong>
+            Impacto
+          </strong>
+
+          <span>
+            Organizacional
+          </span>
+
+        </div>
+
+
+        <div class="pf02-flow-step">
+
+          <strong>
+            Consecuencias
+          </strong>
+
+          <span>
+            Cifrado, pérdidas y daño reputacional
+          </span>
+
+        </div>
+
+
+      </div>
+
+    </article>
+
+
+
+    <!-- 03 + 04 -->
+
+    <div class="pf02-grid-2">
+
+
+      <article class="pf02-card">
+
+        <h2 class="pf02-section-title">
+
+          03 · Riesgo
+          <span>1</span>
+
+        </h2>
+
+
+        <p>
+
+          <strong>Factor humano.</strong>
+
+          Los ataques de ingeniería social, como el phishing
+          dirigido o spear phishing, aprovechan la confianza
+          y la urgencia para intentar robar credenciales
+          corporativas.
+
+        </p>
+
+      </article>
+
+
+
+      <article class="pf02-card">
+
+        <h2 class="pf02-section-title">
+
+          04 · Riesgo
+          <span>2</span>
+
+        </h2>
+
+
+        <p>
+
+          <strong>Infección por malware.</strong>
+
+          Son programas maliciosos diseñados para infiltrarse,
+          espiar mediante spyware o secuestrar información
+          crítica de la empresa, como en el caso del ransomware.
+
+        </p>
+
+      </article>
+
+
+    </div>
+
+
+
+    <!-- 05 -->
+
+    <article class="pf02-card">
+
+      <h2 class="pf02-section-title">
+
+        05 · Riesgos y
+        <span>impacto al negocio</span>
+
+      </h2>
+
+
+      <p>
+
+        La actividad identifica un tercer riesgo directamente
+        relacionado con el negocio: la parálisis operativa
+        temporal o total, acompañada de costos elevados de
+        rescate o recuperación y exposición de datos privados
+        de clientes y empleados.
+
+      </p>
+
+
+      <div class="pf02-risk-grid">
+
+
+        <div class="pf02-risk">
+
+          <div class="pf02-risk-number">
+            01
+          </div>
+
+          <h3>
+            Factor humano
+          </h3>
+
+          <p>
+
+            Confianza y urgencia como elementos aprovechados
+            en ataques de ingeniería social.
+
+          </p>
+
+        </div>
+
+
+        <div class="pf02-risk">
+
+          <div class="pf02-risk-number">
+            02
+          </div>
+
+          <h3>
+            Infección por malware
+          </h3>
+
+          <p>
+
+            Infiltración, espionaje o secuestro de información
+            crítica mediante software malicioso.
+
+          </p>
+
+        </div>
+
+
+        <div class="pf02-risk">
+
+          <div class="pf02-risk-number">
+            03
+          </div>
+
+          <h3>
+            Impacto al negocio
+          </h3>
+
+          <p>
+
+            Interrupción operativa, costos de recuperación y
+            exposición de información privada.
+
+          </p>
+
+        </div>
+
+
+      </div>
+
+    </article>
+
+
+
+    <!-- 06 -->
+
+    <article class="pf02-card">
+
+      <h2 class="pf02-section-title">
+
+        06 · Medidas de
+        <span>mitigación y defensa</span>
+
+      </h2>
+
+
+      <p>
+
+        La infografía propone dos capas de defensa:
+        una humana, centrada en la capacitación, y otra técnica,
+        enfocada en mecanismos de autenticación, filtrado,
+        respaldo y detección.
+
+      </p>
+
+
+      <div class="pf02-layer-grid">
+
+
+        <div class="pf02-layer">
+
+          <h3>
+            Capa humana
+          </h3>
+
+          <p>
+
+            Programas constantes de capacitación y simulacros
+            de concientización en ciberseguridad para todo
+            el personal.
+
+          </p>
+
+          <strong>
+
+            Objetivo: fortalecer la concientización organizacional.
+
+          </strong>
+
+        </div>
+
+
+        <div class="pf02-layer">
+
+          <h3>
+            Capa técnica
+          </h3>
+
+          <p>
+
+            Implementación de autenticación multifactor (MFA),
+            filtros avanzados de correo electrónico contra
+            phishing y políticas de respaldo inmutable (Air-Gap).
+
+          </p>
+
+          <strong>
+
+            También se plantea la detección de endpoints
+            (EDR) y el análisis proactivo de vulnerabilidades.
+
+          </strong>
+
+        </div>
+
+
+      </div>
+
+    </article>
+
+
+
+    <!-- 07 -->
+
+    <article class="pf02-card pf02-card-dark">
+
+      <h2 class="pf02-section-title">
+
+        07 · Síntesis
+        <span>estratégica</span>
+
+      </h2>
+
+
+      <p>
+
+        El contenido presenta una cadena de riesgo en la que
+        un vector de entrada basado en ingeniería social puede
+        conducir a la ejecución de una carga útil y a la descarga
+        de malware. El impacto señalado es organizacional y
+        puede manifestarse mediante cifrado de datos, pérdida
+        financiera y daño reputacional.
+
+      </p>
+
+
+      <p>
+
+        Desde la perspectiva de defensa, la actividad plantea
+        una combinación de medidas humanas y técnicas:
+        concientización continua, MFA, filtrado de correo,
+        respaldos inmutables, EDR y análisis proactivo de
+        vulnerabilidades.
+
+      </p>
+
+    </article>
+
+
+
+    <!-- 08 -->
+
+    <article class="pf02-card">
+
+      <h2 class="pf02-section-title">
+
+        08 ·
+        <span>Entrega original</span>
+        en PDF
+
+      </h2>
+
+
+      <p>
+
+        Aquí puedes consultar directamente la versión original
+        de la actividad y descargarla para conservarla junto
+        con el reporte dentro del portafolio.
+
+      </p>
+
+
+      <div class="pf02-actions">
+
+
+        <a
+          class="pf02-button pf02-button-primary"
+          href="../Recursos/PDF/PF02/Ciberseguridad_en_una_mirada.pdf"
+          download="Ciberseguridad_en_una_mirada.pdf">
+
+          Descargar PDF
+
+        </a>
+
+
+        <a
+          class="pf02-button pf02-button-secondary"
+          href="../Recursos/PDF/PF02/Ciberseguridad_en_una_mirada.pdf"
+          target="_blank"
+          rel="noopener noreferrer">
+
+          Abrir PDF en otra pestaña
+
+        </a>
+
+
+      </div>
+
+
+      <div class="pf02-note">
+
+        El PDF corresponde al material entregado para esta
+        actividad y se conserva sin modificar como evidencia
+        original.
+
+      </div>
+
+    </article>
+
+
+
+    <!-- VISTA PREVIA PDF -->
+
+    <article class="pf02-card pf02-pdf">
+
+      <div class="pf02-pdf-head">
+
+        <h2 class="pf02-section-title">
+
+          Vista previa del
+          <span>documento original</span>
+
+        </h2>
+
+
+        <p class="pf02-source">
+
+          Documento:
+          <strong>
+            Ciberseguridad_en_una_mirada.pdf
+          </strong>
+
+        </p>
+
+      </div>
+
+
+      <iframe
+        class="pf02-pdf-frame"
+        src="../Recursos/PDF/PF02/Ciberseguridad_en_una_mirada.pdf"
+        title="Vista previa del PDF Ciberseguridad en una mirada">
+      </iframe>
+
+    </article>
+
+
+
+    <!-- 09 -->
+
+    <article class="pf02-card">
+
+      <h2 class="pf02-section-title">
+
+        09 ·
+        <span>Referencia</span>
+
+      </h2>
+
+
+      <p>
+
+        Cisco Networking Academy. (2026).
+        <em>
+          Introducción a la Ciberseguridad:
+          Módulo 2 - Ataques, conceptos y técnicas
+        </em>.
+        Cisco Systems.
+
+      </p>
+
+
+      <div class="pf02-actions">
+
+        <a
+          class="pf02-button pf02-button-primary"
+          href="https://www.netacad.com/"
+          target="_blank"
+          rel="noopener noreferrer">
+
+          Cisco Networking Academy
+
+        </a>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- 10 -->
+
+    <article class="pf02-card pf02-card-dark">
+
+      <h2 class="pf02-section-title">
+
+        10 ·
+        <span>Navegación</span>
+        del portafolio
+
+      </h2>
+
+
+      <p>
+
+        Desde esta actividad puedes regresar al inicio,
+        consultar los demás parciales o entrar directamente
+        a la sección de laboratorios de Road to Hall of Fame.
+
+      </p>
+
+
+      <div class="pf02-actions">
+
+
+        <a
+          class="pf02-button pf02-button-primary"
+          href="../index.html#inicio">
+
+          ← Inicio
+
+        </a>
+
+
+        <a
+          class="pf02-button pf02-button-secondary"
+          href="index.html">
+
+          PF02
+
+        </a>
+
+
+        <a
+          class="pf02-button pf02-button-secondary"
+          href="../PF01/index.html">
+
+          PF01
+
+        </a>
+
+
+        <a
+          class="pf02-button pf02-button-secondary"
+          href="../index.html#pf03">
+
+          PF03
+
+        </a>
+
+
+        <a
+          class="pf02-button pf02-button-secondary"
+          href="../ROAD-TO-HALL-OF-FAME/index.html">
+
+          Road to Hall of Fame
+
+        </a>
+
+
+        <a
+          class="pf02-button pf02-button-secondary"
+          href="../index.html#entrega-final">
+
+          Entrega final
+
+        </a>
+
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+</main>
+
+
+
+<footer class="site-footer">
+
+  <div class="footer-container">
+
+    <div class="footer-bottom">
+
+      <p>
+
+        &copy; 2026 Santiago Isaac Gasca López ·
+        Portafolio CNO IV · Seguridad Informática
+
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+</body>
+</html>

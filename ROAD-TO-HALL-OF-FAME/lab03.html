@@ -2,108 +2,566 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>Lab 03 | File Path Traversal</title>
 
-    <title>
-        Lab 01 | File Path Traversal | SantiagoGasca
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="../Recursos/CSS/Styles.css"
-    >
-
-    <link
-        rel="stylesheet"
-        href="../Recursos/CSS/Roadmap.css"
-    >
+    <link rel="stylesheet" href="../Recursos/CSS/Styles.css">
+    <link rel="stylesheet" href="../Recursos/CSS/Roadmap.css">
 </head>
 
-<body class="lab-page">
+<body>
 
-    <header class="site-header">
-
-        <div class="header-container">
-
-            <a
-                href="../index.html"
-                class="logo"
-            >
-                <span class="logo-symbol">◈</span>
-                <span>SantiagoGasca</span>
-            </a>
-
-            <nav
-                class="navigation"
-                aria-label="Navegación principal"
-            >
-                <a href="../index.html">Inicio</a>
-                <a href="../PF01/index.html">PF01</a>
-                <a href="./index.html">Road to Hall of Fame</a>
-            </nav>
-
-        </div>
-
+    <!-- ================= HEADER ================= -->
+    <header>
+        <nav>
+            <a href="../index.html#inicio">Inicio</a>
+            <a href="../PF01/index.html">PF01</a>
+            <a href="../index.html#pf02">PF02</a>
+            <a href="../index.html#pf03">PF03</a>
+            <a href="./index.html">Road to Hall of Fame</a>
+            <a href="../index.html#entrega-final">Entrega final</a>
+        </nav>
     </header>
 
 
+    <!-- ================= CONTENIDO ================= -->
     <main>
 
         <section class="lab-hero">
 
-            <div class="lab-container">
+            <div class="lab-hero-content">
 
-                <span class="lab-kicker">
-                    LABORATORIO 03
+                <span class="section-tag">
+                    ROAD TO HALL OF FAME / LAB 03
                 </span>
 
                 <h1>
-                    Traversal Sequences Stripped Non-Recursively
+                    File Path Traversal
+                    <span>
+                        Traversal Sequences Stripped Non-Recursively
+                    </span>
                 </h1>
 
-                <p>
-                    Simple Case — pendiente
+                <p class="lab-hero-description">
+                    Path Traversal mediante bypass de secuencias
+                    eliminadas de forma no recursiva.
                 </p>
+
+                <div class="lab-hero-meta">
+
+                    <div class="hero-meta-item">
+                        <strong>Actividad</strong>
+                        <span>09</span>
+                    </div>
+
+                    <div class="hero-meta-item">
+                        <strong>Nivel</strong>
+                        <span>Practitioner</span>
+                    </div>
+
+                    <div class="hero-meta-item">
+                        <strong>Materia</strong>
+                        <span>CNO IV WAP</span>
+                    </div>
+
+                </div>
 
             </div>
 
         </section>
 
 
-        <section class="lab-section">
+        <!-- ================= INFORMACIÓN ================= -->
+        <section class="lab-container">
 
-            <div class="lab-container">
+            <div class="lab-info-grid">
 
-                <article class="lab-card">
+                <div class="info-card">
+                    <span>TIPO DE EXPLOTACIÓN</span>
+                    <strong>
+                        Path Traversal mediante bypass de secuencias
+                        eliminadas de forma no recursiva
+                    </strong>
+                </div>
 
-                    <h2>
-                        Estado
-                    </h2>
+                <div class="info-card">
+                    <span>ALUMNO</span>
+                    <strong>
+                        Gasca López Santiago Isaac – 184730
+                    </strong>
+                </div>
 
-                    <p>
-                        Este laboratorio forma parte de la estructura
-                        inicial de Road to Hall of Fame.
-                    </p>
+                <div class="info-card">
+                    <span>DOCENTE</span>
+                    <strong>
+                        Mtro. Servando López Contreras
+                    </strong>
+                </div>
 
-                    <p>
-                        La documentación, evidencias y análisis técnico
-                        se incorporarán posteriormente.
-                    </p>
-
-                    <a
-                        class="lab-download"
-                        href="./index.html"
-                    >
-                        ← Volver a Road to Hall of Fame
-                    </a>
-
-                </article>
+                <div class="info-card">
+                    <span>FECHA</span>
+                    <strong>
+                        24 de septiembre del 2026
+                    </strong>
+                </div>
 
             </div>
+
+
+            <!-- ================= DESCARGA PDF ================= -->
+            <section class="lab-section">
+
+                <div class="section-heading">
+                    <span class="section-number">00</span>
+                    <h2>Documento original</h2>
+                </div>
+
+                <p>
+                    Se incluye el documento original de la Actividad 09
+                    utilizado para la elaboración de este laboratorio.
+                </p>
+
+                <div class="lab-actions">
+
+                    <a
+                        href="../Recursos/PDF/Actividad09_Lab03_FilePathTraversal_NoRecursivopdf"
+                        target="_blank"
+                        class="btn-primary"
+                    >
+                        Ver / Descargar PDF
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= MARCO TEÓRICO ================= -->
+            <section class="lab-section">
+
+                <div class="section-heading">
+                    <span class="section-number">01</span>
+                    <h2>Marco Teórico</h2>
+                </div>
+
+                <p>
+                    El control de acceso y el manejo seguro de archivos son
+                    pilares fundamentales en la arquitectura de aplicaciones
+                    web.
+                </p>
+
+                <p>
+                    Cuando una aplicación permite al usuario influir en la
+                    ruta o el nombre del recurso a cargar mediante parámetros
+                    de entrada, por ejemplo mediante peticiones HTTP GET,
+                    surge el riesgo de
+                    <strong>Path Traversal</strong> o
+                    <strong>Directory Traversal</strong>.
+                </p>
+
+                <p>
+                    Los desarrolladores suelen implementar filtros de
+                    saneamiento básicos que buscan y eliminan patrones
+                    maliciosos comunes, como:
+                </p>
+
+                <div class="code-block">
+                    ../
+                </div>
+
+                <p>
+                    Sin embargo, si estos filtros funcionan mediante
+                    reemplazos simples de forma no recursiva, el mecanismo
+                    de defensa puede ser evadido utilizando técnicas de
+                    ofuscación o estructuras anidadas.
+                </p>
+
+            </section>
+
+
+            <!-- ================= OBJETIVO ================= -->
+            <section class="lab-section">
+
+                <div class="section-heading">
+                    <span class="section-number">02</span>
+                    <h2>Objetivo</h2>
+                </div>
+
+                <div class="highlight-box">
+
+                    <p>
+                        Demostrar y documentar la explotación exitosa de una
+                        vulnerabilidad de Path Traversal protegida por un
+                        filtro defectuoso no recursivo, utilizando herramientas
+                        de interceptación y manipulación de tráfico para
+                        extraer información confidencial del sistema operativo
+                        de la máquina víctima dentro de PortSwigger Web Security
+                        Academy.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= VULNERABILIDAD ================= -->
+            <section class="lab-section">
+
+                <div class="section-heading">
+                    <span class="section-number">03</span>
+                    <h2>Vulnerabilidad</h2>
+                </div>
+
+                <p>
+                    <strong>
+                        File Path Traversal
+                        (Traversal sequences stripped non-recursively)
+                    </strong>
+                </p>
+
+                <p>
+                    La aplicación web procesa parámetros de carga de imágenes
+                    de forma insegura y aplica un filtro que remueve las
+                    secuencias <code>../</code> de forma lineal.
+                </p>
+
+                <p>
+                    Al no ser un filtro recursivo, las modificaciones
+                    estructurales en el payload permiten burlar la validación
+                    y acceder a archivos restringidos del sistema.
+                </p>
+
+            </section>
+
+
+            <!-- ================= PROCEDIMIENTO ================= -->
+            <section class="lab-section">
+
+                <div class="section-heading">
+                    <span class="section-number">04</span>
+                    <h2>Procedimiento paso a paso</h2>
+                </div>
+
+
+                <!-- 4.1 -->
+                <div class="procedure-step">
+
+                    <span class="step-number">4.1</span>
+
+                    <div>
+
+                        <h3>
+                            Configuración del entorno de intercepción
+                        </h3>
+
+                        <p>
+                            Se configuró el proxy de Burp Suite asegurando que
+                            el interceptor estuviera activo, conectando el
+                            navegador al laboratorio de PortSwigger.
+                        </p>
+
+                        <!-- IMAGEN 1 -->
+                        <div class="procedure-image">
+
+                            <img
+                                src="../Recursos/Imagenes/RoadToHallOfFame/Lab03/Lab03_cap1.jpeg"
+                                alt="Configuración de Burp Suite e interceptación"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 4.2 -->
+                <div class="procedure-step">
+
+                    <span class="step-number">4.2</span>
+
+                    <div>
+
+                        <h3>
+                            Generación de la petición base
+                        </h3>
+
+                        <p>
+                            Se navegó por la plataforma web de la tienda y se
+                            seleccionó un producto para visualizar su imagen,
+                            generando una petición HTTP estándar:
+                        </p>
+
+                        <div class="code-block">
+GET /image?filename=X.jpg
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 4.3 -->
+                <div class="procedure-step">
+
+                    <span class="step-number">4.3</span>
+
+                    <div>
+
+                        <h3>
+                            Captura y envío a Repeater
+                        </h3>
+
+                        <p>
+                            Desde el panel de intercepción y el historial de
+                            tráfico de Burp Suite se localizó la petición y se
+                            envió al módulo Repeater para su análisis y
+                            manipulación controlada.
+                        </p>
+
+                        <!-- IMAGEN 2 -->
+                        <div class="procedure-image">
+
+                            <img
+                                src="../Recursos/Imagenes/RoadToHallOfFame/Lab03/Lab03_cap2.jpeg"
+                                alt="Petición enviada al módulo Repeater"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 4.4 -->
+                <div class="procedure-step">
+
+                    <span class="step-number">4.4</span>
+
+                    <div>
+
+                        <h3>
+                            Inyección del payload de bypass
+                        </h3>
+
+                        <p>
+                            Se modificó el parámetro
+                            <code>filename</code> introduciendo una estructura
+                            anidada tolerada por el filtro no recursivo.
+                        </p>
+
+                        <div class="code-block">
+GET /image?filename=....//....//....//etc/passwd HTTP/2
+                        </div>
+
+                        <!-- IMAGEN 3 -->
+                        <div class="procedure-image">
+
+                            <img
+                                src="../Recursos/Imagenes/RoadToHallOfFame/Lab03/lAB03_cap3.jpeg"
+                                alt="Payload utilizado en la explotación"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 4.5 -->
+                <div class="procedure-step">
+
+                    <span class="step-number">4.5</span>
+
+                    <div>
+
+                        <h3>
+                            Validación del resultado y cierre del laboratorio
+                        </h3>
+
+                        <p>
+                            Se reenvió la petición modificada analizando la
+                            respuesta del servidor y confirmando el éxito del
+                            laboratorio.
+                        </p>
+
+                        <div class="code-block">
+HTTP 200 OK
+
+root:x:0:0:root:/root:/bin/bash
+                        </div>
+
+                        <!-- IMAGEN 4 -->
+                        <div class="procedure-image">
+
+                            <img
+                                src="../Recursos/Imagenes/RoadToHallOfFame/Lab03/Lab03_cap4.jpeg"
+                                alt="Resultado y laboratorio resuelto"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PAYLOAD ================= -->
+            <section class="lab-section">
+
+                <div class="section-heading">
+                    <span class="section-number">05</span>
+                    <h2>Payload utilizado</h2>
+                </div>
+
+                <div class="code-block">
+GET /image?filename=....//....//....//etc/passwd HTTP/2
+                </div>
+
+            </section>
+
+
+            <!-- ================= EXPLICACIÓN PAYLOAD ================= -->
+            <section class="lab-section">
+
+                <div class="section-heading">
+                    <span class="section-number">06</span>
+                    <h2>Explicación técnica del payload</h2>
+                </div>
+
+                <h3>6.1 ¿Cómo opera el filtro del servidor?</h3>
+
+                <p>
+                    El mecanismo de defensa busca la subcadena exacta
+                    <code>../</code> y, al encontrarla, la elimina de la
+                    petición una sola vez.
+                </p>
+
+                <h3>6.2 ¿Por qué funciona el bypass?</h3>
+
+                <p>
+                    Al enviar una estructura como
+                    <code>....//</code>, el filtro detecta y elimina patrones
+                    interiores sin realizar una limpieza recursiva.
+                </p>
+
+                <p>
+                    Como resultado, los caracteres restantes pueden
+                    reorganizarse durante el procesamiento y formar secuencias
+                    válidas de salto de directorio.
+                </p>
+
+                <p>
+                    El sistema de archivos puede interpretar dichas secuencias
+                    para salir del directorio web y llegar a:
+                </p>
+
+                <div class="code-block">
+                    /etc/passwd
+                </div>
+
+            </section>
+
+
+            <!-- ================= MITIGACIÓN ================= -->
+            <section class="lab-section">
+
+                <div class="section-heading">
+                    <span class="section-number">07</span>
+                    <h2>Mitigación</h2>
+                </div>
+
+                <h3>7.1 Evitar el uso directo de entradas de usuario</h3>
+
+                <p>
+                    No pasar nombres de archivo proporcionados directamente
+                    por el cliente a las APIs del sistema de archivos.
+                </p>
+
+                <h3>7.2 Implementar validación mediante listas blancas</h3>
+
+                <p>
+                    Permitir únicamente identificadores o nombres
+                    estrictamente predefinidos y controlados.
+                </p>
+
+                <h3>7.3 Uso de rutas canonicalizadas</h3>
+
+                <p>
+                    Utilizar funciones de canonicalización de rutas para
+                    garantizar que el resultado permanezca dentro del
+                    directorio base autorizado.
+                </p>
+
+                <div class="code-block">
+getCanonicalPath()
+                </div>
+
+            </section>
+
+
+            <!-- ================= CONCLUSIÓN ================= -->
+            <section class="lab-section">
+
+                <div class="section-heading">
+                    <span class="section-number">08</span>
+                    <h2>Conclusión</h2>
+                </div>
+
+                <p>
+                    La práctica permitió evidenciar que los mecanismos de
+                    saneamiento superficiales y no recursivos son ineficaces
+                    frente a ataques avanzados de Path Traversal.
+                </p>
+
+                <p>
+                    La comprensión de la lógica de análisis de entradas y el
+                    uso de funciones de canonicalización robustas son
+                    indispensables para evitar la exposición de información
+                    crítica en entornos corporativos.
+                </p>
+
+            </section>
+
+
+            <!-- ================= FUENTE ================= -->
+            <section class="lab-section">
+
+                <div class="section-heading">
+                    <span class="section-number">09</span>
+                    <h2>Fuente</h2>
+                </div>
+
+                <p>
+                    PortSwigger Web Security Academy.
+                    File path traversal, traversal sequences stripped
+                    non-recursively.
+                </p>
+
+            </section>
+
+
+            <!-- ================= NAVEGACIÓN ================= -->
+            <section class="lab-navigation">
+
+                <a href="./lab02.html" class="btn-secondary">
+                    ← Lab 02
+                </a>
+
+                <a href="./index.html" class="btn-primary">
+                    Road to Hall of Fame
+                </a>
+
+                <a href="./lab04.html" class="btn-secondary">
+                    Lab 04 →
+                </a>
+
+            </section>
 
         </section>
 
@@ -112,17 +570,9 @@
 
     <footer class="site-footer">
 
-        <div class="footer-container">
-
-            <div>
-                <strong>SantiagoGasca</strong>
-
-                <p>
-                    Portafolio de Seguridad Informática · 2026
-                </p>
-            </div>
-
-        </div>
+        <p>
+            © 2026 SantiagoGasca · CNO IV Seguridad Informática · UPSLP
+        </p>
 
     </footer>
 
