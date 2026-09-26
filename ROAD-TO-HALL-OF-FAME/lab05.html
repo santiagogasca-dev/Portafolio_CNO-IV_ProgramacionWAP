@@ -1,130 +1,2526 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+        name="description"
+        content="Road to Hall of Fame · Lab 05 · File Path Traversal: Validation of Start of Path">
 
     <title>
-        Lab 01 | File Path Traversal | SantiagoGasca
+        Lab 05 | Validation of Start of Path | Santiago.dev
     </title>
 
+
+    <!-- ESTILOS GENERALES -->
     <link
         rel="stylesheet"
         href="../Recursos/CSS/Styles.css"
     >
 
+    <!-- ESTILOS ROAD TO HALL OF FAME -->
     <link
         rel="stylesheet"
         href="../Recursos/CSS/Roadmap.css"
     >
+
+
+    <style>
+
+        /* =====================================================
+           NAVEGACIÓN
+           ===================================================== */
+
+        .lab05-page .site-header {
+
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            background:
+                rgba(7, 16, 25, 0.90);
+
+            backdrop-filter:
+                blur(14px);
+
+            border-bottom:
+                1px solid rgba(0, 217, 255, 0.15);
+
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.14);
+        }
+
+
+        .lab05-page .header-container {
+
+            width:
+                min(1180px, calc(100% - 32px));
+
+            margin:
+                0 auto;
+
+            min-height:
+                76px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                24px;
+        }
+
+
+        .lab05-page .logo a {
+
+            color:
+                #ffffff;
+
+            text-decoration:
+                none;
+
+            font-size:
+                1.35rem;
+
+            font-weight:
+                800;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .lab05-page .logo a span {
+
+            color:
+                #00d9ff;
+        }
+
+
+        .lab05-page .logo a:hover {
+
+            color:
+                #00d9ff;
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        .lab05-page .navigation {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                flex-end;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                8px;
+        }
+
+
+        .lab05-page .navigation a {
+
+            position:
+                relative;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                10px 13px;
+
+            border:
+                1px solid transparent;
+
+            border-radius:
+                10px;
+
+            color:
+                #d6e3ea;
+
+            text-decoration:
+                none;
+
+            font-size:
+                0.91rem;
+
+            font-weight:
+                700;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .lab05-page .navigation a:hover {
+
+            color:
+                #ffffff;
+
+            background:
+                rgba(0, 217, 255, 0.07);
+
+            border-color:
+                rgba(0, 217, 255, 0.25);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .lab05-page .navigation a.active {
+
+            color:
+                #06131b;
+
+            background:
+                #00d9ff;
+
+            border-color:
+                #00d9ff;
+
+            box-shadow:
+                0 8px 24px rgba(0, 217, 255, 0.23);
+        }
+
+
+        /* =====================================================
+           HERO
+           ===================================================== */
+
+        .lab05-hero {
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            padding:
+                95px 0 65px;
+
+            background:
+
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(0, 217, 255, 0.14),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 85% 15%,
+                    rgba(0, 217, 255, 0.10),
+                    transparent 32%
+                ),
+
+                linear-gradient(
+                    145deg,
+                    #071018 0%,
+                    #0a1721 50%,
+                    #0d2431 100%
+                );
+
+            border-bottom:
+                1px solid rgba(0, 217, 255, 0.14);
+
+            box-shadow:
+                inset 0 -80px 120px rgba(0, 0, 0, 0.10);
+        }
+
+
+        .lab05-hero::before {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            inset:
+                0;
+
+            pointer-events:
+                none;
+
+            background-image:
+                linear-gradient(
+                    rgba(0, 217, 255, 0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(0, 217, 255, 0.035) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                38px 38px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent
+                );
+        }
+
+
+        .lab05-container {
+
+            position:
+                relative;
+
+            z-index:
+                1;
+
+            width:
+                min(1120px, calc(100% - 32px));
+
+            margin:
+                0 auto;
+        }
+
+
+        .lab05-kicker {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            padding:
+                8px 14px;
+
+            margin-bottom:
+                18px;
+
+            border:
+                1px solid rgba(0, 217, 255, 0.30);
+
+            border-radius:
+                999px;
+
+            background:
+                rgba(0, 217, 255, 0.07);
+
+            color:
+                #00d9ff;
+
+            font-size:
+                0.78rem;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.10em;
+
+            text-transform:
+                uppercase;
+
+            box-shadow:
+                0 0 25px rgba(0, 217, 255, 0.05);
+        }
+
+
+        .lab05-kicker::before {
+
+            content:
+                "";
+
+            width:
+                8px;
+
+            height:
+                8px;
+
+            border-radius:
+                50%;
+
+            background:
+                #00d9ff;
+
+            box-shadow:
+                0 0 14px rgba(0, 217, 255, 0.9);
+        }
+
+
+        .lab05-hero h1 {
+
+            max-width:
+                1050px;
+
+            margin:
+                0 0 20px;
+
+            color:
+                #f7fcff;
+
+            font-size:
+                clamp(2.35rem, 5vw, 4.5rem);
+
+            line-height:
+                1.04;
+
+            letter-spacing:
+                -0.04em;
+
+            text-shadow:
+                0 4px 25px rgba(0, 0, 0, 0.28);
+        }
+
+
+        .lab05-hero h1 span {
+
+            display:
+                inline;
+
+            color:
+                #00d9ff;
+
+            text-shadow:
+                0 0 22px rgba(0, 217, 255, 0.18);
+        }
+
+
+        .lab05-subtitle {
+
+            max-width:
+                900px;
+
+            margin:
+                0;
+
+            color:
+                #b9cbd5;
+
+            font-size:
+                1.08rem;
+
+            line-height:
+                1.8;
+        }
+
+
+        /* =====================================================
+           INFORMACIÓN GENERAL
+           ===================================================== */
+
+        .lab05-info-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap:
+                14px;
+
+            margin-top:
+                36px;
+        }
+
+
+        .lab05-info {
+
+            padding:
+                18px;
+
+            border:
+                1px solid rgba(0, 217, 255, 0.18);
+
+            border-radius:
+                16px;
+
+            background:
+                rgba(255, 255, 255, 0.045);
+
+            backdrop-filter:
+                blur(8px);
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .lab05-info:hover {
+
+            transform:
+                translateY(-4px);
+
+            border-color:
+                rgba(0, 217, 255, 0.43);
+
+            background:
+                rgba(0, 217, 255, 0.065);
+
+            box-shadow:
+                0 12px 30px rgba(0, 217, 255, 0.08);
+        }
+
+
+        .lab05-info-label {
+
+            display:
+                block;
+
+            margin-bottom:
+                7px;
+
+            color:
+                #8ea9b7;
+
+            font-size:
+                0.75rem;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.08em;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .lab05-info-value {
+
+            color:
+                #f5fafc;
+
+            font-weight:
+                700;
+
+            line-height:
+                1.45;
+        }
+
+
+        /* =====================================================
+           CONTENIDO
+           ===================================================== */
+
+        .lab05-content {
+
+            padding:
+                48px 0 90px;
+
+            background:
+                #f5f7f9;
+
+            color:
+                #18212a;
+        }
+
+
+        .lab05-card {
+
+            margin-bottom:
+                22px;
+
+            padding:
+                30px;
+
+            border:
+                1px solid rgba(17, 32, 46, 0.08);
+
+            border-radius:
+                22px;
+
+            background:
+                rgba(255, 255, 255, 0.97);
+
+            box-shadow:
+                0 18px 50px rgba(12, 24, 36, 0.08);
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .lab05-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            border-color:
+                rgba(0, 217, 255, 0.22);
+
+            box-shadow:
+                0 22px 55px rgba(12, 24, 36, 0.11);
+        }
+
+
+        .lab05-card-dark {
+
+            color:
+                #edf5fa;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #0b1620,
+                    #102735
+                );
+
+            border-color:
+                rgba(0, 217, 255, 0.20);
+        }
+
+
+        .lab05-title {
+
+            margin:
+                0 0 14px;
+
+            font-size:
+                clamp(1.45rem, 3vw, 2rem);
+
+            line-height:
+                1.2;
+        }
+
+
+        .lab05-title span {
+
+            color:
+                #009bbd;
+        }
+
+
+        .lab05-card-dark .lab05-title span {
+
+            color:
+                #00d9ff;
+        }
+
+
+        .lab05-card p {
+
+            margin:
+                0 0 15px;
+
+            line-height:
+                1.8;
+        }
+
+
+        .lab05-card p:last-child {
+
+            margin-bottom:
+                0;
+        }
+
+
+        /* =====================================================
+           LISTAS
+           ===================================================== */
+
+        .lab05-list {
+
+            margin:
+                20px 0 0;
+
+            padding-left:
+                22px;
+        }
+
+
+        .lab05-list li {
+
+            margin-bottom:
+                12px;
+
+            line-height:
+                1.7;
+        }
+
+
+        /* =====================================================
+           CÓDIGO / PAYLOAD
+           ===================================================== */
+
+        .lab05-code {
+
+            margin:
+                22px 0;
+
+            padding:
+                22px;
+
+            overflow-x:
+                auto;
+
+            border:
+                1px solid rgba(0, 217, 255, 0.20);
+
+            border-radius:
+                15px;
+
+            background:
+                #071018;
+
+            color:
+                #cceef5;
+
+            font-family:
+                Consolas,
+                "Courier New",
+                monospace;
+
+            font-size:
+                0.92rem;
+
+            line-height:
+                1.7;
+
+            box-shadow:
+                inset 0 0 25px rgba(0, 217, 255, 0.025);
+        }
+
+
+        .lab05-code .highlight {
+
+            color:
+                #00d9ff;
+
+            font-weight:
+                800;
+        }
+
+
+        /* =====================================================
+           DESGLOSE DEL PAYLOAD
+           ===================================================== */
+
+        .lab05-breakdown {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap:
+                16px;
+
+            margin-top:
+                22px;
+        }
+
+
+        .lab05-breakdown-item {
+
+            padding:
+                21px;
+
+            border:
+                1px solid rgba(0, 217, 255, 0.15);
+
+            border-radius:
+                17px;
+
+            background:
+                rgba(0, 217, 255, 0.045);
+        }
+
+
+        .lab05-breakdown-item strong {
+
+            display:
+                block;
+
+            margin-bottom:
+                9px;
+
+            color:
+                #087d99;
+        }
+
+
+        .lab05-breakdown-item p {
+
+            margin:
+                0;
+
+            color:
+                #526373;
+
+            font-size:
+                0.94rem;
+
+            line-height:
+                1.7;
+        }
+
+
+        /* =====================================================
+           RESULTADO
+           ===================================================== */
+
+        .lab05-result {
+
+            padding:
+                23px;
+
+            margin-top:
+                20px;
+
+            border:
+                1px solid rgba(0, 217, 255, 0.18);
+
+            border-left:
+                4px solid #00d9ff;
+
+            border-radius:
+                15px;
+
+            background:
+                rgba(0, 217, 255, 0.055);
+        }
+
+
+        .lab05-result strong {
+
+            color:
+                #087d99;
+        }
+
+
+        /* =====================================================
+           EVIDENCIAS
+           ===================================================== */
+
+        .lab05-evidence-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap:
+                20px;
+
+            margin-top:
+                25px;
+        }
+
+
+        .lab05-evidence {
+
+            min-height:
+                260px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                20px;
+
+            border:
+                2px dashed rgba(0, 217, 255, 0.27);
+
+            border-radius:
+                18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f8fafb,
+                    #eef3f6
+                );
+
+            text-align:
+                center;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .lab05-evidence:hover {
+
+            border-color:
+                rgba(0, 217, 255, 0.65);
+
+            transform:
+                translateY(-4px);
+        }
+
+
+        .lab05-evidence-number {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            width:
+                42px;
+
+            height:
+                42px;
+
+            margin-bottom:
+                13px;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(0, 217, 255, 0.10);
+
+            color:
+                #008eae;
+
+            font-weight:
+                900;
+        }
+
+
+        .lab05-evidence h3 {
+
+            margin:
+                0 0 8px;
+
+            color:
+                #1a2b37;
+        }
+
+
+        .lab05-evidence p {
+
+            margin:
+                0;
+
+            color:
+                #617382;
+
+            font-size:
+                0.9rem;
+
+            line-height:
+                1.6;
+        }
+
+
+        /* =====================================================
+           BOTONES
+           ===================================================== */
+
+        .lab05-actions {
+
+            display:
+                flex;
+
+            flex-wrap:
+                wrap;
+
+            gap:
+                11px;
+
+            margin-top:
+                24px;
+        }
+
+
+        .lab05-button {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                8px;
+
+            min-height:
+                45px;
+
+            padding:
+                0 17px;
+
+            border:
+                1px solid rgba(0, 217, 255, 0.22);
+
+            border-radius:
+                11px;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                800;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .lab05-button:hover {
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        .lab05-button-primary {
+
+            background:
+                #00d9ff;
+
+            color:
+                #04131a;
+
+            border-color:
+                #00d9ff;
+
+            box-shadow:
+                0 9px 24px rgba(0, 217, 255, 0.20);
+        }
+
+
+        .lab05-button-secondary {
+
+            background:
+                transparent;
+
+            color:
+                #087d99;
+        }
+
+
+        .lab05-card-dark .lab05-button-secondary {
+
+            color:
+                #dff9ff;
+        }
+
+
+        .lab05-button-secondary:hover {
+
+            background:
+                rgba(0, 217, 255, 0.07);
+
+            border-color:
+                #00d9ff;
+        }
+
+
+        /* =====================================================
+           NAVEGACIÓN ENTRE LABS
+           ===================================================== */
+
+        .lab05-lab-navigation {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap:
+                14px;
+
+            margin-top:
+                25px;
+        }
+
+
+        .lab05-lab-nav {
+
+            padding:
+                20px;
+
+            border:
+                1px solid rgba(0, 217, 255, 0.17);
+
+            border-radius:
+                16px;
+
+            background:
+                rgba(255, 255, 255, 0.045);
+
+            color:
+                #ffffff;
+
+            text-decoration:
+                none;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .lab05-lab-nav:hover {
+
+            transform:
+                translateY(-4px);
+
+            border-color:
+                rgba(0, 217, 255, 0.45);
+
+            background:
+                rgba(0, 217, 255, 0.07);
+        }
+
+
+        .lab05-lab-nav small {
+
+            display:
+                block;
+
+            margin-bottom:
+                7px;
+
+            color:
+                #00d9ff;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.08em;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .lab05-lab-nav strong {
+
+            display:
+                block;
+
+            color:
+                #ffffff;
+
+            line-height:
+                1.4;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+
+        @media (max-width: 960px) {
+
+            .lab05-page .header-container {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+                padding:
+                    14px 0;
+            }
+
+
+            .lab05-page .navigation {
+
+                justify-content:
+                    flex-start;
+            }
+
+
+            .lab05-info-grid {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+
+            .lab05-breakdown {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .lab05-lab-navigation {
+
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .lab05-hero {
+
+                padding:
+                    65px 0 50px;
+            }
+
+
+            .lab05-info-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .lab05-evidence-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .lab05-card {
+
+                padding:
+                    22px;
+
+                border-radius:
+                    18px;
+            }
+
+
+            .lab05-page .navigation {
+
+                width:
+                    100%;
+
+                display:
+                    grid;
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+                gap:
+                    7px;
+            }
+
+
+            .lab05-page .navigation a {
+
+                width:
+                    100%;
+            }
+
+        }
+
+    </style>
+
 </head>
 
-<body class="lab-page">
 
-    <header class="site-header">
+<body class="lab05-page">
 
-        <div class="header-container">
 
-            <a
-                href="../index.html"
-                class="logo"
-            >
-                <span class="logo-symbol">◈</span>
-                <span>SantiagoGasca</span>
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+
+<header class="site-header">
+
+    <div class="header-container">
+
+
+        <div class="logo">
+
+            <a href="../index.html#inicio">
+
+                Santiago<span>.dev</span>
+
             </a>
 
-            <nav
-                class="navigation"
-                aria-label="Navegación principal"
-            >
-                <a href="../index.html">Inicio</a>
-                <a href="../PF01/index.html">PF01</a>
-                <a href="./index.html">Road to Hall of Fame</a>
-            </nav>
+        </div>
+
+
+        <nav
+            class="navigation"
+            aria-label="Navegación principal">
+
+
+            <a href="../index.html#inicio">
+                Inicio
+            </a>
+
+
+            <a href="../PF01/index.html">
+                PF01
+            </a>
+
+
+            <a href="../PF02/index.html">
+                PF02
+            </a>
+
+
+            <a href="../index.html#pf03">
+                PF03
+            </a>
+
+
+            <a
+                href="index.html"
+                class="active">
+
+                Road to Hall of Fame
+
+            </a>
+
+
+            <a href="../index.html#entrega-final">
+                Entrega final
+            </a>
+
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
+<section class="lab05-hero">
+
+    <div class="lab05-container">
+
+
+        <div class="lab05-kicker">
+
+            ROAD TO HALL OF FAME · LAB 05
 
         </div>
 
-    </header>
+
+        <h1>
+
+            File Path Traversal:
+            <span>
+                Validation of Start of Path
+            </span>
+
+        </h1>
 
 
-    <main>
+        <p class="lab05-subtitle">
 
-        <section class="lab-hero">
+            Actividad 11 del portafolio.
+            Laboratorio enfocado en el análisis de una
+            validación basada en el inicio de una ruta y
+            en cómo una comprobación incompleta puede ser
+            evadida mediante secuencias de traversal.
 
-            <div class="lab-container">
+        </p>
 
-                <span class="lab-kicker">
-                    LABORATORIO 05
+
+
+        <div class="lab05-info-grid">
+
+
+            <div class="lab05-info">
+
+                <span class="lab05-info-label">
+                    Nivel
                 </span>
 
-                <h1>
-                    Validation of Start of Path
-                </h1>
-
-                <p>
-                    Simple Case — pendiente
-                </p>
+                <div class="lab05-info-value">
+                    Practitioner
+                </div>
 
             </div>
 
-        </section>
 
+            <div class="lab05-info">
 
-        <section class="lab-section">
+                <span class="lab05-info-label">
+                    Tipo
+                </span>
 
-            <div class="lab-container">
-
-                <article class="lab-card">
-
-                    <h2>
-                        Estado
-                    </h2>
-
-                    <p>
-                        Este laboratorio forma parte de la estructura
-                        inicial de Road to Hall of Fame.
-                    </p>
-
-                    <p>
-                        La documentación, evidencias y análisis técnico
-                        se incorporarán posteriormente.
-                    </p>
-
-                    <a
-                        class="lab-download"
-                        href="./index.html"
-                    >
-                        ← Volver a Road to Hall of Fame
-                    </a>
-
-                </article>
+                <div class="lab05-info-value">
+                    Path Traversal · Start Path Bypass
+                </div>
 
             </div>
 
-        </section>
 
-    </main>
+            <div class="lab05-info">
 
+                <span class="lab05-info-label">
+                    Herramienta
+                </span>
 
-    <footer class="site-footer">
+                <div class="lab05-info-value">
+                    Burp Suite
+                </div>
 
-        <div class="footer-container">
-
-            <div>
-                <strong>SantiagoGasca</strong>
-
-                <p>
-                    Portafolio de Seguridad Informática · 2026
-                </p>
             </div>
+
+
+            <div class="lab05-info">
+
+                <span class="lab05-info-label">
+                    Plataforma
+                </span>
+
+                <div class="lab05-info-value">
+                    PortSwigger Web Security Academy
+                </div>
+
+            </div>
+
 
         </div>
 
-    </footer>
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTENIDO
+     ========================================================= -->
+
+<main class="lab05-content">
+
+    <div class="lab05-container">
+
+
+        <!-- =================================================
+             01 · MARCO TEÓRICO
+             ================================================= -->
+
+        <article class="lab05-card">
+
+            <h2 class="lab05-title">
+
+                01 · Marco
+                <span>teórico</span>
+
+            </h2>
+
+
+            <p>
+
+                Las aplicaciones web que gestionan recursos
+                estáticos pueden aplicar validaciones basadas
+                en prefijos para comprobar que los archivos
+                solicitados pertenezcan exclusivamente a un
+                directorio autorizado.
+
+            </p>
+
+
+            <p>
+
+                Sin embargo, si la validación se limita
+                únicamente a comprobar el inicio de la cadena
+                sin realizar una normalización o
+                canonicalización posterior de la ruta completa,
+                una entrada puede contener posteriormente
+                secuencias de escape de directorios.
+
+            </p>
+
+
+            <p>
+
+                Esta diferencia entre la validación textual
+                inicial y la interpretación final de la ruta
+                puede generar una vulnerabilidad de
+                <strong>File Path Traversal</strong>.
+
+            </p>
+
+        </article>
+
+
+
+        <!-- =================================================
+             02 · OBJETIVO
+             ================================================= -->
+
+        <article class="lab05-card lab05-card-dark">
+
+            <h2 class="lab05-title">
+
+                02 ·
+                <span>Objetivo</span>
+
+            </h2>
+
+
+            <p>
+
+                Demostrar y documentar la explotación de una
+                vulnerabilidad de Path Traversal protegida
+                mediante una validación defectuosa del inicio
+                de la ruta.
+
+            </p>
+
+
+            <p>
+
+                Para ello se emplea Burp Suite con el propósito
+                de interceptar y modificar una petición HTTP,
+                comprobando cómo un prefijo aparentemente válido
+                puede ser seguido por secuencias de traversal.
+
+            </p>
+
+        </article>
+
+
+
+        <!-- =================================================
+             03 · VULNERABILIDAD
+             ================================================= -->
+
+        <article class="lab05-card">
+
+            <h2 class="lab05-title">
+
+                03 ·
+                <span>Vulnerabilidad</span>
+
+            </h2>
+
+
+            <p>
+
+                <strong>
+                    Nombre:
+                </strong>
+
+                File Path Traversal —
+                Validation of Start of Path.
+
+            </p>
+
+
+            <p>
+
+                La aplicación comprueba que el valor proporcionado
+                comience con un directorio permitido.
+
+                El problema aparece cuando esta comprobación
+                solamente analiza el prefijo textual y no verifica
+                la ruta completa una vez normalizada.
+
+            </p>
+
+
+            <p>
+
+                Como consecuencia, una ruta puede comenzar con
+                el prefijo esperado y posteriormente incorporar
+                secuencias de desplazamiento de directorio.
+
+            </p>
+
+        </article>
+
+
+
+        <!-- =================================================
+             04 · PROCEDIMIENTO
+             ================================================= -->
+
+        <article class="lab05-card">
+
+            <h2 class="lab05-title">
+
+                04 · Procedimiento
+                <span>paso a paso</span>
+
+            </h2>
+
+
+            <ul class="lab05-list">
+
+
+                <li>
+
+                    <strong>
+                        4.1 Configuración del entorno:
+                    </strong>
+
+                    Se configuró Burp Suite como proxy de
+                    intercepción para capturar el tráfico HTTP
+                    generado por el navegador utilizado para
+                    acceder al laboratorio.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        4.2 Generación de la petición base:
+                    </strong>
+
+                    Se navegó por la aplicación del laboratorio
+                    y se seleccionó un producto para generar
+                    una solicitud destinada a cargar una imagen.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        4.3 Captura de la solicitud:
+                    </strong>
+
+                    La petición fue localizada dentro del
+                    historial HTTP de Burp Suite, identificando
+                    el parámetro <strong>filename</strong>.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        4.4 Envío a Repeater:
+                    </strong>
+
+                    La solicitud fue enviada a
+                    <strong>Repeater</strong> para realizar
+                    modificaciones controladas sobre el
+                    parámetro.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        4.5 Inclusión del prefijo válido:
+                    </strong>
+
+                    El parámetro fue modificado para comenzar
+                    con el directorio permitido por la
+                    aplicación y posteriormente incluir
+                    secuencias de traversal.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        4.6 Envío y análisis:
+                    </strong>
+
+                    Se envió la petición modificada y se
+                    examinó la respuesta HTTP generada por
+                    el servidor.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        4.7 Confirmación:
+                    </strong>
+
+                    Finalmente se verificó la respuesta del
+                    laboratorio y la notificación correspondiente
+                    de resolución.
+
+                </li>
+
+
+            </ul>
+
+        </article>
+
+
+
+        <!-- =================================================
+             05 · PETICIÓN BASE
+             ================================================= -->
+
+        <article class="lab05-card lab05-card-dark">
+
+            <h2 class="lab05-title">
+
+                05 · Petición
+                <span>base</span>
+
+            </h2>
+
+
+            <p>
+
+                La aplicación utiliza el parámetro
+                <strong>filename</strong> para determinar el
+                recurso gráfico que debe cargar.
+
+            </p>
+
+
+            <div class="lab05-code">
+
+                GET /image?filename=14.jpg HTTP/1.1
+
+            </div>
+
+
+            <p>
+
+                Esta petición fue utilizada como punto de
+                partida para analizar la validación aplicada
+                por el servidor.
+
+            </p>
+
+        </article>
+
+
+
+        <!-- =================================================
+             06 · PAYLOAD
+             ================================================= -->
+
+        <article class="lab05-card">
+
+            <h2 class="lab05-title">
+
+                06 ·
+                <span>Payload utilizado</span>
+
+            </h2>
+
+
+            <p>
+
+                El payload documentado para la actividad
+                utiliza el prefijo de ruta autorizado seguido
+                por las secuencias de desplazamiento:
+
+            </p>
+
+
+            <div class="lab05-code">
+
+                GET /image?filename=<span class="highlight">/var/www/images/../../../../etc/passwd</span> HTTP/1.1
+
+            </div>
+
+
+            <div class="lab05-breakdown">
+
+
+                <div class="lab05-breakdown-item">
+
+                    <strong>
+                        `/var/www/images/`
+                    </strong>
+
+                    <p>
+
+                        Corresponde al prefijo de ruta que
+                        la validación espera encontrar al
+                        inicio del parámetro.
+
+                    </p>
+
+                </div>
+
+
+                <div class="lab05-breakdown-item">
+
+                    <strong>
+                        `../`
+                    </strong>
+
+                    <p>
+
+                        Representa el desplazamiento hacia
+                        directorios superiores durante la
+                        resolución de la ruta.
+
+                    </p>
+
+                </div>
+
+
+                <div class="lab05-breakdown-item">
+
+                    <strong>
+                        `/etc/passwd`
+                    </strong>
+
+                    <p>
+
+                        Archivo utilizado en el laboratorio
+                        para comprobar el acceso a un recurso
+                        ubicado fuera del directorio previsto.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             07 · EXPLICACIÓN TÉCNICA
+             ================================================= -->
+
+        <article class="lab05-card">
+
+            <h2 class="lab05-title">
+
+                07 · Explicación
+                <span>técnica del payload</span>
+
+            </h2>
+
+
+            <p>
+
+                La rutina de validación comprueba inicialmente
+                que el parámetro comience con una ruta considerada
+                válida, como:
+
+            </p>
+
+
+            <div class="lab05-code">
+
+                /var/www/images/
+
+            </div>
+
+
+            <p>
+
+                El problema se produce porque esta comprobación
+                se realiza sobre el comienzo de la cadena y no
+                sobre la ruta final después de su normalización.
+
+            </p>
+
+
+            <p>
+
+                Una vez superada la validación inicial, las
+                secuencias <strong>../</strong> pueden ser
+                interpretadas durante la resolución de la ruta,
+                provocando que el sistema retroceda niveles de
+                directorio.
+
+            </p>
+
+
+            <div class="lab05-result">
+
+                <strong>
+                    Concepto clave:
+                </strong>
+
+                validar únicamente el prefijo textual de una
+                ruta no garantiza que la ruta resultante se
+                encuentre realmente dentro del directorio
+                autorizado.
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             08 · RESULTADO
+             ================================================= -->
+
+        <article class="lab05-card lab05-card-dark">
+
+            <h2 class="lab05-title">
+
+                08 ·
+                <span>Resultado esperado</span>
+
+            </h2>
+
+
+            <p>
+
+                Después de enviar la solicitud modificada,
+                el servidor procesa la ruta proporcionada
+                después de la validación inicial.
+
+            </p>
+
+
+            <p>
+
+                En el laboratorio exitoso, la resolución de
+                las secuencias de traversal permite acceder al
+                recurso utilizado como objetivo de comprobación.
+
+            </p>
+
+
+            <div class="lab05-result">
+
+                <strong>
+                    Evidencia de éxito:
+                </strong>
+
+                La comprobación final corresponde a la
+                respuesta obtenida en Burp Suite y a la
+                notificación de laboratorio resuelto
+                proporcionada por PortSwigger.
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             09 · IMPACTO
+             ================================================= -->
+
+        <article class="lab05-card">
+
+            <h2 class="lab05-title">
+
+                09 ·
+                <span>Impacto</span>
+
+            </h2>
+
+
+            <p>
+
+                Una vulnerabilidad de Path Traversal puede
+                permitir el acceso a archivos ubicados fuera
+                del directorio que la aplicación pretendía
+                exponer.
+
+            </p>
+
+
+            <p>
+
+                Dependiendo de los permisos del proceso y de
+                los recursos disponibles en el servidor, esta
+                vulnerabilidad puede provocar exposición de
+                información sensible.
+
+            </p>
+
+
+            <p>
+
+                El impacto puede incluir archivos internos,
+                información de configuración y otros recursos
+                que no deberían estar disponibles a través
+                del parámetro controlado por el usuario.
+
+            </p>
+
+        </article>
+
+
+
+        <!-- =================================================
+             10 · MITIGACIÓN
+             ================================================= -->
+
+        <article class="lab05-card">
+
+            <h2 class="lab05-title">
+
+                10 ·
+                <span>Mitigación</span>
+
+            </h2>
+
+
+            <ul class="lab05-list">
+
+
+                <li>
+
+                    <strong>
+                        Validación integral:
+                    </strong>
+
+                    No depender únicamente de una comprobación
+                    textual del comienzo de una ruta.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        Canonicalización:
+                    </strong>
+
+                    Resolver la ruta absoluta real antes de
+                    determinar si pertenece al directorio
+                    autorizado.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        Comparación segura:
+                    </strong>
+
+                    Comprobar que la ruta final permanezca
+                    realmente dentro del directorio base
+                    permitido.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        Restricción de recursos:
+                    </strong>
+
+                    Cuando sea posible, utilizar identificadores
+                    de archivos permitidos en lugar de permitir
+                    rutas arbitrarias proporcionadas por el
+                    usuario.
+
+                </li>
+
+
+                <li>
+
+                    <strong>
+                        Mínimo privilegio:
+                    </strong>
+
+                    El proceso de la aplicación debe contar
+                    únicamente con los permisos necesarios para
+                    acceder a sus propios recursos.
+
+                </li>
+
+
+            </ul>
+
+        </article>
+
+
+
+        <!-- =================================================
+             11 · EVIDENCIAS
+             ================================================= -->
+
+        <article class="lab05-card">
+
+            <h2 class="lab05-title">
+
+                11 ·
+                <span>Evidencias</span>
+
+            </h2>
+
+
+            <p>
+
+                Esta sección queda preparada para incorporar
+                las capturas reales del laboratorio cuando
+                estén disponibles.
+
+            </p>
+
+
+            <div class="lab05-evidence-grid">
+
+
+                <div class="lab05-evidence">
+
+                    <div>
+
+                        <div class="lab05-evidence-number">
+                            01
+                        </div>
+
+                        <h3>
+                            Laboratorio iniciado
+                        </h3>
+
+                        <p>
+
+                            Captura de PortSwigger mostrando
+                            el laboratorio de Validation of
+                            Start of Path.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="lab05-evidence">
+
+                    <div>
+
+                        <div class="lab05-evidence-number">
+                            02
+                        </div>
+
+                        <h3>
+                            Request interceptado
+                        </h3>
+
+                        <p>
+
+                            Petición HTTP original observada
+                            mediante Burp Suite.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="lab05-evidence">
+
+                    <div>
+
+                        <div class="lab05-evidence-number">
+                            03
+                        </div>
+
+                        <h3>
+                            Payload
+                        </h3>
+
+                        <p>
+
+                            Captura del parámetro modificado
+                            dentro de Burp Repeater.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="lab05-evidence">
+
+                    <div>
+
+                        <div class="lab05-evidence-number">
+                            04
+                        </div>
+
+                        <h3>
+                            Respuesta vulnerable
+                        </h3>
+
+                        <p>
+
+                            Respuesta HTTP obtenida después
+                            de enviar la solicitud modificada.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="lab05-evidence">
+
+                    <div>
+
+                        <div class="lab05-evidence-number">
+                            05
+                        </div>
+
+                        <h3>
+                            Lab Solved
+                        </h3>
+
+                        <p>
+
+                            Captura de la confirmación de
+                            laboratorio resuelto.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="lab05-evidence">
+
+                    <div>
+
+                        <div class="lab05-evidence-number">
+                            06
+                        </div>
+
+                        <h3>
+                            Evidencia adicional
+                        </h3>
+
+                        <p>
+
+                            Espacio reservado para una captura
+                            complementaria de Burp Suite.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="lab05-result">
+
+                <strong>
+                    Nota:
+                </strong>
+
+                Las imágenes serán incorporadas posteriormente
+                utilizando las capturas reales obtenidas durante
+                la práctica.
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             12 · CONCLUSIÓN
+             ================================================= -->
+
+        <article class="lab05-card lab05-card-dark">
+
+            <h2 class="lab05-title">
+
+                12 ·
+                <span>Conclusión</span>
+
+            </h2>
+
+
+            <p>
+
+                La actividad permitió comprobar que una
+                validación basada únicamente en el inicio
+                textual de una ruta puede resultar insuficiente
+                para proteger una aplicación contra Path
+                Traversal.
+
+            </p>
+
+
+            <p>
+
+                La práctica demuestra la importancia de
+                realizar una validación completa sobre la ruta
+                normalizada y no únicamente sobre una parte de
+                la cadena proporcionada por el usuario.
+
+            </p>
+
+
+            <p>
+
+                La utilización de mecanismos de canonicalización
+                y la aplicación del principio de mínimo
+                privilegio son elementos fundamentales para
+                reducir el riesgo asociado con este tipo de
+                vulnerabilidad.
+
+            </p>
+
+        </article>
+
+
+
+        <!-- =================================================
+             13 · FUENTE
+             ================================================= -->
+
+        <article class="lab05-card">
+
+            <h2 class="lab05-title">
+
+                13 ·
+                <span>Fuente</span>
+
+            </h2>
+
+
+            <p>
+
+                PortSwigger Web Security Academy.
+
+                <strong>
+                    File path traversal:
+                    Validation of start of path.
+                </strong>
+
+            </p>
+
+
+            <div class="lab05-actions">
+
+                <a
+                    class="lab05-button lab05-button-primary"
+                    href="https://portswigger.net/web-security/file-path-traversal/lab-validation-of-start-of-path"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    Abrir laboratorio
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- =================================================
+             14 · NAVEGACIÓN
+             ================================================= -->
+
+        <article class="lab05-card lab05-card-dark">
+
+            <h2 class="lab05-title">
+
+                14 ·
+                <span>Navegación</span>
+                de laboratorios
+
+            </h2>
+
+
+            <p>
+
+                Continúa con el laboratorio anterior,
+                regresa al mapa principal o avanza al
+                siguiente laboratorio.
+
+            </p>
+
+
+            <div class="lab05-lab-navigation">
+
+
+                <a
+                    href="lab04.html"
+                    class="lab05-lab-nav">
+
+                    <small>
+                        ← Anterior
+                    </small>
+
+                    <strong>
+
+                        Lab 04 · Traversal Sequences
+                        Stripped with Superfluous URL-Decode
+
+                    </strong>
+
+                </a>
+
+
+                <a
+                    href="index.html"
+                    class="lab05-lab-nav">
+
+                    <small>
+                        Roadmap
+                    </small>
+
+                    <strong>
+
+                        Volver a Road to Hall of Fame
+
+                    </strong>
+
+                </a>
+
+
+                <a
+                    href="lab06.html"
+                    class="lab05-lab-nav">
+
+                    <small>
+                        Siguiente →
+
+                    </small>
+
+                    <strong>
+
+                        Lab 06 · Validation of File Extension
+                        with Null Byte Bypass
+
+                    </strong>
+
+                </a>
+
+
+            </div>
+
+
+            <div class="lab05-actions">
+
+
+                <a
+                    class="lab05-button lab05-button-primary"
+                    href="../index.html#inicio">
+
+                    ← Inicio del portafolio
+
+                </a>
+
+
+                <a
+                    class="lab05-button lab05-button-secondary"
+                    href="../PF01/index.html">
+
+                    PF01
+
+                </a>
+
+
+                <a
+                    class="lab05-button lab05-button-secondary"
+                    href="../PF02/index.html">
+
+                    PF02
+
+                </a>
+
+
+                <a
+                    class="lab05-button lab05-button-secondary"
+                    href="../index.html#pf03">
+
+                    PF03
+
+                </a>
+
+
+                <a
+                    class="lab05-button lab05-button-secondary"
+                    href="../index.html#entrega-final">
+
+                    Entrega final
+
+                </a>
+
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-container">
+
+        <div class="footer-bottom">
+
+            <p>
+
+                &copy; 2026 Santiago Isaac Gasca López ·
+                Portafolio CNO IV · Seguridad Informática
+
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
 
 </body>
+
 </html>
