@@ -2,71 +2,731 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>Lab 06 | File Path Traversal</title>
 
-    <title>
-        Lab 01 | File Path Traversal | SantiagoGasca
-    </title>
+    <!-- ESTILOS PRINCIPALES -->
+    <link rel="stylesheet" href="../Recursos/CSS/Styles.css">
 
-    <link
-        rel="stylesheet"
-        href="../Recursos/CSS/Styles.css"
-    >
+    <!-- ESTILOS DEL ROADMAP -->
+    <link rel="stylesheet" href="../Recursos/CSS/Roadmap.css">
 
-    <link
-        rel="stylesheet"
-        href="../Recursos/CSS/Roadmap.css"
-    >
+    <style>
+
+        /* =========================================================
+           LAB 06 - AJUSTES VISUALES
+           ========================================================= */
+
+        .lab06-page {
+            background: #f5f7f8;
+        }
+
+
+        /* =========================================================
+           NAVEGACIÓN SUPERIOR
+           ========================================================= */
+
+        .lab06-page .site-header {
+            background: #101820 !important;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.18);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .lab06-page .main-nav {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .lab06-page .main-nav a {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            text-decoration: none;
+            font-weight: 600;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transition: all 0.25s ease;
+        }
+
+        .lab06-page .main-nav a:hover {
+            color: #00ffff !important;
+            -webkit-text-fill-color: #00ffff !important;
+        }
+
+        .lab06-page .main-nav a.active {
+            color: #00ffff !important;
+            -webkit-text-fill-color: #00ffff !important;
+        }
+
+
+        /* =========================================================
+           HERO
+           ========================================================= */
+
+        .lab06-page .lab-hero {
+            background:
+                radial-gradient(
+                    circle at 15% 25%,
+                    rgba(0, 255, 255, 0.13),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 85% 30%,
+                    rgba(0, 180, 255, 0.08),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #03070b 0%,
+                    #06151d 50%,
+                    #020507 100%
+                ) !important;
+
+            color: #ffffff !important;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.20);
+        }
+
+        .lab06-page .lab-hero .lab-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .lab06-page .lab-hero .lab-kicker {
+            color: #00ffff !important;
+            -webkit-text-fill-color: #00ffff !important;
+            background: transparent !important;
+        }
+
+        .lab06-page .lab-hero h2 {
+            color: #00ffff !important;
+            -webkit-text-fill-color: #00ffff !important;
+            background: transparent !important;
+        }
+
+        .lab06-page .lab-hero h1 {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+            background: transparent !important;
+        }
+
+        .lab06-page .lab-hero p {
+            color: #d9e1e5 !important;
+        }
+
+
+        /* =========================================================
+           CONTENEDOR
+           ========================================================= */
+
+        .lab06-page .lab-container {
+            max-width: 1050px;
+            margin: 0 auto;
+        }
+
+
+        /* =========================================================
+           TARJETAS
+           ========================================================= */
+
+        .lab06-page .lab-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 28px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease;
+        }
+
+        .lab06-page .lab-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 180, 200, 0.35);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
+        }
+
+
+        /* =========================================================
+           TÍTULOS DE LOS APARTADOS
+           
+           SOLO UNO:
+           "01 · MARCO TEÓRICO"
+           
+           No se repite debajo.
+           ========================================================= */
+
+        .lab06-page .section-title {
+            margin: 0 0 20px 0;
+            color: #111111 !important;
+            -webkit-text-fill-color: #111111 !important;
+            background: transparent !important;
+            font-size: 1.55rem;
+            line-height: 1.3;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+        }
+
+        .lab06-page .section-title .section-number {
+            font-weight: 900;
+            color: #111111 !important;
+            -webkit-text-fill-color: #111111 !important;
+        }
+
+
+        /* =========================================================
+           SUBPASOS DEL PROCEDIMIENTO
+           
+           Estos sí conservan 4.1, 4.2, etc.,
+           porque aparecen así en el PDF.
+           ========================================================= */
+
+        .lab06-page .procedure-title {
+            color: #111111 !important;
+            -webkit-text-fill-color: #111111 !important;
+            background: transparent !important;
+            font-size: 1.08rem;
+            font-weight: 700;
+            margin-top: 28px;
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================================================
+           TEXTO
+           ========================================================= */
+
+        .lab06-page .lab-card p,
+        .lab06-page .lab-card li {
+            color: #242424 !important;
+            line-height: 1.75;
+        }
+
+        .lab06-page .lab-card strong {
+            color: #111111 !important;
+        }
+
+
+        /* =========================================================
+           PETICIONES HTTP
+           
+           MISMA TIPOGRAFÍA DEL RESTO DEL TEXTO.
+           ========================================================= */
+
+        .lab06-page .http-request {
+            font-family: inherit !important;
+            font-size: 1rem !important;
+            line-height: 1.7 !important;
+            font-weight: 500;
+            color: #222222 !important;
+
+            background: #f1f3f4;
+            border-left: 4px solid #111111;
+
+            border-radius: 7px;
+
+            padding: 13px 17px;
+            margin: 16px 0;
+
+            white-space: normal;
+            overflow-x: auto;
+        }
+
+
+        /* =========================================================
+           IMÁGENES DENTRO DEL PROCEDIMIENTO
+           ========================================================= */
+
+        .lab06-page .procedure-image {
+            margin: 22px 0 32px;
+        }
+
+        .lab06-page .procedure-image img {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.12);
+
+            box-shadow: 0 7px 22px rgba(0, 0, 0, 0.08);
+        }
+
+        .lab06-page .procedure-image .image-caption {
+            margin-top: 9px;
+            margin-bottom: 0;
+
+            font-size: 0.9rem;
+            color: #555555 !important;
+        }
+
+
+        /* =========================================================
+           LISTAS
+           ========================================================= */
+
+        .lab06-page .lab-card ul {
+            padding-left: 25px;
+        }
+
+        .lab06-page .lab-card li {
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================================================
+           ENLACES
+           ========================================================= */
+
+        .lab06-page .lab-card a {
+            color: #111111;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .lab06-page .lab-card a:hover {
+            color: #00a6a6;
+        }
+
+
+        /* =========================================================
+           BOTÓN PDF
+           ========================================================= */
+
+        .lab06-page .lab-download {
+            display: inline-block;
+
+            margin-top: 15px;
+            padding: 12px 20px;
+
+            border: 1px solid #111111;
+            border-radius: 9px;
+
+            background: #111111;
+
+            color: #ffffff !important;
+            text-decoration: none !important;
+
+            transition: all 0.25s ease;
+        }
+
+        .lab06-page .lab-download:hover {
+            background: #00baba;
+            border-color: #00baba;
+            color: #ffffff !important;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================================================
+           NAVEGACIÓN ENTRE LABORATORIOS
+           ========================================================= */
+
+        .lab06-page .lab-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .lab06-page .lab-navigation a {
+            color: #111111 !important;
+            text-decoration: none !important;
+
+            padding: 10px 15px;
+
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+
+            transition: all 0.25s ease;
+        }
+
+        .lab06-page .lab-navigation a:hover {
+            background: #111111;
+            color: #ffffff !important;
+        }
+
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+
+        .lab06-page .site-footer {
+            margin-top: 50px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+           ========================================================= */
+
+        @media (max-width: 768px) {
+
+            .lab06-page .main-nav {
+                gap: 14px;
+                padding: 10px;
+            }
+
+            .lab06-page .main-nav a {
+                font-size: 0.9rem;
+            }
+
+            .lab06-page .lab-card {
+                padding: 22px;
+            }
+
+            .lab06-page .section-title {
+                font-size: 1.3rem;
+            }
+
+            .lab06-page .lab-navigation {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .lab06-page .lab-navigation a {
+                text-align: center;
+            }
+        }
+
+    </style>
 </head>
 
-<body class="lab-page">
+
+<body class="lab-page lab06-page">
+
+
+    <!-- =========================================================
+         NAVEGACIÓN SUPERIOR
+         ========================================================= -->
 
     <header class="site-header">
 
-        <div class="header-container">
+        <nav class="main-nav">
 
-            <a
-                href="../index.html"
-                class="logo"
-            >
-                <span class="logo-symbol">◈</span>
-                <span>SantiagoGasca</span>
+            <a href="../index.html#inicio">
+                Inicio
             </a>
 
-            <nav
-                class="navigation"
-                aria-label="Navegación principal"
-            >
-                <a href="../index.html">Inicio</a>
-                <a href="../PF01/index.html">PF01</a>
-                <a href="./index.html">Road to Hall of Fame</a>
-            </nav>
+            <a href="../PF01/index.html">
+                PF01
+            </a>
 
-        </div>
+            <a href="../PF02/index.html">
+                PF02
+            </a>
+
+            <a href="../index.html#pf03">
+                PF03
+            </a>
+
+            <a href="index.html" class="active">
+                Road to Hall of Fame
+            </a>
+
+            <a href="../index.html#entrega-final">
+                Entrega final
+            </a>
+
+        </nav>
 
     </header>
 
 
-    <main>
+    <!-- =========================================================
+         HERO
+         ========================================================= -->
 
-        <section class="lab-hero">
+    <section class="lab-hero">
 
-            <div class="lab-container">
+        <div class="lab-container">
 
-                <span class="lab-kicker">
-                    LABORATORIO 06
-                </span>
+            <p class="lab-kicker">
+                ROAD TO HALL OF FAME · ACTIVIDAD 12
+            </p>
 
-                <h1>
-                     Validation of File Extension with Null Byte Bypass
-                </h1>
+            <h2>
+                LAB 06
+            </h2>
 
-                <p>
-                    Simple Case — pendiente
+            <h1>
+                File Path Traversal: Validation of File Extension with Null Byte Bypass
+            </h1>
+
+            <p>
+                Path Traversal mediante bypass de validación de extensión
+                utilizando byte nulo (Null byte bypass).
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         CONTENIDO
+         ========================================================= -->
+
+    <main class="lab-container">
+
+
+        <!-- =====================================================
+             01 · MARCO TEÓRICO
+             ===================================================== -->
+
+        <section class="lab-card">
+
+            <h2 class="section-title">
+                <span class="section-number">01 ·</span>
+                Marco Teórico
+            </h2>
+
+            <p>
+                En el desarrollo de aplicaciones web seguras, es común
+                implementar validaciones de extensiones de archivos para
+                restringir la carga de recursos a formatos permitidos
+                (como imágenes).
+            </p>
+
+            <p>
+                No obstante, si el backend utiliza lenguajes o librerías
+                de bajo nivel que interactúan con APIs de sistemas de
+                archivos vulnerables al tratamiento de caracteres nulos
+                (bytes nulos, %00), la lógica de validación puede romperse.
+            </p>
+
+            <p>
+                El byte nulo actúa como un carácter de fin de cadena para
+                el sistema operativo, ignorando todo lo que se escriba
+                después de este, mientras que el filtro de la aplicación
+                web sigue evaluando la extensión final.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             02 · OBJETIVO
+             ===================================================== -->
+
+        <section class="lab-card">
+
+            <h2 class="section-title">
+                <span class="section-number">02 ·</span>
+                Objetivo
+            </h2>
+
+            <p>
+                Demostrar y documentar la explotación exitosa de una
+                vulnerabilidad de Path Traversal protegida por una
+                validación estricta de extensión de archivo, empleando
+                técnicas de inyección de byte nulo a través de Burp Suite
+                para extraer información confidencial del sistema operativo.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             03 · VULNERABILIDAD
+             ===================================================== -->
+
+        <section class="lab-card">
+
+            <h2 class="section-title">
+                <span class="section-number">03 ·</span>
+                Vulnerabilidad
+            </h2>
+
+            <p>
+                <strong>
+                    Nombre de la vulnerabilidad:
+                </strong>
+                File Path Traversal (Validation of file extension with
+                null byte bypass).
+            </p>
+
+            <p>
+                <strong>
+                    Descripción:
+                </strong>
+                La aplicación valida que el parámetro del archivo concluya
+                con una extensión esperada (ej. .png). Al no sanitizar
+                correctamente los caracteres especiales de control como
+                el byte nulo, permite que un atacante trunque la ruta de
+                validación y acceda a archivos protegidos del sistema.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             04 · PROCEDIMIENTO PASO A PASO
+             ===================================================== -->
+
+        <section class="lab-card">
+
+            <h2 class="section-title">
+                <span class="section-number">04 ·</span>
+                Procedimiento paso a paso
+            </h2>
+
+
+            <!-- 4.1 -->
+
+            <h3 class="procedure-title">
+                4.1 Configuración del entorno de intercepción
+            </h3>
+
+            <p>
+                Se configuró el proxy de Burp Suite asegurando la captura
+                correcta del tráfico HTTP proveniente del navegador en el
+                laboratorio de PortSwigger.
+            </p>
+
+            <div class="procedure-image">
+
+                <img
+                    src="../Recursos/Imagenes/RoadToHallOfFame/Lab06/01-laboratorio.png"
+                    alt="Laboratorio de PortSwigger">
+
+                <p class="image-caption">
+                    Captura del laboratorio.
+                </p>
+
+            </div>
+
+
+            <!-- 4.2 -->
+
+            <h3 class="procedure-title">
+                4.2 Generación de la petición base
+            </h3>
+
+            <p>
+                Se interactuó con la plataforma web para solicitar un
+                recurso gráfico, generando la solicitud HTTP estándar
+                del tipo:
+            </p>
+
+            <div class="http-request">
+                GET /image?filename=68.jpg
+            </div>
+
+            <div class="procedure-image">
+
+                <img
+                    src="../Recursos/Imagenes/RoadToHallOfFame/Lab06/02-request-interceptado.png"
+                    alt="Petición HTTP interceptada">
+
+                <p class="image-caption">
+                    Petición HTTP interceptada.
+                </p>
+
+            </div>
+
+
+            <!-- 4.3 -->
+
+            <h3 class="procedure-title">
+                4.3 Captura y envío a Repeater
+            </h3>
+
+            <p>
+                La solicitud capturada se redirigió al módulo Repeater
+                para facilitar la manipulación y el reenvío controlado
+                de los parámetros de entrada.
+            </p>
+
+            <div class="procedure-image">
+
+                <img
+                    src="../Recursos/Imagenes/RoadToHallOfFame/Lab06/06-repeater.png"
+                    alt="Petición enviada a Repeater">
+
+                <p class="image-caption">
+                    Petición enviada al módulo Repeater.
+                </p>
+
+            </div>
+
+
+            <!-- 4.4 -->
+
+            <h3 class="procedure-title">
+                4.4 Inyección del payload con byte nulo
+            </h3>
+
+            <p>
+                Se modificó el parámetro filename integrando las secuencias
+                de escape de directorios, el archivo objetivo, el byte nulo
+                codificado y la extensión requerida para cumplir con la
+                validación superficial:
+            </p>
+
+            <div class="http-request">
+                GET /image?filename=../../../etc/passwd%00.png HTTP/2
+            </div>
+
+            <div class="procedure-image">
+
+                <img
+                    src="../Recursos/Imagenes/RoadToHallOfFame/Lab06/03-payload.png"
+                    alt="Payload utilizado">
+
+                <p class="image-caption">
+                    Payload utilizado en la petición.
+                </p>
+
+            </div>
+
+
+            <!-- 4.5 -->
+
+            <h3 class="procedure-title">
+                4.5 Validación del resultado y cierre del laboratorio
+            </h3>
+
+            <p>
+                Se ejecutó la petición, confirmando que el filtro validó
+                positivamente la extensión final, mientras que el backend
+                procesó el byte nulo y devolvió con éxito el contenido
+                del archivo /etc/passwd en la respuesta HTTP.
+            </p>
+
+            <div class="procedure-image">
+
+                <img
+                    src="../Recursos/Imagenes/RoadToHallOfFame/Lab06/04-respuesta-vulnerable.png"
+                    alt="Respuesta vulnerable">
+
+                <p class="image-caption">
+                    Respuesta HTTP con el contenido del archivo.
+                </p>
+
+            </div>
+
+            <p>
+                Se verificó la interfaz web de PortSwigger con la
+                notificación en verde de "Lab Solved", validando la
+                conclusión exitosa del ejercicio.
+            </p>
+
+            <div class="procedure-image">
+
+                <img
+                    src="../Recursos/Imagenes/RoadToHallOfFame/Lab06/05-lab-solved.png"
+                    alt="Laboratorio resuelto">
+
+                <p class="image-caption">
+                    Laboratorio completado correctamente.
                 </p>
 
             </div>
@@ -74,55 +734,213 @@
         </section>
 
 
-        <section class="lab-section">
+        <!-- =====================================================
+             05 · PAYLOAD UTILIZADO
+             ===================================================== -->
 
-            <div class="lab-container">
+        <section class="lab-card">
 
-                <article class="lab-card">
+            <h2 class="section-title">
+                <span class="section-number">05 ·</span>
+                Payload utilizado
+            </h2>
 
-                    <h2>
-                        Estado
-                    </h2>
+            <p>
+                El Payload inyectado en la petición HTTP fue:
+            </p>
 
-                    <p>
-                        Este laboratorio forma parte de la estructura
-                        inicial de Road to Hall of Fame.
-                    </p>
+            <div class="http-request">
+                GET /image?filename=..//..//..//etc/passwd%00.png HTTP/2
+            </div>
 
-                    <p>
-                        La documentación, evidencias y análisis técnico
-                        se incorporarán posteriormente.
-                    </p>
+        </section>
 
-                    <a
-                        class="lab-download"
-                        href="./index.html"
-                    >
-                        Volver a Road to Hall of Fame
-                    </a>
 
-                </article>
+        <!-- =====================================================
+             06 · EXPLICACIÓN TÉCNICA
+             ===================================================== -->
+
+        <section class="lab-card">
+
+            <h2 class="section-title">
+                <span class="section-number">06 ·</span>
+                Explicación Técnica del Payload
+            </h2>
+
+
+            <h3 class="procedure-title">
+                6.1 ¿Cómo opera el filtro del servidor?
+            </h3>
+
+            <p>
+                El sistema de validación comprueba de manera superficial
+                que la cadena de texto termine exactamente con la extensión
+                autorizada (png).
+            </p>
+
+
+            <h3 class="procedure-title">
+                6.2 ¿Por qué funciona el bypass?
+            </h3>
+
+            <p>
+                Al incluir un byte nulo (%00), el filtro de la aplicación
+                web lee la cadena completa y asume que es válida porque
+                finaliza en .png.
+            </p>
+
+            <p>
+                Sin embargo, al pasar el parámetro a las funciones internas
+                del sistema operativo, el byte nulo corta la lectura de
+                la cadena en ese punto exacto, provocando que el sistema
+                ignore la extensión y lea únicamente la ruta de directorios
+                anterior (../../../etc/passwd).
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             07 · MITIGACIÓN
+             ===================================================== -->
+
+        <section class="lab-card">
+
+            <h2 class="section-title">
+                <span class="section-number">07 ·</span>
+                Mitigación
+            </h2>
+
+
+            <h3 class="procedure-title">
+                7.1 Actualización de entornos y librerías
+            </h3>
+
+            <p>
+                Utilizar lenguajes de programación modernos y frameworks
+                actualizados que manejen de forma segura las cadenas de
+                texto y rechacen caracteres de control nulos.
+            </p>
+
+
+            <h3 class="procedure-title">
+                7.2 Uso de listas blancas estrictas y canonicalización
+            </h3>
+
+            <p>
+                Validar los nombres de archivos mediante expresiones
+                regulares seguras o catálogos predefinidos, evitando
+                procesar caracteres especiales o secuencias de escape
+                en las rutas.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             08 · CONCLUSIÓN
+             ===================================================== -->
+
+        <section class="lab-card">
+
+            <h2 class="section-title">
+                <span class="section-number">08 ·</span>
+                Conclusión
+            </h2>
+
+            <p>
+                La práctica evidenció que las validaciones de extensiones
+                vulnerables al uso de bytes nulos son ineficaces frente a
+                ataques de Path Traversal.
+            </p>
+
+            <p>
+                La adopción de controles estrictos de entrada y el uso de
+                funciones seguras de gestión de archivos son fundamentales
+                para prevenir brechas de seguridad.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================================
+             09 · FUENTE
+             ===================================================== -->
+
+        <section class="lab-card">
+
+            <h2 class="section-title">
+                <span class="section-number">09 ·</span>
+                Fuente
+            </h2>
+
+            <p>
+                PortSwigger Web Security Academy. File path traversal,
+                validation of file extension with null byte bypass.
+                Recuperado de PortSwigger Labs.
+            </p>
+
+            <a
+                href="https://portswigger.net/web-security/file-path-traversal"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="lab-download">
+                Consultar PortSwigger Web Security Academy
+            </a>
+
+            <br>
+
+            <a
+                href="../Recursos/PDF/Actividad12_Lab06_FilePathTraversal.pdf"
+                class="lab-download"
+                download>
+                Descargar PDF de la Actividad 12
+            </a>
+
+        </section>
+
+
+        <!-- =====================================================
+             NAVEGACIÓN ENTRE LABORATORIOS
+             ===================================================== -->
+
+        <section class="lab-card">
+
+            <h2 class="section-title">
+                Navegación
+            </h2>
+
+            <div class="lab-navigation">
+
+                <a href="lab05.html">
+                    ← Lab 05
+                </a>
+
+                <a href="index.html">
+                    Road to Hall of Fame
+                </a>
+
+                <a href="../index.html">
+                    Portafolio principal →
+                </a>
 
             </div>
 
         </section>
+
 
     </main>
 
 
+    <!-- =========================================================
+         FOOTER
+         ========================================================= -->
+
     <footer class="site-footer">
 
-        <div class="footer-container">
-
-            <div>
-                <strong>SantiagoGasca</strong>
-
-                <p>
-                    Portafolio de Seguridad Informática · 2026
-                </p>
-            </div>
-
-        </div>
+        <p>
+            © 2026 Santiago Isaac Gasca López · CNO IV WAP
+        </p>
 
     </footer>
 
