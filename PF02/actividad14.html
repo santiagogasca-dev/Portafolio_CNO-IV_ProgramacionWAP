@@ -486,7 +486,7 @@
 
       border-radius: 18px;
 
-      border: 1px solid rgba(0, 217, 255, 0.16);
+      border: 1px solid rgba(0, 217, 255, 16);
 
       background: rgba(0, 217, 255, 0.045);
 
@@ -663,6 +663,54 @@
     }
 
     /* =========================================================
+       NAVEGACIÓN DISTRIBUIDA (ESTILO BLOQUES)
+       ========================================================= */
+
+    .pf02-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .pf02-card-dark .pf02-nav-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 16px;
+      border: 1px solid rgba(0, 217, 255, 0.22);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      color: #dff9ff;
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+      transition: all 0.25s ease;
+    }
+
+    .pf02-card-dark .pf02-nav-link:hover {
+      border-color: var(--pf-accent);
+      background: rgba(0, 217, 255, 0.08);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 217, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .pf02-card-dark .pf02-nav-link.active-highlight {
+      background: var(--pf-accent);
+      color: #04131a;
+      border-color: var(--pf-accent);
+      box-shadow: 0 8px 22px rgba(0, 217, 255, 0.25);
+    }
+
+    .pf02-card-dark .pf02-nav-link.active-highlight:hover {
+      background: #00bfdc;
+      color: #04131a;
+      box-shadow: 0 14px 30px rgba(0, 217, 255, 0.35);
+    }
+
+    /* =========================================================
        PDF
        ========================================================= */
 
@@ -739,7 +787,8 @@
       }
 
       .pf02-risk-grid,
-      .pf02-flow {
+      .pf02-flow,
+      .pf02-nav-grid {
         grid-template-columns:
           repeat(2, minmax(0, 1fr));
       }
@@ -783,7 +832,8 @@
       .pf02-grid-2,
       .pf02-risk-grid,
       .pf02-layer-grid,
-      .pf02-flow {
+      .pf02-flow,
+      .pf02-nav-grid {
         grid-template-columns: 1fr;
       }
 
@@ -836,9 +886,7 @@
       <a
         href="../index.html#inicio"
         aria-label="Volver al inicio del portafolio">
-
-        Santiago<span>.dev</span>
-
+        SantiagoGasca
       </a>
 
     </div>
@@ -897,15 +945,13 @@
 
     <div class="pf02-kicker">
 
-      PF02 ·  Actividad 14
+        Actividad 14
 
     </div>
 
-
     <h1>
 
-      Ciberseguridad
-      <span>en una mirada</span>
+      Ciberseguridad en una mirada
 
     </h1>
 
@@ -999,8 +1045,7 @@
 
       <h2 class="pf02-section-title">
 
-        01 · ¿Qué es y por qué es
-        <span>relevante</span>?
+        01 · ¿Qué es y por qué es relevante?
 
       </h2>
 
@@ -1036,8 +1081,7 @@
 
       <h2 class="pf02-section-title">
 
-        02 · Esquema del
-        <span>vector de ataque</span>
+        02 · Esquema del vector de ataque
 
       </h2>
 
@@ -1150,8 +1194,7 @@
 
         <h2 class="pf02-section-title">
 
-          03 · Riesgo
-          <span>1</span>
+          03 · Riesgo 1
 
         </h2>
 
@@ -1175,8 +1218,7 @@
 
         <h2 class="pf02-section-title">
 
-          04 · Riesgo
-          <span>2</span>
+          04 · Riesgo 2
 
         </h2>
 
@@ -1204,8 +1246,7 @@
 
       <h2 class="pf02-section-title">
 
-        05 · Riesgos y
-        <span>impacto al negocio</span>
+        05 · Riesgos y impacto al negocio
 
       </h2>
 
@@ -1296,8 +1337,7 @@
 
       <h2 class="pf02-section-title">
 
-        06 · Medidas de
-        <span>mitigación y defensa</span>
+        06 · Medidas de mitigación y defensa
 
       </h2>
 
@@ -1374,8 +1414,7 @@
 
       <h2 class="pf02-section-title">
 
-        07 · Síntesis
-        <span>estratégica</span>
+        07 · Síntesis estratégica
 
       </h2>
 
@@ -1412,9 +1451,7 @@
 
       <h2 class="pf02-section-title">
 
-        08 ·
-        <span>Entrega original</span>
-        en PDF
+        08 · Entrega original en PDF
 
       </h2>
 
@@ -1432,7 +1469,7 @@
 
 
         <a
-          class="pf02-button pf02-button-primary"
+          class="pf02-button pf02-button-secondary"
           href="../Recursos/PDF/PF02/Ciberseguridad_en_una_mirada.pdf"
           download="Ciberseguridad_en_una_mirada.pdf">
 
@@ -1475,23 +1512,11 @@
 
         <h2 class="pf02-section-title">
 
-          Vista previa del
-          <span>documento original</span>
+          Vista previa del documento original
 
         </h2>
 
-
-        <p class="pf02-source">
-
-          Documento:
-          <strong>
-            Ciberseguridad_en_una_mirada.pdf
-          </strong>
-
-        </p>
-
       </div>
-
 
       <iframe
         class="pf02-pdf-frame"
@@ -1509,8 +1534,7 @@
 
       <h2 class="pf02-section-title">
 
-        09 ·
-        <span>Referencia</span>
+        09 · Referencia
 
       </h2>
 
@@ -1530,7 +1554,7 @@
       <div class="pf02-actions">
 
         <a
-          class="pf02-button pf02-button-primary"
+          class="pf02-button pf02-button-secondary"
           href="https://www.netacad.com/"
           target="_blank"
           rel="noopener noreferrer">
@@ -1543,86 +1567,59 @@
 
     </article>
 
-
-
-    <!-- 10 -->
+    <!-- 10 · NAVEGACIÓN -->
 
     <article class="pf02-card pf02-card-dark">
 
       <h2 class="pf02-section-title">
 
-        10 ·
-        <span>Navegación</span>
-        del portafolio
+       · Conoce más acerca de mi portafolio
 
       </h2>
 
 
       <p>
 
-        Desde esta actividad puedes regresar al inicio,
-        consultar los demás parciales o entrar directamente
-        a la sección de laboratorios de Road to Hall of Fame.
+        Desde esta actividad puedes regresar de forma rápida,
+        consultar los demás parciales o explorar los laboratorios
+        de Road to Hall of Fame.
 
       </p>
 
 
-      <div class="pf02-actions">
+      <div class="pf02-nav-grid">
 
-
-        <a
-          class="pf02-button pf02-button-primary"
-          href="../index.html#inicio">
-
-          ← Inicio
-
+        <a class="pf02-nav-link" href="actividad13.html">
+          ← Actividad 13
         </a>
 
-
-        <a
-          class="pf02-button pf02-button-secondary"
-          href="index.html">
-
-          PF02
-
+        <a class="pf02-nav-link" href="../index.html#inicio">
+          Inicio
         </a>
 
+        <a class="pf02-nav-link" href="../ROAD-TO-HALL-OF-FAME/index.html">
+          Road to Hall of Fame →
+        </a>
 
-        <a
-          class="pf02-button pf02-button-secondary"
-          href="../PF01/index.html">
-
+        <a class="pf02-nav-link" href="../PF01/index.html">
           PF01
-
         </a>
 
+        <a class="pf02-nav-link" href="index.html">
+          PF02
+        </a>
 
-        <a
-          class="pf02-button pf02-button-secondary"
-          href="../index.html#pf03">
-
+        <a class="pf02-nav-link" href="../index.html#pf03">
           PF03
-
         </a>
 
+        <div style="visibility: hidden;"></div>
 
-        <a
-          class="pf02-button pf02-button-secondary"
-          href="../ROAD-TO-HALL-OF-FAME/index.html">
-
-          Road to Hall of Fame
-
-        </a>
-
-
-        <a
-          class="pf02-button pf02-button-secondary"
-          href="../index.html#entrega-final">
-
+        <a class="pf02-nav-link" href="../index.html#entrega-final">
           Entrega final
-
         </a>
 
+        <div style="visibility: hidden;"></div>
 
       </div>
 
