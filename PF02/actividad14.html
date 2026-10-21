@@ -155,19 +155,22 @@
       transform: scaleX(1);
     }
 
+    /* PESTAÑA ACTIVA: IDÉNTICA A LAS DEMÁS + LÍNEA INFERIOR */
     .pf02-page .navigation a.active {
-      color: #06131b;
-
-      background: var(--pf-accent);
-
-      border-color: var(--pf-accent);
-
-      box-shadow:
-        0 8px 24px rgba(0, 217, 255, 0.22);
+      color: #d6e3ea;
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      font-weight: 700;
     }
 
     .pf02-page .navigation a.active::after {
-      display: none;
+      display: block;
+      transform: scaleX(1);
+      bottom: 5px;
+      height: 2px;
+      background: var(--pf-accent);
+      box-shadow: none;
     }
 
     /* =========================================================
@@ -486,7 +489,7 @@
 
       border-radius: 18px;
 
-      border: 1px solid rgba(0, 217, 255, 16);
+      border: 1px solid rgba(0, 217, 255, 0.16);
 
       background: rgba(0, 217, 255, 0.045);
 
@@ -1573,7 +1576,7 @@
 
       <h2 class="pf02-section-title">
 
-       · Conoce más acerca de mi portafolio
+        · Conoce más acerca de mi portafolio
 
       </h2>
 

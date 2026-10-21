@@ -1,1080 +1,1572 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>PF02 | Actividad 13 | My File Server: 1</title>
-
-    <!-- ESTILOS PRINCIPALES DEL PORTAFOLIO -->
-    <link rel="stylesheet" href="../Recursos/CSS/Styles.css">
-
-    <!-- ESTILOS COMPLEMENTARIOS -->
-    <link rel="stylesheet" href="../Recursos/CSS/Roadmap.css">
-
-    <style>
-
-        /* =========================================================
-           ACTIVIDAD 13 - PF02
-           ========================================================= */
-
-        .pf02-activity-page {
-            background: #f5f7f8;
-        }
-
-
-        /* =========================================================
-           NAVEGACIÓN SUPERIOR
-           ========================================================= */
-
-        .pf02-activity-page .site-header {
-            background: #101820 !important;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.18);
-            position: relative;
-            z-index: 1000;
-        }
-
-        .pf02-activity-page .main-nav {
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-            gap: 28px;
-            flex-wrap: wrap;
-        }
-
-        .pf02-activity-page .main-nav a {
-            color: #ffffff !important;
-            -webkit-text-fill-color: #ffffff !important;
-            text-decoration: none;
-            font-weight: 600;
-            opacity: 1 !important;
-            visibility: visible !important;
-            transition: all 0.25s ease;
-        }
-
-        .pf02-activity-page .main-nav a:hover {
-            color: #00ffff !important;
-            -webkit-text-fill-color: #00ffff !important;
-        }
-
-        .pf02-activity-page .main-nav a.active {
-            color: #00ffff !important;
-            -webkit-text-fill-color: #00ffff !important;
-        }
-
-
-        /* =========================================================
-           HERO
-           ========================================================= */
-
-        .pf02-activity-page .activity-hero {
-            background:
-                radial-gradient(
-                    circle at 15% 25%,
-                    rgba(0, 255, 255, 0.13),
-                    transparent 32%
-                ),
-                radial-gradient(
-                    circle at 85% 30%,
-                    rgba(0, 180, 255, 0.08),
-                    transparent 35%
-                ),
-                linear-gradient(
-                    135deg,
-                    #03070b 0%,
-                    #06151d 50%,
-                    #020507 100%
-                ) !important;
-
-            color: #ffffff !important;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.20);
-        }
-
-        .pf02-activity-page .hero-container {
-            max-width: 1050px;
-            margin: 0 auto;
-            padding: 90px 25px 80px;
-        }
-
-        .pf02-activity-page .hero-kicker {
-            color: #00ffff !important;
-            -webkit-text-fill-color: #00ffff !important;
-            font-size: 0.9rem;
-            font-weight: 800;
-            letter-spacing: 0.14em;
-            margin-bottom: 18px;
-        }
-
-        .pf02-activity-page .activity-hero h1 {
-            color: #ffffff !important;
-            -webkit-text-fill-color: #ffffff !important;
-            background: transparent !important;
-            font-size: clamp(2.3rem, 5vw, 4.3rem);
-            line-height: 1.05;
-            margin: 0 0 18px;
-        }
-
-        .pf02-activity-page .hero-subtitle {
-            color: #00ffff !important;
-            -webkit-text-fill-color: #00ffff !important;
-            background: transparent !important;
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .pf02-activity-page .hero-description {
-            color: #d8e0e4 !important;
-            max-width: 850px;
-            line-height: 1.7;
-            font-size: 1.05rem;
-        }
-
-
-        /* =========================================================
-           CONTENEDOR
-           ========================================================= */
-
-        .pf02-activity-page .content-container {
-            max-width: 1050px;
-            margin: 0 auto;
-            padding: 35px 25px 70px;
-        }
-
-
-        /* =========================================================
-           TARJETAS
-           ========================================================= */
-
-        .pf02-activity-page .content-card {
-            background: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 16px;
-            padding: 30px;
-            margin: 28px 0;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
-
-            transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease,
-                border-color 0.25s ease;
-        }
-
-        .pf02-activity-page .content-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(0, 180, 200, 0.35);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
-        }
-
-
-        /* =========================================================
-           TÍTULOS DE SECCIÓN
-           ========================================================= */
-
-        .pf02-activity-page .section-title {
-            color: #111111 !important;
-            -webkit-text-fill-color: #111111 !important;
-            background: transparent !important;
-
-            font-size: 1.55rem;
-            line-height: 1.3;
-            font-weight: 800;
-
-            margin: 0 0 20px;
-        }
-
-        .pf02-activity-page .section-number {
-            color: #111111 !important;
-            -webkit-text-fill-color: #111111 !important;
-            font-weight: 900;
-        }
-
-
-        /* =========================================================
-           SUBTÍTULOS
-           ========================================================= */
-
-        .pf02-activity-page .subsection-title {
-            color: #111111 !important;
-            -webkit-text-fill-color: #111111 !important;
-            background: transparent !important;
-
-            font-size: 1.08rem;
-            font-weight: 700;
-
-            margin-top: 28px;
-            margin-bottom: 10px;
-        }
-
-
-        /* =========================================================
-           TEXTO
-           ========================================================= */
-
-        .pf02-activity-page .content-card p,
-        .pf02-activity-page .content-card li {
-            color: #242424 !important;
-            line-height: 1.75;
-        }
-
-        .pf02-activity-page .content-card strong {
-            color: #111111 !important;
-        }
-
-        .pf02-activity-page .content-card ul,
-        .pf02-activity-page .content-card ol {
-            padding-left: 25px;
-        }
-
-        .pf02-activity-page .content-card li {
-            margin-bottom: 10px;
-        }
-
-
-        /* =========================================================
-           COMANDOS
-           ========================================================= */
-
-        .pf02-activity-page .command {
-            font-family: inherit;
-            background: #f1f3f4;
-            border-left: 4px solid #111111;
-
-            padding: 13px 17px;
-            margin: 15px 0;
-
-            border-radius: 7px;
-
-            color: #222222 !important;
-
-            overflow-x: auto;
-            white-space: pre-wrap;
-
-            line-height: 1.7;
-        }
-
-
-        /* =========================================================
-           TABLA DE HALLAZGOS
-           ========================================================= */
-
-        .pf02-activity-page .table-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            margin-top: 20px;
-        }
-
-        .pf02-activity-page .findings-table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 850px;
-            background: #ffffff;
-        }
-
-        .pf02-activity-page .findings-table th {
-            background: #111111;
-            color: #ffffff;
-            padding: 14px;
-            text-align: left;
-            font-weight: 700;
-        }
-
-        .pf02-activity-page .findings-table td {
-            padding: 14px;
-            border: 1px solid #dddddd;
-            color: #222222;
-            vertical-align: top;
-            line-height: 1.6;
-        }
-
-        .pf02-activity-page .findings-table tr:nth-child(even) {
-            background: #f7f8f8;
-        }
-
-        .pf02-activity-page .severity {
-            font-weight: 800;
-            color: #111111;
-        }
-
-
-        /* =========================================================
-           NAVEGACIÓN INFERIOR
-           ========================================================= */
-
-        .pf02-activity-page .activity-navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .pf02-activity-page .activity-navigation a {
-            color: #111111 !important;
-            text-decoration: none !important;
-
-            padding: 10px 16px;
-
-            border: 1px solid rgba(0, 0, 0, 0.15);
-            border-radius: 8px;
-
-            transition: all 0.25s ease;
-        }
-
-        .pf02-activity-page .activity-navigation a:hover {
-            background: #111111;
-            color: #ffffff !important;
-        }
-
-
-        /* =========================================================
-           RESPONSIVE
-           ========================================================= */
-
-        @media (max-width: 768px) {
-
-            .pf02-activity-page .main-nav {
-                gap: 14px;
-                padding: 10px;
-            }
-
-            .pf02-activity-page .main-nav a {
-                font-size: 0.9rem;
-            }
-
-            .pf02-activity-page .content-card {
-                padding: 22px;
-            }
-
-            .pf02-activity-page .section-title {
-                font-size: 1.3rem;
-            }
-
-            .pf02-activity-page .activity-navigation {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .pf02-activity-page .activity-navigation a {
-                text-align: center;
-            }
-
-            .pf02-activity-page .hero-container {
-                padding: 70px 22px;
-            }
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PF02 · Actividad 13 — Pentesting y Red Team · My File Server: 1">
+  <title>PF02 · Actividad 13 | My File Server: 1</title>
+
+  <link rel="stylesheet" href="../Recursos/CSS/Styles.css">
+
+  <style>
+    .pf02-page {
+      --pf-accent: #00d9ff;
+      --pf-accent-soft: rgba(0, 217, 255, 0.12);
+      --pf-text-soft: #b9c7d3;
+      --pf-border: rgba(0, 217, 255, 0.20);
+
+      min-height: 100vh;
+
+      background:
+        radial-gradient(circle at top right, rgba(0, 217, 255, 0.08), transparent 32%),
+        linear-gradient(
+          180deg,
+          #081019 0%,
+          #0b141d 48%,
+          #f5f7f9 48%,
+          #f5f7f9 100%
+        );
+
+      color: #f4f7fa;
+    }
+
+    .pf02-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    /* =========================================================
+       NAVEGACIÓN SUPERIOR
+       ========================================================= */
+
+    .pf02-page .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background: rgba(7, 16, 25, 0.88);
+      backdrop-filter: blur(14px);
+
+      border-bottom: 1px solid rgba(0, 217, 255, 0.14);
+
+      box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .pf02-page .header-container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+
+      min-height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .pf02-page .logo a {
+      text-decoration: none;
+      color: #ffffff;
+
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+
+      transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .pf02-page .logo a span {
+      color: var(--pf-accent);
+    }
+
+    .pf02-page .logo a:hover {
+      color: var(--pf-accent);
+      transform: translateY(-1px);
+    }
+
+    .pf02-page .navigation {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pf02-page .navigation a {
+      position: relative;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 10px 13px;
+
+      border: 1px solid transparent;
+      border-radius: 10px;
+
+      text-decoration: none;
+
+      color: #d6e3ea;
+      font-size: 0.91rem;
+      font-weight: 700;
+
+      transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .pf02-page .navigation a::after {
+      content: "";
+
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 5px;
+
+      height: 2px;
+
+      background: var(--pf-accent);
+
+      transform: scaleX(0);
+      transform-origin: center;
+
+      transition: transform 0.25s ease;
+    }
+
+    .pf02-page .navigation a:hover {
+      color: #ffffff;
+
+      background: rgba(0, 217, 255, 0.07);
+      border-color: rgba(0, 217, 255, 0.22);
+
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 8px 20px rgba(0, 217, 255, 0.08);
+    }
+
+    .pf02-page .navigation a:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* PESTAÑA ACTIVA */
+    .pf02-page .navigation a.active {
+      color: #d6e3ea;
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      font-weight: 700;
+    }
+
+    .pf02-page .navigation a.active::after {
+      display: block;
+      transform: scaleX(1);
+      bottom: 5px;
+      height: 2px;
+      background: var(--pf-accent);
+      box-shadow: none;
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .pf02-hero {
+      padding: 92px 0 54px;
+      position: relative;
+    }
+
+    .pf02-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-bottom: 16px;
+      padding: 8px 14px;
+
+      border: 1px solid var(--pf-border);
+      border-radius: 999px;
+
+      background: rgba(0, 217, 255, 0.06);
+
+      color: var(--pf-accent);
+
+      font-size: 0.78rem;
+      font-weight: 700;
+
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .pf02-kicker::before {
+      content: "";
+
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background: var(--pf-accent);
+
+      box-shadow:
+        0 0 12px rgba(0, 217, 255, 0.75);
+    }
+
+    .pf02-hero h1 {
+      max-width: 900px;
+
+      margin: 0 0 18px;
+
+      font-size: clamp(2.3rem, 5vw, 4.6rem);
+
+      line-height: 1.04;
+
+      letter-spacing: -0.035em;
+
+      color: #ffffff;
+    }
+
+    .pf02-subtitle {
+      max-width: 800px;
+
+      margin: 0;
+
+      color: var(--pf-text-soft);
+
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .pf02-meta {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 14px;
+
+      margin-top: 34px;
+    }
+
+    .pf02-meta-card {
+      padding: 18px;
+
+      border: 1px solid var(--pf-border);
+      border-radius: 16px;
+
+      background: rgba(255, 255, 255, 0.045);
+
+      backdrop-filter: blur(9px);
+
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .pf02-meta-card:hover {
+      transform: translateY(-4px);
+
+      border-color: rgba(0, 217, 255, 0.42);
+
+      box-shadow:
+        0 12px 30px rgba(0, 217, 255, 0.08);
+    }
+
+    .pf02-meta-label {
+      display: block;
+
+      margin-bottom: 7px;
+
+      color: #91a6b8;
+
+      font-size: 0.76rem;
+      font-weight: 700;
+
+      letter-spacing: 0.09em;
+
+      text-transform: uppercase;
+    }
+
+    .pf02-meta-value {
+      color: #f8fbfd;
+
+      font-weight: 650;
+
+      line-height: 1.45;
+    }
+
+    /* =========================================================
+       CONTENIDO
+       ========================================================= */
+
+    .pf02-content {
+      padding: 28px 0 84px;
+
+      color: #18212a;
+    }
+
+    .pf02-card {
+      margin-bottom: 22px;
+
+      padding: 30px;
+
+      border: 1px solid rgba(17, 32, 46, 0.08);
+
+      border-radius: 22px;
+
+      background: rgba(255, 255, 255, 0.94);
+
+      box-shadow:
+        0 18px 50px rgba(12, 24, 36, 0.08);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .pf02-card:hover {
+      transform: translateY(-4px);
+
+      border-color: rgba(0, 217, 255, 0.22);
+
+      box-shadow:
+        0 22px 55px rgba(12, 24, 36, 0.11);
+    }
+
+    /* TARJETAS OSCURAS (ESTILO ELEGANTE) */
+    .pf02-card-dark {
+      color: #edf5fa;
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(11, 22, 32, 0.98),
+          rgba(15, 32, 45, 0.98)
+        );
+
+      border-color: var(--pf-border);
+    }
+
+    .pf02-card-dark:hover {
+      box-shadow:
+        0 22px 55px rgba(0, 217, 255, 0.09);
+    }
+
+    .pf02-section-title {
+      margin: 0 0 12px;
+
+      font-size: clamp(1.45rem, 3vw, 2rem);
+
+      line-height: 1.2;
+
+      color: #18212a;
+    }
+
+    .pf02-card-dark .pf02-section-title {
+      color: #edf5fa;
+    }
+
+    .pf02-card p {
+      margin: 0 0 14px;
+
+      line-height: 1.8;
+    }
+
+    .pf02-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* =========================================================
+       BLOQUES DE CÓDIGO / COMANDOS (ESTILO CLARO ORIGINAL)
+       ========================================================= */
+
+    .pf02-command {
+      font-family: monospace, monospace;
+      background: rgba(0, 217, 255, 0.055);
+      color: #087d99;
+      border-left: 3px solid var(--pf-accent);
+      padding: 14px 18px;
+      margin: 16px 0;
+      border-radius: 10px;
+      overflow-x: auto;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       TABLA DE HALLAZGOS
+       ========================================================= */
+
+    .pf02-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin-top: 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(17, 32, 46, 0.1);
+    }
+
+    .pf02-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
+      background: #ffffff;
+      font-size: 0.95rem;
+    }
+
+    .pf02-table th {
+      background: #0b1620;
+      color: #ffffff;
+      padding: 14px 16px;
+      text-align: left;
+      font-weight: 700;
+    }
+
+    .pf02-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(17, 32, 46, 0.08);
+      color: #2c3e50;
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    .pf02-table tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    .pf02-severity {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      background: rgba(0, 217, 255, 0.1);
+      color: #087d99;
+    }
+
+    /* =========================================================
+       BOTONES
+       ========================================================= */
+
+    .pf02-actions {
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      margin-top: 22px;
+    }
+
+    .pf02-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 9px;
+
+      min-height: 46px;
+
+      padding: 0 18px;
+
+      border-radius: 12px;
+
+      text-decoration: none;
+
+      font-weight: 750;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .pf02-button:hover {
+      transform: translateY(-3px);
+    }
+
+    .pf02-button-secondary {
+      border: 1px solid rgba(0, 217, 255, 0.22);
+
+      background: transparent;
+
+      color: #087d99;
+    }
+
+    .pf02-card-dark .pf02-button-secondary {
+      color: #dff9ff;
+    }
+
+    .pf02-button-secondary:hover {
+      border-color: var(--pf-accent);
+
+      background: rgba(0, 217, 255, 0.07);
+    }
+
+    /* =========================================================
+       PDF NOTA Y VISOR
+       ========================================================= */
+
+    .pf02-pdf {
+      overflow: hidden;
+      min-height: 720px;
+      padding: 0;
+    }
+
+    .pf02-pdf-head {
+      padding: 26px 30px;
+      border-bottom: 1px solid rgba(0, 217, 255, 0.14);
+    }
+
+    .pf02-pdf-frame {
+      display: block;
+      width: 100%;
+      height: 760px;
+      border: 0;
+      background: #fff;
+    }
+
+    .pf02-note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--pf-accent);
+      border-radius: 10px;
+      background: rgba(0, 217, 255, 0.055);
+      color: #4e6070;
+      font-size: 0.94rem;
+      line-height: 1.65;
+    }
+
+    /* =========================================================
+       NAVEGACIÓN DISTRIBUIDA (ESTILO BLOQUES)
+       ========================================================= */
+
+    .pf02-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .pf02-card-dark .pf02-nav-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 16px;
+      border: 1px solid rgba(0, 217, 255, 0.22);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      color: #dff9ff;
+      text-decoration: none;
+      font-weight: 700;
+      text-align: center;
+      transition: all 0.25s ease;
+    }
+
+    .pf02-card-dark .pf02-nav-link:hover {
+      border-color: var(--pf-accent);
+      background: rgba(0, 217, 255, 0.08);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 217, 255, 0.12);
+      color: #ffffff;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 960px) {
+
+      .pf02-meta {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .pf02-nav-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .pf02-page .header-container {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 14px 0;
+      }
+
+      .pf02-page .navigation {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 780px) {
+
+      .pf02-page {
+
+        background:
+          linear-gradient(
+            180deg,
+            #081019 0%,
+            #0b141d 44%,
+            #f5f7f9 44%,
+            #f5f7f9 100%
+          );
+      }
+
+      .pf02-hero {
+        padding-top: 54px;
+      }
+
+      .pf02-meta,
+      .pf02-nav-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pf02-card {
+        padding: 22px;
+
+        border-radius: 18px;
+      }
+
+      .pf02-pdf {
+        min-height: 0;
+      }
+
+      .pf02-pdf-frame {
+        height: 620px;
+      }
+
+      .pf02-page .navigation {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 7px;
+      }
+
+      .pf02-page .navigation a {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 
-<body class="pf02-activity-page">
+<body class="pf02-page">
 
 
-    <!-- =========================================================
-         NAVEGACIÓN SUPERIOR
-         ========================================================= -->
+<!-- =========================================================
+     NAVEGACIÓN PRINCIPAL
+     ========================================================= -->
 
-    <header class="site-header">
+<header class="site-header">
 
-        <nav class="main-nav">
+  <div class="header-container">
 
-            <a href="../index.html#inicio">
-                Inicio
-            </a>
+    <div class="logo">
 
-            <a href="../PF01/index.html">
-                PF01
-            </a>
+      <a
+        href="../index.html#inicio"
+        aria-label="Volver al inicio del portafolio">
+        SantiagoGasca
+      </a>
 
-            <a href="index.html" class="active">
-                PF02
-            </a>
-
-            <a href="../index.html#pf03">
-                PF03
-            </a>
-
-            <a href="../ROAD-TO-HALL-OF-FAME/index.html">
-                Road to Hall of Fame
-            </a>
-
-            <a href="../index.html#entrega-final">
-                Entrega final
-            </a>
-
-        </nav>
-
-    </header>
+    </div>
 
 
-    <!-- =========================================================
-         HERO
-         ========================================================= -->
+    <nav
+      class="navigation"
+      aria-label="Navegación principal">
 
-    <section class="activity-hero">
+      <a href="../index.html#inicio">
+        Inicio
+      </a>
 
-        <div class="hero-container">
+      <a href="../PF01/index.html">
+        PF01
+      </a>
 
-            <p class="hero-kicker">
-                PF02 · ACTIVIDAD 13
-            </p>
+      <a
+        href="index.html"
+        class="active">
 
-            <p class="hero-subtitle">
-                PENTESTING · RED TEAM
-            </p>
+        PF02
 
-            <h1>
-                My File Server: 1
-            </h1>
+      </a>
 
-            <p class="hero-description">
-                Evaluación de seguridad ofensiva sobre una infraestructura
-                virtualizada, desde el reconocimiento inicial hasta la
-                obtención de privilegios de root.
-            </p>
+      <a href="../index.html#pf03">
+        PF03
+      </a>
 
+      <a href="../ROAD-TO-HALL-OF-FAME/index.html">
+        Road to Hall of Fame
+      </a>
+
+      <a href="../index.html#entrega-final">
+        Entrega final
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================================
+     HERO
+     ========================================================= -->
+
+<section class="pf02-hero">
+
+  <div class="pf02-shell">
+
+    <div class="pf02-kicker">
+
+        Actividad 13
+
+    </div>
+
+    <h1>
+
+      Pentesting y Red Team — My File Server: 1
+
+    </h1>
+
+
+    <p class="pf02-subtitle">
+
+      Evaluación de seguridad ofensiva sobre una infraestructura virtualizada,
+      desde el reconocimiento inicial hasta la obtención de privilegios de root.
+
+    </p>
+
+
+    <div class="pf02-meta">
+
+
+      <div class="pf02-meta-card">
+
+        <span class="pf02-meta-label">
+          Estudiante
+        </span>
+
+        <div class="pf02-meta-value">
+          Santiago Isaac Gasca López
         </div>
 
-    </section>
+      </div>
 
 
-    <!-- =========================================================
-         CONTENIDO
-         ========================================================= -->
+      <div class="pf02-meta-card">
 
-    <main class="content-container">
+        <span class="pf02-meta-label">
+          Parcial
+        </span>
 
+        <div class="pf02-meta-value">
+          I · Fundamentos de Ciberseguridad
+        </div>
 
-        <!-- =====================================================
-             01 · EXECUTIVE SUMMARY
-             ===================================================== -->
+      </div>
 
-        <section class="content-card">
 
-            <h2 class="section-title">
-                <span class="section-number">01 ·</span>
-                Executive Summary
-            </h2>
+      <div class="pf02-meta-card">
 
-            <p>
-                Durante el mes de septiembre de 2026 se realizó una
-                evaluación de seguridad ofensiva, bajo la modalidad
-                <em>Red Team</em>, sobre la infraestructura virtualizada
-                <strong>My File Server: 1</strong>.
-            </p>
+        <span class="pf02-meta-label">
+          Tema
+        </span>
 
-            <p>
-                El objetivo fue identificar vulnerabilidades que pudieran
-                afectar la confidencialidad, integridad y disponibilidad
-                de los activos informáticos de la organización.
-            </p>
-
-            <p>
-                Como resultado de la evaluación se logró comprometer el
-                sistema hasta obtener acceso como <strong>root</strong>.
-                El acceso inicial se consiguió a partir de la enumeración
-                de los servicios expuestos y posteriormente se aprovechó
-                una vulnerabilidad del kernel identificada como
-                <strong>CVE-2016-5195 (DirtyCow)</strong>.
-            </p>
-
-            <p>
-                A partir de los resultados obtenidos se recomienda realizar
-                un plan de parcheo y endurecimiento de los servicios
-                involucrados.
-            </p>
+        <div class="pf02-meta-value">
+          Pentesting · Red Team
+        </div>
 
-        </section>
+      </div>
 
 
-        <!-- =====================================================
-             02 · ALCANCE
-             ===================================================== -->
+      <div class="pf02-meta-card">
 
-        <section class="content-card">
+        <span class="pf02-meta-label">
+          Producto
+        </span>
 
-            <h2 class="section-title">
-                <span class="section-number">02 ·</span>
-                Alcance (Scope)
-            </h2>
+        <div class="pf02-meta-value">
+          Reporte Técnico · Auditoría
+        </div>
 
-            <ul>
+      </div>
 
-                <li>
-                    <strong>Objetivo evaluado:</strong>
-                    Servidor de archivos corporativo simulado
-                    <strong>My File Server: 1</strong>, con IP asignada
-                    dentro del entorno de pruebas controlado.
-                </li>
-
-                <li>
-                    <strong>Tipo de prueba:</strong>
-                    Caja negra simulada a caja gris
-                    (<em>Gray-Box / Black-Box</em>).
-                </li>
 
-                <li>
-                    <strong>Vectores analizados:</strong>
-                    Servicios de red expuestos como FTP, SSH, HTTP y SMB,
-                    configuraciones de control de acceso y estabilidad
-                    del kernel del sistema operativo.
-                </li>
+    </div>
 
-            </ul>
+  </div>
 
-        </section>
+</section>
 
 
-        <!-- =====================================================
-             03 · METODOLOGÍA
-             ===================================================== -->
 
-        <section class="content-card">
+<!-- =========================================================
+     CONTENIDO
+     ========================================================= -->
 
-            <h2 class="section-title">
-                <span class="section-number">03 ·</span>
-                Metodología Aplicada
-            </h2>
+<section class="pf02-content">
 
-            <p>
-                La evaluación se realizó tomando como referencia los
-                estándares de pruebas de penetración PTES
-                (<em>Penetration Testing Execution Standard</em>) y las
-                directrices de OWASP.
-            </p>
-
-            <p>
-                El trabajo se dividió en cinco fases:
-            </p>
-
-            <ol>
-
-                <li>
-                    <strong>Reconocimiento y Descubrimiento:</strong>
-                    identificación de equipos activos y direccionamiento
-                    IP dentro de la red.
-                </li>
-
-                <li>
-                    <strong>Enumeración:</strong>
-                    análisis de puertos abiertos, versiones de software
-                    y servicios expuestos.
-                </li>
-
-                <li>
-                    <strong>Análisis de Vulnerabilidades:</strong>
-                    identificación de configuraciones inseguras y software
-                    desactualizado.
-                </li>
-
-                <li>
-                    <strong>Explotación:</strong>
-                    ejecución controlada de técnicas para obtener el
-                    acceso inicial.
-                </li>
-
-                <li>
-                    <strong>Post-Explotación y Escalada:</strong>
-                    elevación de privilegios para demostrar el impacto
-                    alcanzable sobre el sistema.
-                </li>
+  <div class="pf02-shell">
 
-            </ol>
-
-        </section>
 
+    <!-- 01 · Claro -->
 
-        <!-- =====================================================
-             04 · RECONOCIMIENTO
-             ===================================================== -->
+    <article class="pf02-card">
 
-        <section class="content-card">
-
-            <h2 class="section-title">
-                <span class="section-number">04 ·</span>
-                Fases de Reconocimiento
-            </h2>
-
-            <p>
-                Mediante herramientas de descubrimiento de red como
-                <strong>netdiscover</strong>, se ubicó la dirección IP
-                del servidor objetivo dentro del segmento de red aislado.
-            </p>
-
-            <p>
-                Con esto se confirmó que el objetivo se encontraba
-                operativo y que utilizaba una arquitectura basada en
-                <strong>CentOS 7</strong>.
-            </p>
-
-        </section>
-
-
-        <!-- =====================================================
-             05 · ENUMERACIÓN
-             ===================================================== -->
-
-        <section class="content-card">
-
-            <h2 class="section-title">
-                <span class="section-number">05 ·</span>
-                Enumeración
-            </h2>
-
-            <p>
-                Se realizaron escaneos avanzados utilizando Nmap con
-                la opción <strong>-A</strong>, con el objetivo de obtener
-                información sobre los puertos abiertos, servicios y
-                versiones detectadas.
-            </p>
-
-            <p>
-                Los principales servicios encontrados fueron:
-            </p>
+      <h2 class="pf02-section-title">
 
-            <ul>
-
-                <li>
-                    <strong>21/TCP — FTP:</strong>
-                    Servicio vsftpd 3.0.2.
-                </li>
-
-                <li>
-                    <strong>22/TCP — SSH:</strong>
-                    Servicio OpenSSH 7.4.
-                </li>
-
-                <li>
-                    <strong>80/TCP — HTTP:</strong>
-                    Servidor Apache/2.4.6 (CentOS) albergando
-                    el sitio principal.
-                </li>
-
-                <li>
-                    <strong>445/TCP — SMB:</strong>
-                    Servicio Samba smbd 4.9.1 con recursos
-                    compartidos accesibles.
-                </li>
-
-                <li>
-                    <strong>2121/TCP — FTP Secundario:</strong>
-                    ProFTPD 1.3.5 con soporte de acceso anónimo.
-                </li>
-
-            </ul>
-
-            <div class="command">
-                nmap -A &lt;IP-del-objetivo&gt;
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             06 · EXPLOTACIÓN
-             ===================================================== -->
-
-        <section class="content-card">
-
-            <h2 class="section-title">
-                <span class="section-number">06 ·</span>
-                Explotación
-            </h2>
-
-            <h3 class="subsection-title">
-                Acceso inicial
-            </h3>
-
-            <p>
-                Durante la enumeración del servidor web, utilizando
-                <strong>nikto</strong>, se localizó el archivo expuesto
-                <strong>/readme.txt</strong>.
-            </p>
-
-            <p>
-                El archivo contenía credenciales preliminares y pistas
-                relacionadas con el entorno.
-            </p>
-
-            <h3 class="subsection-title">
-                Inyección de llaves
-            </h3>
-
-            <p>
-                Aprovechando los permisos de escritura disponibles mediante
-                el servicio FTP sobre la cuenta del usuario
-                <strong>smbuser</strong>, se generó un par de llaves SSH
-                desde la máquina atacante.
-            </p>
-
-            <p>
-                Posteriormente, la llave pública fue colocada en el archivo
-                <strong>authorized_keys</strong> dentro del directorio
-                remoto:
-            </p>
-
-            <div class="command">
-                /home/smbuser/.ssh/
-            </div>
-
-            <p>
-                Esto permitió establecer una sesión interactiva mediante
-                SSH sin necesidad de utilizar una contraseña.
-            </p>
-
-        </section>
-
-
-        <!-- =====================================================
-             07 · ESCALADA DE PRIVILEGIOS
-             ===================================================== -->
-
-        <section class="content-card">
-
-            <h2 class="section-title">
-                <span class="section-number">07 ·</span>
-                Escalada de Privilegios
-            </h2>
-
-            <p>
-                Una vez dentro del sistema como usuario estándar
-                <strong>smbuser</strong>, se evaluó la versión del kernel
-                mediante el comando:
-            </p>
-
-            <div class="command">
-                uname -a
-            </div>
-
-            <p>
-                El resultado reveló la ejecución de:
-            </p>
-
-            <div class="command">
-                Linux 3.10.0-229.el7.x86_64
-            </div>
-
-            <p>
-                Se identificó que esta versión es vulnerable a la condición
-                de carrera del kernel conocida como
-                <strong>DirtyCow (CVE-2016-5195)</strong>.
-            </p>
-
-            <p>
-                Se transfirió el código fuente del exploit
-                <strong>40616.c</strong> mediante un servidor HTTP local
-                en Python.
-            </p>
-
-            <p>
-                Después se compiló el código en la máquina víctima utilizando
-                <strong>gcc</strong> y se ejecutó el archivo generado:
-            </p>
-
-            <div class="command">
-                ./upslp
-            </div>
-
-            <p>
-                La explotación se realizó con éxito, logrando sobrescribir
-                los permisos de escritura y obteniendo una shell interactiva
-                con privilegios de <strong>root</strong>.
-            </p>
-
-        </section>
+        01 · Executive Summary
 
+      </h2>
 
-        <!-- =====================================================
-             08 · IMPACTO
-             ===================================================== -->
 
-        <section class="content-card">
-
-            <h2 class="section-title">
-                <span class="section-number">08 ·</span>
-                Análisis de Impacto (Modelo CIA)
-            </h2>
-
-            <h3 class="subsection-title">
-                Confidencialidad — Crítico
-            </h3>
+      <p>
 
-            <p>
-                La obtención de privilegios de root permite acceder a los
-                archivos del sistema, bases de datos y credenciales de
-                usuario.
-            </p>
+        Durante el mes de septiembre de 2026 se realizó una
+        evaluación de seguridad ofensiva, bajo la modalidad
+        <em>Red Team</em>, sobre la infraestructura virtualizada
+        <strong>My File Server: 1</strong>.
 
-            <h3 class="subsection-title">
-                Integridad — Crítico
-            </h3>
+      </p>
 
-            <p>
-                Un atacante externo puede modificar archivos críticos del
-                sistema operativo, introducir software malicioso y alterar
-                configuraciones de red.
-            </p>
 
-            <h3 class="subsection-title">
-                Disponibilidad — Alto
-            </h3>
-
-            <p>
-                Existe riesgo de provocar una denegación de servicio mediante
-                la caída intencional de los servicios de archivos y web
-                expuestos.
-            </p>
-
-        </section>
-
-
-        <!-- =====================================================
-             09 · RECOMENDACIONES
-             ===================================================== -->
-
-        <section class="content-card">
+      <p>
 
-            <h2 class="section-title">
-                <span class="section-number">09 ·</span>
-                Recomendaciones Técnicas
-            </h2>
+        El objetivo fue identificar vulnerabilidades que pudieran
+        afectar la confidencialidad, integridad y disponibilidad
+        de los activos informáticos de la organización.
 
-            <ol>
+      </p>
 
-                <li>
-                    <strong>Parchado del Kernel:</strong>
-                    actualizar de forma inmediata el sistema operativo
-                    CentOS a versiones de kernel más recientes que
-                    mitiguen la vulnerabilidad CVE-2016-5195.
-                </li>
 
-                <li>
-                    <strong>Eliminación de archivos sensibles:</strong>
-                    remover archivos informativos temporales o de prueba,
-                    como <strong>readme.txt</strong>, cuando estén
-                    expuestos en el servidor web.
-                </li>
-
-                <li>
-                    <strong>Endurecimiento de servicios (Hardening):</strong>
-                    deshabilitar el acceso anónimo en los servidores FTP
-                    y restringir los permisos de escritura en los recursos
-                    compartidos de SMB.
-                </li>
-
-            </ol>
-
-        </section>
-
-
-        <!-- =====================================================
-             10 · TABLA DE HALLAZGOS
-             ===================================================== -->
+      <p>
 
-        <section class="content-card">
+        Como resultado de la evaluación se logró comprometer el
+        sistema hasta obtener acceso como <strong>root</strong>.
+        El acceso inicial se consiguió a partir de la enumeración
+        de los servicios expuestos y posteriormente se aprovechó
+        una vulnerabilidad del kernel identificada como
+        <strong>CVE-2016-5195 (DirtyCow)</strong>.
 
-            <h2 class="section-title">
-                <span class="section-number">10 ·</span>
-                Tabla de Hallazgos
-            </h2>
+      </p>
 
-            <div class="table-wrapper">
 
-                <table class="findings-table">
+      <p>
 
-                    <thead>
+        A partir de los resultados obtenidos se recomienda realizar
+        un plan de parcheo y endurecimiento de los servicios
+        involucrados.
 
-                        <tr>
-                            <th>ID</th>
-                            <th>Vulnerabilidad</th>
-                            <th>Severidad</th>
-                            <th>Evidencia</th>
-                            <th>Impacto</th>
-                            <th>Recomendación</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-
-                            <td>
-                                VUL-01
-                            </td>
-
-                            <td>
-                                Exposición de archivos informativos
-                                en servidor web.
-                            </td>
+      </p>
 
-                            <td>
-                                <span class="severity">
-                                    Media
-                                </span>
-                            </td>
+    </article>
 
-                            <td>
-                                Acceso público a
-                                /readme.txt con pistas
-                                del sistema.
-                            </td>
 
-                            <td>
-                                Recopilación de inteligencia para
-                                ataques dirigidos.
-                            </td>
 
-                            <td>
-                                Eliminar archivos innecesarios
-                                expuestos en HTTP.
-                            </td>
+    <!-- 02 · Oscuro -->
 
-                        </tr>
+    <article class="pf02-card pf02-card-dark">
 
+      <h2 class="pf02-section-title">
 
-                        <tr>
+        02 · Alcance (Scope)
 
-                            <td>
-                                VUL-02
-                            </td>
+      </h2>
 
-                            <td>
-                                Control de acceso débil en servicios
-                                de transferencia.
-                            </td>
 
-                            <td>
-                                <span class="severity">
-                                    Alta
-                                </span>
-                            </td>
+      <ul>
 
-                            <td>
-                                Escritura permitida en directorios
-                                de usuario vía FTP.
-                            </td>
+        <li>
+          <strong>Objetivo evaluado:</strong>
+          Servidor de archivos corporativo simulado
+          <strong>My File Server: 1</strong>, con IP asignada
+          dentro del entorno de pruebas controlado.
+        </li>
 
-                            <td>
-                                Inyección de llaves de acceso
-                                no autorizadas.
-                            </td>
+        <li>
+          <strong>Tipo de prueba:</strong>
+          Caja negra simulada a caja gris
+          (<em>Gray-Box / Black-Box</em>).
+        </li>
 
-                            <td>
-                                Restringir permisos de escritura
-                                remota.
-                            </td>
+        <li>
+          <strong>Vectores analizados:</strong>
+          Servicios de red expuestos como FTP, SSH, HTTP y SMB,
+          configuraciones de control de acceso y estabilidad
+          del kernel del sistema operativo.
+        </li>
 
-                        </tr>
+      </ul>
 
+    </article>
 
-                        <tr>
 
-                            <td>
-                                VUL-03
-                            </td>
 
-                            <td>
-                                Escalada de privilegios local por
-                                Kernel obsoleto (DirtyCow).
-                            </td>
+    <!-- 03 · Claro -->
 
-                            <td>
-                                <span class="severity">
-                                    Crítica
-                                </span>
-                            </td>
+    <article class="pf02-card">
 
-                            <td>
-                                Explotación exitosa de
-                                CVE-2016-5195 obteniendo
-                                shell root.
-                            </td>
+      <h2 class="pf02-section-title">
 
-                            <td>
-                                Compromiso total y absoluto de
-                                la infraestructura.
-                            </td>
+        03 · Metodología Aplicada
 
-                            <td>
-                                Actualizar los paquetes del kernel
-                                del sistema operativo.
-                            </td>
+      </h2>
 
-                        </tr>
 
-                    </tbody>
+      <p>
 
-                </table>
+        La evaluación se realizó tomando como referencia los
+        estándares de pruebas de penetración PTES
+        (<em>Penetration Testing Execution Standard</em>) y las
+        directrices de OWASP.
 
-            </div>
+      </p>
 
-        </section>
 
+      <p>
 
-        <!-- =====================================================
-             NAVEGACIÓN FINAL
-             ===================================================== -->
+        El trabajo se dividió en cinco fases:
 
-        <section class="content-card">
+      </p>
 
-            <h2 class="section-title">
-                Navegación
-            </h2>
 
-            <div class="activity-navigation">
+      <ol>
 
-                <a href="index.html">
-                    ← PF02
-                </a>
+        <li>
+          <strong>Reconocimiento y Descubrimiento:</strong>
+          identificación de equipos activos y direccionamiento
+          IP dentro de la red.
+        </li>
 
-                <a href="../index.html#inicio">
-                    Inicio
-                </a>
+        <li>
+          <strong>Enumeración:</strong>
+          análisis de puertos abiertos, versiones de software
+          y servicios expuestos.
+        </li>
 
-                <a href="actividad14.html">
-                    Actividad 14 →
-                </a>
+        <li>
+          <strong>Análisis de Vulnerabilidades:</strong>
+          identificación de configuraciones inseguras y software
+          desactualizado.
+        </li>
 
-            </div>
+        <li>
+          <strong>Explotación:</strong>
+          ejecución controlada de técnicas para obtener el
+          acceso inicial.
+        </li>
 
-            <div
-                class="activity-navigation"
-                style="margin-top: 15px;"
-            >
+        <li>
+          <strong>Post-Explotación y Escalada:</strong>
+          elevación de privilegios para demostrar el impacto
+          alcanzable sobre el sistema.
+        </li>
 
-                <a href="../PF01/index.html">
-                    PF01
-                </a>
+      </ol>
 
-                <a href="../ROAD-TO-HALL-OF-FAME/index.html">
-                    Road to Hall of Fame
-                </a>
+    </article>
 
-                <a href="../index.html#entrega-final">
-                    Entrega final
-                </a>
 
-            </div>
 
-        </section>
+    <!-- 04 · Claro -->
 
+    <article class="pf02-card">
 
-    </main>
+      <h2 class="pf02-section-title">
 
+        04 · Fases de Reconocimiento
 
-    <!-- =========================================================
-         FOOTER
-         ========================================================= -->
+      </h2>
 
-    <footer class="site-footer">
 
-        <p>
-            © 2026 Santiago Isaac Gasca López · CNO IV WAP
-        </p>
+      <p>
 
-    </footer>
+        Mediante herramientas de descubrimiento de red como
+        <strong>netdiscover</strong>, se ubicó la dirección IP
+        del servidor objetivo dentro del segmento de red aislado.
+
+      </p>
+
+
+      <p>
+
+        Con esto se confirmó que el objetivo se encontraba
+        operativo y que utilizaba una arquitectura basada en
+        <strong>CentOS 7</strong>.
+
+      </p>
+
+    </article>
+
+
+
+    <!-- 05 · Claro -->
+
+    <article class="pf02-card">
+
+      <h2 class="pf02-section-title">
+
+        05 · Enumeración
+
+      </h2>
+
+
+      <p>
+
+        Se realizaron escaneos avanzados utilizando Nmap con
+        la opción <strong>-A</strong>, con el objetivo de obtener
+        información sobre los puertos abiertos, servicios y
+        versiones detectadas.
+
+      </p>
+
+
+      <p>
+
+        Los principales servicios encontrados fueron:
+
+      </p>
+
+
+      <ul>
+
+        <li>
+          <strong>21/TCP — FTP:</strong>
+          Servicio vsftpd 3.0.2.
+        </li>
+
+        <li>
+          <strong>22/TCP — SSH:</strong>
+          Servicio OpenSSH 7.4.
+        </li>
+
+        <li>
+          <strong>80/TCP — HTTP:</strong>
+          Servidor Apache/2.4.6 (CentOS) albergando
+          el sitio principal.
+        </li>
+
+        <li>
+          <strong>445/TCP — SMB:</strong>
+          Servicio Samba smbd 4.9.1 con recursos
+          compartidos accesibles.
+        </li>
+
+        <li>
+          <strong>2121/TCP — FTP Secundario:</strong>
+          ProFTPD 1.3.5 con soporte de acceso anónimo.
+        </li>
+
+      </ul>
+
+
+      <div class="pf02-command">
+        nmap -A &lt;IP-del-objetivo&gt;
+      </div>
+
+    </article>
+
+
+
+    <!-- 06 · Claro -->
+
+    <article class="pf02-card">
+
+      <h2 class="pf02-section-title">
+
+        06 · Explotación
+
+      </h2>
+
+
+      <h3 style="font-size: 1.15rem; margin: 18px 0 10px; color: #111;">
+        Acceso inicial
+      </h3>
+
+
+      <p>
+
+        Durante la enumeración del servidor web, utilizando
+        <strong>nikto</strong>, se localizó el archivo expuesto
+        <strong>/readme.txt</strong>.
+
+      </p>
+
+
+      <p>
+
+        El archivo contenía credenciales preliminares y pistas
+        relacionadas con el entorno.
+
+      </p>
+
+
+      <h3 style="font-size: 1.15rem; margin: 18px 0 10px; color: #111;">
+        Inyección de llaves
+      </h3>
+
+
+      <p>
+
+        Aprovechando los permisos de escritura disponibles mediante
+        el servicio FTP sobre la cuenta del usuario
+        <strong>smbuser</strong>, se generó un par de llaves SSH
+        desde la máquina atacante.
+
+      </p>
+
+
+      <p>
+
+        Posteriormente, la llave pública fue colocada en el archivo
+        <strong>authorized_keys</strong> dentro del directorio
+        remoto:
+
+      </p>
+
+
+      <div class="pf02-command">
+        /home/smbuser/.ssh/
+      </div>
+
+
+      <p>
+
+        Esto permitió establecer una sesión interactiva mediante
+        SSH sin necesidad de utilizar una contraseña.
+
+      </p>
+
+    </article>
+
+
+
+    <!-- 07 · Claro -->
+
+    <article class="pf02-card">
+
+      <h2 class="pf02-section-title">
+
+        07 · Escalada de Privilegios
+
+      </h2>
+
+
+      <p>
+
+        Una vez dentro del sistema como usuario estándar
+        <strong>smbuser</strong>, se evaluó la versión del kernel
+        mediante el comando:
+
+      </p>
+
+
+      <div class="pf02-command">
+        uname -a
+      </div>
+
+
+      <p>
+
+        El resultado reveló la ejecución de:
+
+      </p>
+
+
+      <div class="pf02-command">
+        Linux 3.10.0-229.el7.x86_64
+      </div>
+
+
+      <p>
+
+        Se identificó que esta versión es vulnerable a la condición
+        de carrera del kernel conocida como
+        <strong>DirtyCow (CVE-2016-5195)</strong>.
+
+      </p>
+
+
+      <p>
+
+        Se transfirió el código fuente del exploit
+        <strong>40616.c</strong> mediante un servidor HTTP local
+        en Python.
+
+      </p>
+
+
+      <p>
+
+        Después se compiló el código en la máquina víctima utilizando
+        <strong>gcc</strong> y se ejecutó el archivo generado:
+
+      </p>
+
+
+      <div class="pf02-command">
+        ./upslp
+      </div>
+
+
+      <p>
+
+        La explotación se realizó con éxito, logrando sobrescribir
+        los permisos de escritura y obteniendo una shell interactiva
+        con privilegios de <strong>root</strong>.
+
+      </p>
+
+    </article>
+
+
+
+    <!-- 08 · Oscuro -->
+
+    <article class="pf02-card pf02-card-dark">
+
+      <h2 class="pf02-section-title">
+
+        08 · Análisis de Impacto (Modelo CIA)
+
+      </h2>
+
+
+      <h3 style="font-size: 1.15rem; margin: 18px 0 10px; color: #ffffff;">
+        Confidencialidad — Crítico
+      </h3>
+
+
+      <p>
+
+        La obtención de privilegios de root permite acceder a los
+        archivos del sistema, bases de datos y credenciales de
+        usuario.
+
+      </p>
+
+
+      <h3 style="font-size: 1.15rem; margin: 18px 0 10px; color: #ffffff;">
+        Integridad — Crítico
+      </h3>
+
+
+      <p>
+
+        Un atacante externo puede modificar archivos críticos del
+        sistema operativo, introducir software malicioso y alterar
+        configuraciones de red.
+
+      </p>
+
+
+      <h3 style="font-size: 1.15rem; margin: 18px 0 10px; color: #ffffff;">
+        Disponibilidad — Alto
+      </h3>
+
+
+      <p>
+
+        Existe riesgo de provocar una denegación de servicio mediante
+        la caída intencional de los servicios de archivos y web
+        expuestos.
+
+      </p>
+
+    </article>
+
+
+
+    <!-- 09 · Claro -->
+
+    <article class="pf02-card">
+
+      <h2 class="pf02-section-title">
+
+        09 · Recomendaciones Técnicas
+
+      </h2>
+
+
+      <ol>
+
+        <li>
+          <strong>Parchado del Kernel:</strong>
+          actualizar de forma inmediata el sistema operativo
+          CentOS a versiones de kernel más recientes que
+          mitiguen la vulnerabilidad CVE-2016-5195.
+        </li>
+
+        <li>
+          <strong>Eliminación de archivos sensibles:</strong>
+          remover archivos informativos temporales o de prueba,
+          como <strong>readme.txt</strong>, cuando estén
+          expuestos en el servidor web.
+        </li>
+
+        <li>
+          <strong>Endurecimiento de servicios (Hardening):</strong>
+          deshabilitar el acceso anónimo en los servidores FTP
+          y restringir los permisos de escritura en los recursos
+          compartidos de SMB.
+        </li>
+
+      </ol>
+
+    </article>
+
+
+
+    <!-- 10 · TABLA DE HALLAZGOS -->
+
+    <article class="pf02-card">
+
+      <h2 class="pf02-section-title">
+
+        10 · Tabla de Hallazgos
+
+      </h2>
+
+
+      <div class="pf02-table-wrapper">
+
+        <table class="pf02-table">
+
+          <thead>
+
+            <tr>
+              <th>ID</th>
+              <th>Vulnerabilidad</th>
+              <th>Severidad</th>
+              <th>Evidencia / Impacto</th>
+              <th>Recomendación</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>VUL-01</td>
+              <td>Exposición de archivos informativos en servidor web.</td>
+              <td><span class="pf02-severity">Media</span></td>
+              <td>Acceso público a /readme.txt con pistas del sistema.</td>
+              <td>Eliminar archivos innecesarios expuestos en HTTP.</td>
+            </tr>
+
+            <tr>
+              <td>VUL-02</td>
+              <td>Control de acceso débil en servicios de transferencia.</td>
+              <td><span class="pf02-severity">Alta</span></td>
+              <td>Escritura permitida en directorios de usuario vía FTP.</td>
+              <td>Restringir permisos de escritura remota.</td>
+            </tr>
+
+            <tr>
+              <td>VUL-03</td>
+              <td>Escalada de privilegios local por Kernel obsoleto (DirtyCow).</td>
+              <td><span class="pf02-severity" style="background: rgba(255,0,0,0.12); color: #ff4d4d;">Crítica</span></td>
+              <td>Explotación exitosa de CVE-2016-5195 obteniendo shell root.</td>
+              <td>Actualizar los paquetes del kernel del sistema operativo.</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </article>
+
+
+
+    <!-- 11 · ENTREGA ORIGINAL EN PDF -->
+
+    <article class="pf02-card">
+
+      <h2 class="pf02-section-title">
+
+        11 · Entrega original en PDF
+
+      </h2>
+
+
+      <p>
+
+        Aquí puedes consultar directamente la versión original
+        de la actividad y descargarla para conservarla junto
+        con el reporte dentro del portafolio.
+
+      </p>
+
+
+      <div class="pf02-actions">
+
+        <a
+          class="pf02-button pf02-button-secondary"
+          href="../Recursos/PDF/PF02/My_File_Server_1.pdf"
+          download="My_File_Server_1.pdf">
+
+          Descargar PDF
+
+        </a>
+
+        <a
+          class="pf02-button pf02-button-secondary"
+          href="../Recursos/PDF/PF02/My_File_Server_1.pdf"
+          target="_blank"
+          rel="noopener noreferrer">
+
+          Abrir PDF en otra pestaña
+
+        </a>
+
+      </div>
+
+
+      <div class="pf02-note">
+
+        El PDF corresponde al material entregado para esta actividad y se conserva sin modificar como evidencia original.
+
+      </div>
+
+    </article>
+
+
+
+    <!-- VISTA PREVIA PDF -->
+
+    <article class="pf02-card pf02-pdf">
+
+      <div class="pf02-pdf-head">
+
+        <h2 class="pf02-section-title">
+
+          Vista previa del documento original
+
+        </h2>
+
+      </div>
+
+      <iframe
+        class="pf02-pdf-frame"
+        src="../Recursos/PDF/PF02/My_File_Server_1.pdf"
+        title="Vista previa del PDF My File Server 1">
+      </iframe>
+
+    </article>
+
+
+
+    <!-- 12 · NAVEGACIÓN -->
+
+    <article class="pf02-card pf02-card-dark">
+
+      <h2 class="pf02-section-title">
+
+        · Conoce más acerca de mi portafolio
+
+      </h2>
+
+
+      <p>
+
+        Desde esta actividad puedes regresar de forma rápida,
+        consultar los demás parciales o explorar los laboratorios de Road to Hall of Fame.
+
+      </p>
+
+
+      <div class="pf02-nav-grid">
+
+        <a class="pf02-nav-link" href="../ROAD-TO-HALL-OF-FAME/index.html">
+          ← Road to Hall of Fame
+        </a>
+
+        <a class="pf02-nav-link" href="../index.html#inicio">
+          Inicio
+        </a>
+
+        <a class="pf02-nav-link" href="actividad14.html">
+          Actividad 14 →
+        </a>
+
+        <a class="pf02-nav-link" href="../PF01/index.html">
+          PF01
+        </a>
+
+        <a class="pf02-nav-link" href="index.html">
+          PF02
+        </a>
+
+        <a class="pf02-nav-link" href="../index.html#pf03">
+          PF03
+        </a>
+
+        <div style="visibility: hidden;"></div>
+
+        <a class="pf02-nav-link" href="../index.html#entrega-final">
+          Entrega final
+        </a>
+
+        <div style="visibility: hidden;"></div>
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+</main>
+
+
+
+<footer class="site-footer">
+
+  <div class="footer-container">
+
+    <div class="footer-bottom">
+
+      <p>
+
+        &copy; 2026 Santiago Isaac Gasca López ·
+        Portafolio CNO IV · Seguridad Informática
+
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
 
 
 </body>
