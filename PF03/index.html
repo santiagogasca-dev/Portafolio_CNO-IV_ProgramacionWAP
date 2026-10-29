@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PF03 · Tercer Parcial | SantiagoGasca</title>
+
+    <link rel="stylesheet" href="../Recursos/CSS/Styles.css">
+    <link rel="stylesheet" href="../Recursos/CSS/Roadmap.css">
+
+    <style>
+        .pf-card-white {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(17, 32, 46, 0.08);
+            border-radius: 22px;
+            padding: 30px;
+            margin-bottom: 22px;
+            box-shadow: 0 18px 50px rgba(12, 24, 36, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .pf-card-white:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 217, 255, 0.22);
+            box-shadow: 0 22px 55px rgba(12, 24, 36, 0.11);
+        }
+
+        .pf-card-dark {
+            color: #edf5fa;
+            background: linear-gradient(145deg, rgba(11, 22, 32, 0.98), rgba(15, 32, 45, 0.98));
+            border: 1px solid rgba(0, 217, 255, 0.20);
+            border-radius: 22px;
+            padding: 30px;
+            margin-bottom: 22px;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .pf-card-dark:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 217, 255, 0.42);
+            box-shadow: 0 22px 55px rgba(0, 217, 255, 0.09);
+        }
+        .pf-card-dark h2, .pf-card-dark h3 {
+            color: #ffffff;
+        }
+        .pf-card-dark p {
+            color: #b9c7d3;
+        }
+
+        .pf-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 46px;
+            padding: 0 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 750;
+            border: 1px solid rgba(0, 217, 255, 0.22);
+            background: transparent;
+            color: #087d99;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+            margin-top: 16px;
+        }
+        .pf-card-dark .pf-button {
+            color: #dff9ff;
+        }
+        .pf-button:hover {
+            transform: translateY(-3px);
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.07);
+        }
+
+        .pf02-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 22px;
+        }
+        .pf02-card-dark .pf02-nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 16px;
+            border: 1px solid rgba(0, 217, 255, 0.22);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #dff9ff;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+        .pf02-card-dark .pf02-nav-link:hover {
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.12);
+            color: #ffffff;
+        }
+        @media (max-width: 960px) {
+            .pf02-nav-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 780px) {
+            .pf02-nav-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body class="lab-page">
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-symbol">◈</span>
+                <span>SantiagoGasca</span>
+            </a>
+            <nav class="navigation" aria-label="Navegación principal">
+                <a href="../index.html">Inicio</a>
+                <a href="../PF01/index.html">PF01</a>
+                <a href="../PF02/index.html">PF02</a>
+                <a href="./index.html" aria-current="page">PF03</a>
+                <a href="../RoadToHallOfFame/index.html">Road to Hall of Fame</a>
+                <a href="../ENTREGA-FINAL/index.html">Entrega final</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= CONTENIDO ================= -->
+    <main>
+
+        <section class="lab-hero">
+            <div class="lab-container">
+                <span class="lab-kicker">
+                    TERCER PARCIAL
+                </span>
+                <h1>
+                    Portafolio · PF03
+                </h1>
+                <p>
+                    Recopilación de actividades prácticas, análisis forense digital y metodologías de seguridad informática correspondientes al tercer parcial.
+                </p>
+            </div>
+        </section>
+
+        <section class="lab-section">
+            <div class="lab-container">
+
+                <!-- ACTIVIDAD 15 (TARJETA BLANCA) -->
+                <article class="pf-card-white">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: #18212a;">
+                        Actividad 15
+                    </h2>
+                    <h3 style="font-size: 1.2rem; color: #087d99; margin-bottom: 14px;">
+                        La fotografía como testigo: extracción de metadatos GPS para geolocalización
+                    </h3>
+                    <p style="line-height: 1.7; margin-bottom: 14px;">
+                        Análisis forense de metadatos en documentos institucionales (ficheros Word de INTERPOL) y extracción de información Exif y coordenadas GPS en imágenes móviles (Xiaomi Mi A2 Lite) para geolocalización exacta, incluyendo procesos de saneamiento y borrado de metadatos.
+                    </p>
+                    <a href="actividad15.html" class="pf-button">
+                        Ver Actividad 15 →
+                    </a>
+                </article>
+
+                <!-- PRÓXIMAS ACTIVIDADES (TARJETA OSCURA) -->
+                <article class="pf-card-dark">
+                    <h2 style="font-size: 1.8rem; margin-bottom: 10px;">
+                        Próximas Actividades
+                    </h2>
+                    <h3 style="font-size: 1.2rem; color: #00d9ff; margin-bottom: 14px;">
+                        Integración del Tercer Parcial
+                    </h3>
+                    <p style="line-height: 1.7;">
+                        Este espacio se actualizará progresivamente con las siguientes entregas y prácticas correspondientes al cierre del curso de seguridad informática.
+                    </p>
+                </article>
+
+                <!-- PANEL DE NAVEGACIÓN INFERIOR -->
+                <article class="pf-card-dark" style="margin-top: 40px;">
+                    <h2 style="font-size: 1.5rem; margin-bottom: 12px;">
+                        · Conoce más acerca de mi portafolio
+                    </h2>
+                    <p style="margin-bottom: 18px;">
+                        Navega rápidamente entre los diferentes parciales y secciones de todo el portafolio académico.
+                    </p>
+
+                    <div class="pf02-nav-grid">
+                        <a class="pf02-nav-link" href="../PF02/index.html">← PF02</a>
+                        <a class="pf02-nav-link" href="../index.html">Inicio</a>
+                        <a class="pf02-nav-link" href="../RoadToHallOfFame/index.html">Road to HoF →</a>
+                        <a class="pf02-nav-link" href="../PF01/index.html">PF01</a>
+                        <a class="pf02-nav-link" href="./index.html">PF03 Index</a>
+                        <a class="pf02-nav-link" href="../ENTREGA-FINAL/index.html">Entrega final</a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Santiago Isaac Gasca López · Portafolio CNO IV · Seguridad Informática</p>
+    </footer>
+
+</body>
+</html>

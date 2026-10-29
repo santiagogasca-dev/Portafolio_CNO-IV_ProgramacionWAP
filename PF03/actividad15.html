@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 15 | Extracción de metadatos GPS y Geolocalización | SantiagoGasca</title>
+
+    <link rel="stylesheet" href="../Recursos/CSS/Styles.css">
+    <link rel="stylesheet" href="../Recursos/CSS/Roadmap.css">
+
+    <style>
+        .lab-card-white {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(17, 32, 46, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(12, 24, 36, 0.06);
+            color: #18212a;
+        }
+        .lab-card-dark {
+            color: #edf5fa !important;
+            background: linear-gradient(145deg, rgba(11, 22, 32, 0.98), rgba(15, 32, 45, 0.98)) !important;
+            border: 1px solid rgba(0, 217, 255, 0.20) !important;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .lab-card-dark h2, .lab-card-dark h3 {
+            color: #ffffff !important;
+        }
+        .lab-card-dark p, .lab-card-dark li {
+            color: #b9c7d3 !important;
+        }
+        .pf02-pdf {
+            overflow: hidden;
+            min-height: 720px;
+            padding: 0;
+        }
+        .pf02-pdf-head {
+            padding: 26px 30px;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.14);
+        }
+        .pf02-pdf-frame {
+            display: block;
+            width: 100%;
+            height: 760px;
+            border: 0;
+            background: #fff;
+        }
+        .pf02-note {
+            margin-top: 18px;
+            padding: 16px 18px;
+            border-left: 3px solid #00d9ff;
+            border-radius: 10px;
+            background: rgba(0, 217, 255, 0.055);
+            color: #4e6070;
+            font-size: 0.94rem;
+            line-height: 1.65;
+        }
+        .pf02-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+        .pf02-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 46px;
+            padding: 0 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 750;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+        .pf02-button:hover {
+            transform: translateY(-3px);
+        }
+        .pf02-button-secondary {
+            border: 1px solid rgba(0, 217, 255, 0.22);
+            background: transparent;
+            color: #087d99;
+        }
+        .pf02-button-secondary:hover {
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.07);
+        }
+        .pf02-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 22px;
+        }
+        .lab-card-dark .pf02-nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 16px;
+            border: 1px solid rgba(0, 217, 255, 0.22);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #dff9ff;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+        .lab-card-dark .pf02-nav-link:hover {
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.12);
+            color: #ffffff;
+        }
+        @media (max-width: 960px) {
+            .pf02-nav-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 780px) {
+            .pf02-nav-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body class="lab-page">
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-symbol">◈</span>
+                <span>SantiagoGasca</span>
+            </a>
+            <nav class="navigation" aria-label="Navegación principal">
+                <a href="../index.html">Inicio</a>
+                <a href="../PF01/index.html">PF01</a>
+                <a href="../PF02/index.html">PF02</a>
+                <a href="./index.html" aria-current="page">PF03</a>
+                <a href="../RoadToHallOfFame/index.html">Road to Hall of Fame</a>
+                <a href="../ENTREGA-FINAL/index.html">Entrega final</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= CONTENIDO ================= -->
+    <main>
+
+        <section class="lab-hero">
+            <div class="lab-container">
+                <span class="lab-kicker">
+                    TERCER PARCIAL · ACTIVIDAD 15
+                </span>
+                <h1>
+                    La fotografía como testigo
+                </h1>
+                <p>
+                    Extracción de metadatos GPS para geolocalización y análisis forense digital.
+                </p>
+                <p>
+                    Análisis detallado de metadatos en ficheros institucionales (Word) y archivos multimedia (fotografías móviles) mediante ExifToolGUI.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================= INFORMACIÓN GENERAL ================= -->
+        <section class="lab-section">
+            <div class="lab-container">
+                <article class="lab-card-white">
+                    <h2>Información de la actividad</h2>
+                    <p><strong>Nombre de la actividad:</strong> Actividad 15. La fotografía como testigo: extracción de metadatos GPS para geolocalización.</p>
+                    <p><strong>Materia:</strong> Seguridad Informática</p>
+                    <p><strong>Alumno:</strong> Santiago Isaac Gasca López</p>
+                    <p><strong>Herramientas utilizadas:</strong> ExifTool / ExifToolGUI, Google Maps</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="lab-container">
+
+            <!-- ================= DOCUMENTO ORIGINAL PDF ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-white">
+                    <div class="section-heading">
+                        <span class="section-number">00</span>
+                        <h2>Documento original en PDF</h2>
+                    </div>
+
+                    <p>
+                        Aquí puedes consultar directamente la versión original del reporte de la Actividad 15 y descargarla para conservarla dentro de tu portafolio del tercer parcial.
+                    </p>
+
+                    <div class="pf02-actions">
+                        <a
+                            class="pf02-button pf02-button-secondary"
+                            href="../Recursos/PDF/PF03/Gasca_Lopez_Santiago_Isaac-ACT15.pdf"
+                            download="Gasca_Lopez_Santiago_Isaac-ACT15.pdf">
+                            Descargar PDF
+                        </a>
+
+                        <a
+                            class="pf02-button pf02-button-secondary"
+                            href="../Recursos/PDF/PF03/Gasca_Lopez_Santiago_Isaac-ACT15.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Abrir PDF en otra pestaña
+                        </a>
+                    </div>
+
+                    <div class="pf02-note">
+                        El PDF corresponde al material entregado para esta actividad y se conserva sin modificar como evidencia original.
+                    </div>
+                </div>
+            </section>
+
+            <!-- VISTA PREVIA DEL PDF -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <article class="lab-card-white pf02-pdf">
+                    <div class="pf02-pdf-head">
+                        <h2 style="font-size: 1.5rem; margin: 0; color: #18212a;">
+                            Vista previa del documento original
+                        </h2>
+                    </div>
+                    <iframe
+                        class="pf02-pdf-frame"
+                        src="../Recursos/PDF/PF03/Gasca_Lopez_Santiago_Isaac-ACT15.pdf"
+                        title="Vista previa Actividad 15 PDF">
+                    </iframe>
+                </article>
+            </section>
+
+            <!-- ================= PARTE I (OSCURO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-dark">
+                    <div class="section-heading" style="border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 12px; margin-bottom: 16px;">
+                        <span class="section-number" style="color: #00d9ff;">I</span>
+                        <h2 style="color: #ffffff; display: inline-block; margin: 0;">Análisis de metadatos del fichero WOA database application form.docx</h2>
+                    </div>
+
+                    <p><strong>1. ¿Cómo categorizó el archivo INTERPOL?</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px;">
+                        InterpolClassification: Unclassified
+                    </div>
+
+                    <p><strong>2. ¿Qué template fue utilizado para la elaboración del archivo por parte de INTERPOL?</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px;">
+                        Template: G03 Basic Doc SP.dotx
+                    </div>
+
+                    <p><strong>3. ¿Cuál fue el tiempo total de edición del fichero?</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px;">
+                        Total Edit Time: 45 minutes
+                    </div>
+
+                    <p><strong>4. Identifique la Compañía propietaria del fichero.</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px;">
+                        Company: OIPC - INTERPOL
+                    </div>
+
+                    <p><strong>5. ¿Quién realizó la última modificación del fichero?</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px;">
+                        Last Modified By: Carolyn Lejeune
+                    </div>
+
+                    <p><strong>6. ¿Cuál fue la fecha de creación del fichero en investigación?</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px;">
+                        Create Date: 2019:05:03 15:35:00Z
+                    </div>
+
+                    <p><strong>7. De acuerdo al análisis de metadatos del fichero de INTERPOL, identifique el creador del mismo.</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px;">
+                        Creator: Carolyn Lejeune
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= PARTE II (BLANCO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-white">
+                    <div class="section-heading">
+                        <span class="section-number">II</span>
+                        <h2>Análisis de metadatos del fichero XiaomiMiA2Lite.jpg</h2>
+                    </div>
+
+                    <p><strong>1. ¿Cuál fue la apertura ISO utilizada?</strong></p>
+                    <div class="code-block">ISO: 100</div>
+
+                    <p><strong>2. ¿Cuál es la longitud focal de la cámara con la que fue capturada la imagen?</strong></p>
+                    <div class="code-block">Focal Length: 3.8 mm</div>
+
+                    <p><strong>3. ¿Señale si se utilizó la captura con Flash para obtener la imagen?</strong></p>
+                    <div class="code-block">Flash: Off, Did not fire (No fue utilizado)</div>
+
+                    <p><strong>4. Señale la fecha de creación del archivo.</strong></p>
+                    <div class="code-block">Create Date: 2020:05:28 18:11:41</div>
+
+                    <p><strong>5. Identifique los datos de ubicación GPS y señale el lugar exacto dónde la fotografía fue tomada.</strong></p>
+                    <p><strong>GPS Position:</strong> 51 deg 15' 12.99" N, 0 deg 32' 21.93" W</p>
+                    <p><strong>Ubicación exacta:</strong> Guildford, Reino Unido (Inglaterra)</p>
+                    
+                    <div class="procedure-image" style="margin-top: 15px;">
+                        <img src="../Recursos/Imagenes/PF03/Act15/mapa_gps.png" alt="Geolocalización en Google Maps" style="border-radius: 8px; width: 100%;">
+                    </div>
+
+                    <p style="margin-top: 20px;"><strong>6. Elimine todos los metadatos de la muestra que se analiza.</strong></p>
+                    <p>Se ejecutó el comando de limpieza total de metadatos ExifTool obteniendo la actualización exitosa del fichero:</p>
+                    <div class="code-block">
+C:\Users\santi\...\exiftoolgui> exiftool -all= "infocrim\XiaomiMiA2Lite.jpg"
+1 image files updated
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= NAVEGACIÓN PORTAFOLIO (OSCURO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-dark">
+                    <h2 style="color: #edf5fa; font-size: 1.5rem; margin-bottom: 12px;">· Conoce más acerca de mi portafolio</h2>
+                    <p style="color: #b9c7d3; margin-bottom: 18px;">Desde esta sección puedes navegar rápidamente entre las distintas áreas y entregas de tu portafolio de seguridad informática.</p>
+
+                    <div class="pf02-nav-grid">
+                        <a class="pf02-nav-link" href="../PF02/index.html">← PF02</a>
+                        <a class="pf02-nav-link" href="../index.html">Inicio</a>
+                        <a class="pf02-nav-link" href="./index.html">PF03 Index →</a>
+                        <a class="pf02-nav-link" href="../PF01/index.html">PF01</a>
+                        <a class="pf02-nav-link" href="../RoadToHallOfFame/index.html">Road to HoF</a>
+                        <a class="pf02-nav-link" href="../ENTREGA-FINAL/index.html">Entrega final</a>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Santiago Isaac Gasca López · Portafolio CNO IV · Seguridad Informática</p>
+    </footer>
+
+</body>
+</html>
