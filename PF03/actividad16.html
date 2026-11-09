@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 16 | Adquisición forense con FTK Imager | SantiagoGasca</title>
+
+    <link rel="stylesheet" href="../Recursos/CSS/Styles.css">
+    <link rel="stylesheet" href="../Recursos/CSS/Roadmap.css">
+
+    <style>
+        .lab-card-white {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(17, 32, 46, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(12, 24, 36, 0.06);
+            color: #18212a;
+        }
+        .lab-card-dark {
+            color: #edf5fa !important;
+            background: linear-gradient(145deg, rgba(11, 22, 32, 0.98), rgba(15, 32, 45, 0.98)) !important;
+            border: 1px solid rgba(0, 217, 255, 0.20) !important;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .lab-card-dark h2, .lab-card-dark h3 {
+            color: #ffffff !important;
+        }
+        .lab-card-dark p, .lab-card-dark li {
+            color: #b9c7d3 !important;
+        }
+        .pf02-pdf {
+            overflow: hidden;
+            min-height: 720px;
+            padding: 0;
+        }
+        .pf02-pdf-head {
+            padding: 26px 30px;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.14);
+        }
+        .pf02-pdf-frame {
+            display: block;
+            width: 100%;
+            height: 760px;
+            border: 0;
+            background: #fff;
+        }
+        .pf02-note {
+            margin-top: 18px;
+            padding: 16px 18px;
+            border-left: 3px solid #00d9ff;
+            border-radius: 10px;
+            background: rgba(0, 217, 255, 0.055);
+            color: #4e6070;
+            font-size: 0.94rem;
+            line-height: 1.65;
+        }
+        .pf02-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+        .pf02-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 46px;
+            padding: 0 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 750;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+        .pf02-button:hover {
+            transform: translateY(-3px);
+        }
+        .pf02-button-secondary {
+            border: 1px solid rgba(0, 217, 255, 0.22);
+            background: transparent;
+            color: #087d99;
+        }
+        .pf02-button-secondary:hover {
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.07);
+        }
+        .pf02-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 22px;
+        }
+        .lab-card-dark .pf02-nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 16px;
+            border: 1px solid rgba(0, 217, 255, 0.22);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #dff9ff;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+        .lab-card-dark .pf02-nav-link:hover {
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.12);
+            color: #ffffff;
+        }
+        @media (max-width: 960px) {
+            .pf02-nav-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 780px) {
+            .pf02-nav-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body class="lab-page">
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-symbol">◈</span>
+                <span>SantiagoGasca</span>
+            </a>
+            <nav class="navigation" aria-label="Navegación principal">
+                <a href="../index.html">Inicio</a>
+                <a href="../PF01/index.html">PF01</a>
+                <a href="../PF02/index.html">PF02</a>
+                <a href="./index.html" aria-current="page">PF03</a>
+                <a href="../RoadToHallOfFame/index.html">Road to Hall of Fame</a>
+                <a href="../ENTREGA-FINAL/index.html">Entrega final</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= CONTENIDO ================= -->
+    <main>
+
+        <section class="lab-hero">
+            <div class="lab-container">
+                <span class="lab-kicker">
+                    TERCER PARCIAL · ACTIVIDAD 16
+                </span>
+                <h1>
+                    Adquisición forense de evidencia digital con FTK Imager
+                </h1>
+                <p>
+                    Duplicación forense bit a bit, generación de cadenas criptográficas de integridad (MD5 y SHA-1) y análisis de registros de adquisición.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================= INFORMACIÓN GENERAL ================= -->
+        <section class="lab-section">
+            <div class="lab-container">
+                <article class="lab-card-white">
+                    <h2>Información del Caso</h2>
+                    <p><strong>Número de Caso:</strong> InfoCrim-01_21.11.2023</p>
+                    <p><strong>Número de Evidencia:</strong> 00 (Original Adq)</p>
+                    <p><strong>Descripción:</strong> CNO IV - análisis de incidente de fraude bancario</p>
+                    <p><strong>Examinador Asignado:</strong> Gasca López Santiago Isaac</p>
+                    <p><strong>Notas Adicionales:</strong> Adquisición realizada en el LIF de la UPSLP</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="lab-container">
+
+            <!-- ================= DOCUMENTO ORIGINAL PDF ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-white">
+                    <div class="section-heading">
+                        <span class="section-number">00</span>
+                        <h2>Documento original en PDF</h2>
+                    </div>
+
+                    <p>
+                        Consulte y descargue el reporte oficial en PDF correspondiente a la práctica de adquisición forense con FTK Imager.
+                    </p>
+
+                    <div class="pf02-actions">
+                        <a
+                            class="pf02-button pf02-button-secondary"
+                            href="../Recursos/PDF/PF03/GascaLópezSantiagoIsaac-ACT16.pdf"
+                            download="GascaLópezSantiagoIsaac-ACT16.pdf">
+                            Descargar PDF
+                        </a>
+
+                        <a
+                            class="pf02-button pf02-button-secondary"
+                            href="../Recursos/PDF/PF03/GascaLópezSantiagoIsaac-ACT16.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Abrir PDF en otra pestaña
+                        </a>
+                    </div>
+
+                    <div class="pf02-note">
+                        El documento PDF se conserva como evidencia formal e íntegra de la práctica de laboratorio.
+                    </div>
+                </div>
+            </section>
+
+            <!-- VISTA PREVIA DEL PDF -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <article class="lab-card-white pf02-pdf">
+                    <div class="pf02-pdf-head">
+                        <h2 style="font-size: 1.5rem; margin: 0; color: #18212a;">
+                            Vista previa del documento original
+                        </h2>
+                    </div>
+                    <iframe
+                        class="pf02-pdf-frame"
+                        src="../Recursos/PDF/PF03/GascaLópezSantiagoIsaac-ACT16.pdf"
+                        title="Vista previa Actividad 16 PDF">
+                    </iframe>
+                </article>
+            </section>
+
+            <!-- ================= DESARROLLO FORENSE (OSCURO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-dark">
+                    <div class="section-heading" style="border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 12px; margin-bottom: 16px;">
+                        <span class="section-number" style="color: #00d9ff;">I</span>
+                        <h2 style="color: #ffffff; display: inline-block; margin: 0;">Desarrollo Forense de Adquisición</h2>
+                    </div>
+
+                    <p><strong>Paso 1: Inicialización del entorno de captura</strong></p>
+                    <p>Se ejecutó AccessData FTK Imager v4.7.1.2 seleccionando la opción <em>Create Disk Image</em> desde el menú contextual <em>File</em>.</p>
+                    
+                    <p style="margin-top: 20px;"><strong>Paso 2 y 3: Selección de fuente y metadatos</strong></p>
+                    <p>Se configuró la extracción bit a bit de bajo nivel seleccionando la unidad física correspondiente (<i>PHYSICALDRIVE1 - VendorCo ProductCode USB Device</i>) y registrando los metadatos estandarizados del caso.</p>
+
+                    <p style="margin-top: 20px;"><strong>Paso 4: Directorio y Formato de Salida</strong></p>
+                    <p>Ruta de destino establecida en <code>C:\Users\santi\OneDrive\Escritorio\InfoCrim13</code> con nombre de imagen <code>infocrim_GascaLopezSantiagoIsaac</code>, fragmentación de 1500 MB y compresión en nivel 0 (None).</p>
+
+                    <p style="margin-top: 20px;"><strong>Paso 5: Marcas de Tiempo del Proceso</strong></p>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>Hora de Inicio:</strong> 10:17 PM</li>
+                        <li><strong>Hora de Finalización:</strong> 10:26 PM</li>
+                        <li><strong>Tiempo Total Transcurrido:</strong> 08 minutos y 51 segundos</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ================= CUESTIONARIO TEÓRICO (BLANCO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-white">
+                    <div class="section-heading">
+                        <span class="section-number">II</span>
+                        <h2>Cuestionario Teórico de Conceptos Forenses</h2>
+                    </div>
+
+                    <p><strong>1. ¿A qué tipo de formato se refiere el Raw (dd)?</strong></p>
+                    <p>Es una copia binaria pura y exacta sector por sector de la unidad física fuente. No añade encabezados, metadatos propios de la herramienta ni compresión, lo que garantiza compatibilidad universal con cualquier herramienta de análisis forense.</p>
+
+                    <p style="margin-top: 18px;"><strong>2. ¿A qué tipo de formato se refiere el E01?</strong></p>
+                    <p>Es el formato estándar (Expert Witness Format creado para EnCase) que integra en su estructura una cabecera con metadatos del caso, compresión opcional y sumas de verificación (checksums) intercaladas para asegurar la integridad de los bloques.</p>
+
+                    <p style="margin-top: 18px;"><strong>3. ¿Cuál es la diferencia entre un formato SMART y un formato E01?</strong></p>
+                    <p>SMART es un formato clásico desarrollado por ASRData enfocado en la segmentación y verificación mediante hashes internos, mientras que E01 es el estándar internacional más aceptado en entornos judiciales actuales, ofreciendo mayor soporte, robustez en metadatos y flexibilidad ante sectores dañados.</p>
+                </div>
+            </section>
+
+            <!-- ================= ANÁLISIS E INTEGRIDAD (OSCURO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-dark">
+                    <div class="section-heading" style="border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 12px; margin-bottom: 16px;">
+                        <span class="section-number" style="color: #00d9ff;">III</span>
+                        <h2 style="color: #ffffff; display: inline-block; margin: 0;">Análisis e integridad de resultados forenses</h2>
+                    </div>
+
+                    <p><strong>Verificación de Hashes de Integridad</strong></p>
+                    <p>Tras finalizar la adquisición, el módulo de verificación de FTK Imager confirmó una coincidencia exacta (Match) sin sectores defectuosos:</p>
+                    
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 0.9rem;">
+                        [MD5 Hash Match]<br>
+                        Computed: 516993898c4354013858266809202f39<br>
+                        Report:   516993898c4354013858266809202f39<br><br>
+                        [SHA1 Hash Match]<br>
+                        Computed: e1a4695c1d923b68ad0680e8384d58d8d7122143<br>
+                        Report:   e1a4695c1d923b68ad0680e8384d58d8d7122143<br><br>
+                        [Bad Blocks List]<br>
+                        No bad blocks found in image.
+                    </div>
+
+                    <p style="margin-top: 20px;"><strong>Desglose de Archivos Generados</strong></p>
+                    <p>Se generó un total de 11 archivos en la ruta de destino (10 fragmentos de imagen <code>.001</code> a <code>.010</code> de 1,536,000 KB cada uno y el archivo de registro <code>.001.txt</code>).</p>
+                </div>
+            </section>
+
+            <!-- ================= CONCLUSIÓN (BLANCO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-white">
+                    <div class="section-heading">
+                        <span class="section-number">IV</span>
+                        <h2>Conclusión</h2>
+                    </div>
+                    <p style="line-height: 1.7;">
+                        La realización de esta práctica permitió aplicar los fundamentos metodológicos de la informática forense en la fase de adquisición y preservación de evidencia digital mediante FTK Imager. La obtención de una copia bit a bit en formato crudo (Raw/dd) garantizó un duplicado exacto y de lectura universal. Asimismo, la generación y coincidencia perfecta entre los valores de Hash MD5 y SHA-1 comprueban fehacientemente que la integridad de la evidencia no sufrió ninguna alteración, asegurando la validez probatoria bajo los estándares de la cadena de custodia.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ================= NAVEGACIÓN PORTAFOLIO (OSCURO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-dark">
+                    <h2 style="color: #edf5fa; font-size: 1.5rem; margin-bottom: 12px;">· Conoce más acerca de mi portafolio</h2>
+                    <p style="color: #b9c7d3; margin-bottom: 18px;">Desde esta sección puedes navegar rápidamente entre las distintas áreas y entregas de tu portafolio de seguridad informática.</p>
+
+                    <div class="pf02-nav-grid">
+                        <a class="pf02-nav-link" href="../PF02/index.html">← PF02</a>
+                        <a class="pf02-nav-link" href="../index.html">Inicio</a>
+                        <a class="pf02-nav-link" href="./index.html">PF03 Index →</a>
+                        <a class="pf02-nav-link" href="../PF01/index.html">PF01</a>
+                        <a class="pf02-nav-link" href="../RoadToHallOfFame/index.html">Road to HoF</a>
+                        <a class="pf02-nav-link" href="../ENTREGA-FINAL/index.html">Entrega final</a>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Santiago Isaac Gasca López · Portafolio CNO IV · Seguridad Informática</p>
+    </footer>
+
+</body>
+</html>
