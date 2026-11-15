@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 17 | Memoria del crimen y Volcado RAM | SantiagoGasca</title>
+
+    <link rel="stylesheet" href="../Recursos/CSS/Styles.css">
+    <link rel="stylesheet" href="../Recursos/CSS/Roadmap.css">
+
+    <style>
+        .lab-card-white {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(17, 32, 46, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(12, 24, 36, 0.06);
+            color: #18212a;
+        }
+        .lab-card-dark {
+            color: #edf5fa !important;
+            background: linear-gradient(145deg, rgba(11, 22, 32, 0.98), rgba(15, 32, 45, 0.98)) !important;
+            border: 1px solid rgba(0, 217, 255, 0.20) !important;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .lab-card-dark h2, .lab-card-dark h3 {
+            color: #ffffff !important;
+        }
+        .lab-card-dark p, .lab-card-dark li {
+            color: #b9c7d3 !important;
+        }
+        .pf02-pdf {
+            overflow: hidden;
+            min-height: 720px;
+            padding: 0;
+        }
+        .pf02-pdf-head {
+            padding: 26px 30px;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.14);
+        }
+        .pf02-pdf-frame {
+            display: block;
+            width: 100%;
+            height: 760px;
+            border: 0;
+            background: #fff;
+        }
+        .pf02-note {
+            margin-top: 18px;
+            padding: 16px 18px;
+            border-left: 3px solid #00d9ff;
+            border-radius: 10px;
+            background: rgba(0, 217, 255, 0.055);
+            color: #4e6070;
+            font-size: 0.94rem;
+            line-height: 1.65;
+        }
+        .pf02-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+        .pf02-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 46px;
+            padding: 0 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 750;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+        .pf02-button:hover {
+            transform: translateY(-3px);
+        }
+        .pf02-button-secondary {
+            border: 1px solid rgba(0, 217, 255, 0.22);
+            background: transparent;
+            color: #087d99;
+        }
+        .pf02-button-secondary:hover {
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.07);
+        }
+        .pf02-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 22px;
+        }
+        .lab-card-dark .pf02-nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 16px;
+            border: 1px solid rgba(0, 217, 255, 0.22);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #dff9ff;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+        .lab-card-dark .pf02-nav-link:hover {
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.12);
+            color: #ffffff;
+        }
+        @media (max-width: 960px) {
+            .pf02-nav-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 780px) {
+            .pf02-nav-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body class="lab-page">
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-symbol">◈</span>
+                <span>SantiagoGasca</span>
+            </a>
+            <nav class="navigation" aria-label="Navegación principal">
+                <a href="../index.html">Inicio</a>
+                <a href="../PF01/index.html">PF01</a>
+                <a href="../PF02/index.html">PF02</a>
+                <a href="./index.html" aria-current="page">PF03</a>
+                <a href="../RoadToHallOfFame/index.html">Road to Hall of Fame</a>
+                <a href="../ENTREGA-FINAL/index.html">Entrega final</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= CONTENIDO ================= -->
+    <main>
+
+        <section class="lab-hero">
+            <div class="lab-container">
+                <span class="lab-kicker">
+                    TERCER PARCIAL · ACTIVIDAD 17
+                </span>
+                <h1>
+                    La memoria del crimen: extracción de evidencia de un volcado RAM
+                </h1>
+                <p>
+                    Análisis forense de memoria volátil con Volatility Framework sobre el caso OtterCTF e informe ejecutivo de resultados.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================= INFORMACIÓN GENERAL ================= -->
+        <section class="lab-section">
+            <div class="lab-container">
+                <article class="lab-card-white">
+                    <h2>Información de la Actividad</h2>
+                    <p><strong>Nombre:</strong> Actividad 17. La memoria del crimen: extracción de evidencia de un volcado RAM.</p>
+                    <p><strong>Alumno:</strong> Gasca López Santiago Isaac</p>
+                    <p><strong>Matrícula:</strong> 184730</p>
+                    <p><strong>Materia:</strong> CNO IV / Seguridad Informática</p>
+                    <p><strong>Fecha:</strong> 14/11/2026</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="lab-container">
+
+            <!-- ================= DOCUMENTO ORIGINAL PDF ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-white">
+                    <div class="section-heading">
+                        <span class="section-number">00</span>
+                        <h2>Documento original en PDF</h2>
+                    </div>
+
+                    <p>
+                        Consulte y descargue el reporte oficial actualizado en PDF correspondiente al análisis forense de memoria volátil de la Actividad 17.
+                    </p>
+
+                    <div class="pf02-actions">
+                        <a
+                            class="pf02-button pf02-button-secondary"
+                            href="../Recursos/PDF/PF03/GascaLópezSantiagoIsaac-Act17.pdf"
+                            download="GascaLópezSantiagoIsaac-Act17.pdf">
+                            Descargar PDF
+                        </a>
+
+                        <a
+                            class="pf02-button pf02-button-secondary"
+                            href="../Recursos/PDF/PF03/GascaLópezSantiagoIsaac-Act17.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Abrir PDF en otra pestaña
+                        </a>
+                    </div>
+
+                    <div class="pf02-note">
+                        El documento PDF actualizado se conserva como evidencia formal e íntegra de la práctica de laboratorio.
+                    </div>
+                </div>
+            </section>
+
+            <!-- VISTA PREVIA DEL PDF -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <article class="lab-card-white pf02-pdf">
+                    <div class="pf02-pdf-head">
+                        <h2 style="font-size: 1.5rem; margin: 0; color: #18212a;">
+                            Vista previa del documento original
+                        </h2>
+                    </div>
+                    <iframe
+                        class="pf02-pdf-frame"
+                        src="../Recursos/PDF/PF03/GascaLópezSantiagoIsaac-Act17.pdf"
+                        title="Vista previa Actividad 17 PDF">
+                    </iframe>
+                </article>
+            </section>
+
+            <!-- ================= PARTE I (OSCURO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-dark">
+                    <div class="section-heading" style="border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 12px; margin-bottom: 16px;">
+                        <span class="section-number" style="color: #00d9ff;">I</span>
+                        <h2 style="color: #ffffff; display: inline-block; margin: 0;">Análisis Forense de Memoria Volátil (OtterCTF)</h2>
+                    </div>
+
+                    <p><strong>1. Identificación de marca de tiempo local del volcado</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        .\OtterCTF\Vol2.exe -f .\OtterCTF\OtterCTF.vmem imageinfo
+                    </div>
+                    <p><strong>Resultado:</strong> Image local date and time: 2018-08-04 22:34:22 +0300.</p>
+                    <p><em>Análisis:</em> "Image date and time" muestra el reloj del sistema en UTC al momento de la adquisición. "Image local date and time" incluye el desfase de zona horaria (+03:00), sirviendo como ancla para sincronizar los tiempos de procesos y conexiones de red en la hora local del usuario.</p>
+
+                    <p style="margin-top: 20px;"><strong>2. Sistema Operativo y Arquitectura</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        .\OtterCTF\Vol2.exe -f .\OtterCTF\OtterCTF.vmem imageinfo
+                    </div>
+                    <p>Perfil sugerido: <code>Win7SP1x64</code> (Windows 7 Service Pack 1, Arquitectura de 64 bits). El análisis confirma el uso de este perfil por coherencia con el Service Pack y las rutas de usuario localizadas.</p>
+
+                    <p style="margin-top: 20px;"><strong>3. Contraseña del perfil del cibercriminal ("Rick")</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        .\OtterCTF\Vol2.exe -f .\OtterCTF\OtterCTF.vmem --profile=Win7SP1x64 hashdump<br>
+                        .\OtterCTF\Vol2.exe -f .\OtterCTF\OtterCTF.vmem --profile=Win7SP1x64 lsadump
+                    </div>
+                    <p><strong>Usuario:</strong> Rick | <strong>Contraseña obtenida:</strong> <code>MortyIsReallyAnOtter</code>. Al estar configurado el inicio de sesión automático, la credencial quedó expuesta en texto legible dentro de los secretos LSA (DefaultPassword).</p>
+
+                    <p style="margin-top: 20px;"><strong>4 y 8. Direccionamiento IP y Puerto del Servidor Malicioso</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        .\OtterCTF\Vol2.exe -f .\OtterCTF\OtterCTF.vmem --profile=Win7SP1x64 netscan
+                    </div>
+                    <p><strong>IP Externa:</strong> 77.102.199.102 | <strong>Puerto:</strong> 7575 | <strong>Ubicación Geográfica:</strong> Londres, Inglaterra (Reino Unido) a través del proveedor Virgin Media Limited (AS5089).</p>
+
+                    <p style="margin-top: 20px;"><strong>5. Llaves del Registro del Sistema</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        .\OtterCTF\Vol2.exe -f .\OtterCTF\OtterCTF.vmem --profile=Win7SP1x64 hivelist
+                    </div>
+                    <p>Permite examinar las colmenas lógicas del registro (SYSTEM, SOFTWARE, SAM, SECURITY, NTUSER.DAT) para rastrear persistencia, configuración del sistema, cuentas de usuario y actividad interactiva.</p>
+
+                    <p style="margin-top: 20px;"><strong>6. Nombre del Ordenador</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        .\OtterCTF\Vol2.exe -f .\OtterCTF\OtterCTF.vmem --profile=Win7SP1x64 printkey -K "ControlSet001\Control\ComputerName\ComputerName"
+                    </div>
+                    <p><strong>Resultado:</strong> <code>WIN-L06FAF3DTFE</code>. Contiene de manera muy notable las cadenas "FAF3" y "TFE", las cuales coinciden con los indicios proporcionados por SEDENE y CNDI.</p>
+
+                    <p style="margin-top: 20px;"><strong>7. Procesos Clave Identificados</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        .\OtterCTF\Vol2.exe -f .\OtterCTF\OtterCTF.vmem --profile=Win7SP1x64 pslist
+                    </div>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>LunarMS.exe:</strong> Proceso malicioso principal (PID 708) que mantuvo activa la conexión hacia la IP del atacante.</li>
+                        <li><strong>BitTorrent.exe / bittorrentie.e:</strong> Software P2P activo (PID 2836 y procesos hijos) utilizado para intercambio o exfiltración.</li>
+                        <li><strong>WebCompanion.e:</strong> Aplicación tipo adware/PUP detectada con ejecución intermitente y finalización previa al volcado.</li>
+                    </ul>
+
+                    <p style="margin-top: 20px;"><strong>9. Correos Electrónicos Identificados</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        cd .\OtterCTF\<br>
+                        findstr /R/I "[a-z0-9._]*@[a-z0-9._]*\.[a-z][a-z]*" 4076.dmp > correos_chrome.txt
+                    </div>
+                    <p><strong>Cuentas localizadas (navegador Google Chrome / webmail mail.com):</strong></p>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><code>rickopicko@mail.com</code></li>
+                        <li><code>rickypinky@mail.com</code></li>
+                    </ul>
+
+                    <p style="margin-top: 20px;"><strong>10. Cartera de Criptomoneda (Rescate)</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        $dmp = [System.IO.File]::ReadAllBytes(".\OtterCTF\3720.dmp")<br>
+                        $patron = '(?<![a-zA-Z0-9])[13][a-km-zA-HJ-NP-Z1-9]{25,34}(?![a-zA-Z0-9])'<br>
+                        [regex]::Matches($ascii, $patron) | ForEach-Object { $_.Value }
+                    </div>
+                    <p><strong>Cartera Bitcoin Válida:</strong> <code>1MmpEmebJkqXG8nQv4cjJSmxZQFvmFo63M</code> (extraída del proceso 3720).<br>
+                    * Verificación en lista negra (BTC Black): El portal indicó que la dirección <strong>no está reportada formalmente en su base de datos</strong>, lo cual no descarta actividad ilícita sino la ausencia previa de un reporte verificado de forma independiente.</p>
+                </div>
+            </section>
+
+            <!-- ================= PARTE II (BLANCO - INFORME EJECUTIVO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-white">
+                    <div class="section-heading">
+                        <span class="section-number">II</span>
+                        <h2>Parte II. Informe Ejecutivo y Relación de Hallazgos</h2>
+                    </div>
+
+                    <h3 style="color: #087d99; margin-top: 15px;">1. Resumen Ejecutivo</h3>
+                    <p style="line-height: 1.7;">
+                        Se analizó el volcado de memoria OtterCTF.vmem (Windows 7 SP1 x64) identificando al equipo <code>WIN-L06FAF3DTFE</code>, la sesión activa del usuario Rick con contraseña en texto plano, procesos activos como LunarMS.exe conectado a Londres (77.102.199.102:7575), BitTorrent y WebCompanion, además de credenciales de correo en mail.com y una cartera Bitcoin válida vinculada a extorsión. Los indicios respaldan sólidamente las hipótesis de inteligencia.
+                    </p>
+
+                    <h3 style="color: #087d99; margin-top: 20px;">2. Relación de Hallazgos con el Contexto de la Investigación</h3>
+                    <p style="line-height: 1.7;">
+                        <strong>Alias "Morty" / "Ricky":</strong> Coinciden con el nombre de usuario Rick y la contraseña con la cadena "Morty".<br>
+                        <strong>Iniciales FAF3 y TFE:</strong> Integradas de forma exacta dentro del nombre del equipo <code>WIN-L06FAF3DTFE</code>.<br>
+                        <strong>Servidores Lunar e IP de ataque:</strong> Vinculación directa con la ejecución del proceso LunarMS.exe hacia la IP 77.102.199.102.<br>
+                        <strong>Evidencias EV455FGM y EV456FGM:</strong> Coincidencia exacta del sistema operativo, direccionamiento IP, cuentas de correo y credenciales requeridas.
+                    </p>
+
+                    <h3 style="color: #087d99; margin-top: 20px;">3. Líneas de Investigación Propuestas y Conclusión</h3>
+                    <p style="line-height: 1.7;">
+                        Se recomienda ampliar la auditoría forense mediante el cálculo de hashes SHA-256 para la cadena de custodia, análisis profundo de registros con plugins adicionales de Volatility (mftparser, shimcache, yarascan), requerimientos de cooperación internacional a proveedores de servicios de internet y correo electrónico (mail.com), así como la traza de transacciones sobre la blockchain de la cartera Bitcoin identificada.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ================= NAVEGACIÓN PORTAFOLIO (OSCURO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-dark">
+                    <h2 style="color: #edf5fa; font-size: 1.5rem; margin-bottom: 12px;">· Conoce más acerca de mi portafolio</h2>
+                    <p style="color: #b9c7d3; margin-bottom: 18px;">Desde esta sección puedes navegar rápidamente entre las distintas áreas y entregas de tu portafolio de seguridad informática.</p>
+
+                    <div class="pf02-nav-grid">
+                        <a class="pf02-nav-link" href="../PF02/index.html">← PF02</a>
+                        <a class="pf02-nav-link" href="../index.html">Inicio</a>
+                        <a class="pf02-nav-link" href="./index.html">PF03 Index →</a>
+                        <a class="pf02-nav-link" href="../PF01/index.html">PF01</a>
+                        <a class="pf02-nav-link" href="../RoadToHallOfFame/index.html">Road to HoF</a>
+                        <a class="pf02-nav-link" href="../ENTREGA-FINAL/index.html">Entrega final</a>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Santiago Isaac Gasca López · Portafolio CNO IV · Seguridad Informática</p>
+    </footer>
+
+</body>
+</html>
