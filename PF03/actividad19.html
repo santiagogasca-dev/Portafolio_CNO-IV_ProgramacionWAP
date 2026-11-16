@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 19 | Adquisición forense en escena del crimen digital | SantiagoGasca</title>
+
+    <link rel="stylesheet" href="../Recursos/CSS/Styles.css">
+    <link rel="stylesheet" href="../Recursos/CSS/Roadmap.css">
+
+    <style>
+        .lab-card-white {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(17, 32, 46, 0.08);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(12, 24, 36, 0.06);
+            color: #18212a;
+        }
+        .lab-card-dark {
+            color: #edf5fa !important;
+            background: linear-gradient(145deg, rgba(11, 22, 32, 0.98), rgba(15, 32, 45, 0.98)) !important;
+            border: 1px solid rgba(0, 217, 255, 0.20) !important;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .lab-card-dark h2, .lab-card-dark h3 {
+            color: #ffffff !important;
+        }
+        .lab-card-dark p, .lab-card-dark li {
+            color: #b9c7d3 !important;
+        }
+        .pf02-pdf {
+            overflow: hidden;
+            min-height: 720px;
+            padding: 0;
+        }
+        .pf02-pdf-head {
+            padding: 26px 30px;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.14);
+        }
+        .pf02-pdf-frame {
+            display: block;
+            width: 100%;
+            height: 760px;
+            border: 0;
+            background: #fff;
+        }
+        .pf02-note {
+            margin-top: 18px;
+            padding: 16px 18px;
+            border-left: 3px solid #00d9ff;
+            border-radius: 10px;
+            background: rgba(0, 217, 255, 0.055);
+            color: #4e6070;
+            font-size: 0.94rem;
+            line-height: 1.65;
+        }
+        .pf02-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+        .pf02-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            min-height: 46px;
+            padding: 0 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 750;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+        .pf02-button:hover {
+            transform: translateY(-3px);
+        }
+        .pf02-button-secondary {
+            border: 1px solid rgba(0, 217, 255, 0.22);
+            background: transparent;
+            color: #087d99;
+        }
+        .pf02-button-secondary:hover {
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.07);
+        }
+        .pf02-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 22px;
+        }
+        .lab-card-dark .pf02-nav-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 16px;
+            border: 1px solid rgba(0, 217, 255, 0.22);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #dff9ff;
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+        .lab-card-dark .pf02-nav-link:hover {
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 217, 255, 0.12);
+            color: #ffffff;
+        }
+        @media (max-width: 960px) {
+            .pf02-nav-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 780px) {
+            .pf02-nav-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+
+<body class="lab-page">
+
+    <!-- ================= HEADER ================= -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-symbol">◈</span>
+                <span>SantiagoGasca</span>
+            </a>
+            <nav class="navigation" aria-label="Navegación principal">
+                <a href="../index.html">Inicio</a>
+                <a href="../PF01/index.html">PF01</a>
+                <a href="../PF02/index.html">PF02</a>
+                <a href="./index.html" aria-current="page">PF03</a>
+                <a href="../RoadToHallOfFame/index.html">Road to Hall of Fame</a>
+                <a href="../ENTREGA-FINAL/index.html">Entrega final</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= CONTENIDO ================= -->
+    <main>
+
+        <section class="lab-hero">
+            <div class="lab-container">
+                <span class="lab-kicker">
+                    TERCER PARCIAL · ACTIVIDAD 19
+                </span>
+                <h1>
+                    Los primeros minutos cuentan: adquisición forense en escenas del crimen digital
+                </h1>
+                <p>
+                    Procedimiento pericial de primer respondiente y adquisición de evidencia en caliente sobre entornos Windows.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================= INFORMACIÓN GENERAL ================= -->
+        <section class="lab-section">
+            <div class="lab-container">
+                <article class="lab-card-white">
+                    <h2>Información de la Actividad</h2>
+                    <p><strong>Nombre:</strong> Actividad 19. Los primeros minutos cuentan: adquisición forense en escenas del crimen digital.</p>
+                    <p><strong>Alumno:</strong> Gasca López Santiago Isaac</p>
+                    <p><strong>Matrícula:</strong> 184730</p>
+                    <p><strong>Materia:</strong> CNO IV / Seguridad Informática</p>
+                    <p><strong>Fecha:</strong> 16/11/2026</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="lab-container">
+
+            <!-- ================= DOCUMENTO ORIGINAL PDF ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-white">
+                    <div class="section-heading">
+                        <span class="section-number">00</span>
+                        <h2>Documento original en PDF</h2>
+                    </div>
+
+                    <p>
+                        Consulte y descargue el reporte oficial en PDF correspondiente a la adquisición forense de la Actividad 19.
+                    </p>
+
+                    <div class="pf02-actions">
+                        <a
+                            class="pf02-button pf02-button-secondary"
+                            href="../Recursos/PDF/PF03/Gasca_López_Santiago_Isaac_Act19.pdf"
+                            download="Gasca_López_Santiago_Isaac_Act19.pdf">
+                            Descargar PDF
+                        </a>
+
+                        <a
+                            class="pf02-button pf02-button-secondary"
+                            href="../Recursos/PDF/PF03/Gasca_López_Santiago_Isaac_Act19.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            Abrir PDF en otra pestaña
+                        </a>
+                    </div>
+
+                    <div class="pf02-note">
+                        El documento PDF se conserva como evidencia formal e íntegra del procedimiento pericial ejecutado.
+                    </div>
+                </div>
+            </section>
+
+            <!-- VISTA PREVIA DEL PDF -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <article class="lab-card-white pf02-pdf">
+                    <div class="pf02-pdf-head">
+                        <h2 style="font-size: 1.5rem; margin: 0; color: #18212a;">
+                            Vista previa del documento original
+                        </h2>
+                    </div>
+                    <iframe
+                        class="pf02-pdf-frame"
+                        src="../Recursos/PDF/PF03/Gasca_López_Santiago_Isaac_Act19.pdf"
+                        title="Vista previa Actividad 19 PDF">
+                    </iframe>
+                </article>
+            </section>
+
+            <!-- ================= DESARROLLO DE LA PRÁCTICA (OSCURO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-dark">
+                    <div class="section-heading" style="border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 12px; margin-bottom: 16px;">
+                        <span class="section-number" style="color: #00d9ff;">I</span>
+                        <h2 style="color: #ffffff; display: inline-block; margin: 0;">Adquisición y Auditoría Forense en Caliente</h2>
+                    </div>
+
+                    <p><strong>1. Fecha y hora del sistema (Línea de base temporal)</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        date /t > 01_fecha_hora.txt && time /t >> 01_fecha_hora.txt
+                    </div>
+                    <p><strong>Resultado:</strong> 15/11/2026 | 11:33 p. m. Establece la marca temporal de referencia (baseline) para alinear cronológicamente todos los artefactos volátiles posteriores[cite: 35].</p>
+
+                    <p style="margin-top: 20px;"><strong>2. Listado de procesos en ejecución</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        tasklist /v > 02_procesos.txt
+                    </div>
+                    <p><em>Análisis:</em> Mapeo de PIDs, sesiones, memoria y privilegios (ej. procesos del núcleo bajo <code>NT AUTHORITY\SYSTEM</code>), permitiendo descartar herramientas de acceso remoto (RATs) o ejecutables ocultos[cite: 35, 36].</p>
+
+                    <p style="margin-top: 20px;"><strong>3. Auditoría de servicios del sistema</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        sc query state= all > 03_servicios_cmd.txt<br>
+                        Get-Service | Format-Table -AutoSize > 03_servicios_ps.txt
+                    </div>
+                    <p><em>Análisis:</em> Contraste entre CMD (bloques de texto detallados con códigos Win32) y PowerShell (objetos tabulares limpios) para examinar el estado de los servicios[cite: 37, 38].</p>
+
+                    <p style="margin-top: 20px;"><strong>4. Usuarios logueados actualmente</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        query user > 04_usuarios_activos.txt
+                    </div>
+                    <p><strong>Resultado:</strong> Sesión interactiva en consola activa para el perfil <code>SANTIAGOGASCA05\santi</code> (PID 12216), sin sesiones remotas paralelas[cite: 39].</p>
+
+                    <p style="margin-top: 20px;"><strong>5. Historial de cuentas de usuario</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        net user > 05_cuentas_locales.txt<br>
+                        Get-LocalUser | Select-Object Name, Enabled, LastLogon > 05_historial_login.txt
+                    </div>
+                    <p><em>Análisis:</em> Inventario de la base de datos SAM; se verifica que solo el usuario <code>santi</code> está habilitado, descartando la creación de cuentas trampa (backdoors)[cite: 39, 40].</p>
+
+                    <p style="margin-top: 20px;"><strong>6. Configuración de red (IP / Interfaces)</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        ipconfig /all > 06_info_red.txt
+                    </div>
+                    <p><em>Análisis:</em> Identificación de la interfaz Wi-Fi activa y el adaptador virtual de VirtualBox Host-Only (192.168.56.1); enrutamiento IP y proxy WINS inactivos[cite: 40, 41].</p>
+
+                    <p style="margin-top: 20px;"><strong>7. Identificadores NetBIOS</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        nbtstat -n > 07_netbios.txt && nbtstat -S >> 07_netbios.txt
+                    </div>
+                    <p><em>Análisis:</em> El equipo se anuncia como <code>SANTIAGOGASCA05</code> en el grupo <code>WORKGROUP</code>; ausencia total de sesiones NetBIOS activas[cite: 42].</p>
+
+                    <p style="margin-top: 20px;"><strong>8. Conexiones de red establecidas</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        netstat -an > 08_conexiones.txt
+                    </div>
+                    <p><em>Análisis:</em> Auditoría de puertos en escucha (135, 445, 8080) y tráfico externo legítimo HTTPS/DNS, sin anomalías de exfiltración de datos[cite: 43, 44].</p>
+
+                    <p style="margin-top: 20px;"><strong>9. Tabla de enrutamiento del sistema</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        route print > 09_rutas.txt
+                    </div>
+                    <p><em>Análisis:</em> Validación de rutas IPv4 e IPv6; tráfico direccionado a través de la puerta de enlace predeterminada (192.168.1.254) sin rutas estáticas maliciosas[cite: 45, 46].</p>
+
+                    <p style="margin-top: 20px;"><strong>10. Resolución de direcciones físicas (Caché ARP)</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        arp -a > 10_arp.txt
+                    </div>
+                    <p><em>Análisis:</em> Mapeo correcto de la puerta de enlace y vecinos locales, descartando ataques de envenenamiento ARP (ARP Spoofing) o MitM[cite: 47, 48].</p>
+
+                    <p style="margin-top: 20px;"><strong>11 a 15. Caché DNS, Recursos compartidos, Tareas programadas y Eventos</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        ipconfig /displaydns > 11_cache_dns.txt<br>
+                        net share > 12_recursos_compartidos.txt && net use >> 12_recursos_compartidos.txt<br>
+                        schtasks /query /fo LIST /v > 13_tareas_programadas.txt<br>
+                        Get-WinEvent -LogName System, Application, Security -MaxEvents 15 ... > 15_eventos.txt
+                    </div>
+                    <p><em>Análisis:</em> Se verificó que solo operan recursos administrativos estándar (C$, IPC$, ADMIN$), tareas legítimas de software instalado y registros limpios de eventos operativos[cite: 48, 49, 50, 51].</p>
+
+                    <p style="margin-top: 20px;"><strong>16 a 20. Historial de consola, Cuentas detalladas, Software y Redes Wi-Fi</strong></p>
+                    <div class="code-block" style="background: #04090f; color: #00d9ff; border-left: 3px solid #00d9ff; padding: 10px; border-radius: 6px; margin-bottom: 14px; font-family: monospace;">
+                        Get-History | Out-File 16_historial.txt<br>
+                        Get-LocalUser | Format-Table -AutoSize > 17_usuarios.txt<br>
+                        Get-CimInstance Win32_Product | Format-Table -AutoSize > 18_software.txt<br>
+                        netsh wlan show profiles > 19_redes_wifi.txt<br>
+                        Get-ChildItem -Filter "*.txt" | Format-Table -AutoSize > 20_inventario_final.txt
+                    </div>
+                    <p><em>Análisis:</em> Consolidación pericial completa; inventario de software verificado (Python, Office), perfiles históricos de redes inalámbricas institucionales/residenciales y empaquetado de las 20 evidencias documentales obtenidas[cite: 52, 53, 54, 55, 56].</p>
+                </div>
+            </section>
+
+            <!-- ================= NAVEGACIÓN PORTAFOLIO (OSCURO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-dark">
+                    <h2 style="color: #edf5fa; font-size: 1.5rem; margin-bottom: 12px;">· Conoce más acerca de mi portafolio</h2>
+                    <p style="color: #b9c7d3; margin-bottom: 18px;">Desde esta sección puedes navegar rápidamente entre las distintas áreas y entregas de tu portafolio de seguridad informática.</p>
+
+                    <div class="pf02-nav-grid">
+                        <a class="pf02-nav-link" href="../PF02/index.html">← PF02</a>
+                        <a class="pf02-nav-link" href="../index.html">Inicio</a>
+                        <a class="pf02-nav-link" href="./index.html">PF03 Index →</a>
+                        <a class="pf02-nav-link" href="../PF01/index.html">PF01</a>
+                        <a class="pf02-nav-link" href="../RoadToHallOfFame/index.html">Road to HoF</a>
+                        <a class="pf02-nav-link" href="../ENTREGA-FINAL/index.html">Entrega final</a>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Santiago Isaac Gasca López · Portafolio CNO IV · Seguridad Informática</p>
+    </footer>
+
+</body>
+</html>
