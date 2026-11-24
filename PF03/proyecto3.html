@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto 3 | PF03 | SantiagoGasca</title>
+    <title>Proyecto 3 | Operación Narcos — Expediente Kowhai | SantiagoGasca</title>
 
     <link rel="stylesheet" href="../Recursos/CSS/Styles.css">
     <link rel="stylesheet" href="../Recursos/CSS/Roadmap.css">
@@ -155,10 +155,10 @@
                     TERCER PARCIAL · PROYECTO 3
                 </span>
                 <h1>
-                    Proyecto 3
+                    PR03 · Operación Narcos: Expediente Kowhai
                 </h1>
                 <p>
-                    Espacio preparado para la documentación, desarrollo técnico y reporte oficial del Proyecto 3.
+                    Investigación forense sobre la imagen de disco Narcos-1 con Autopsy, análisis de artefactos del sistema, navegación, rutas, Discord, esteganografía y cifrado.
                 </p>
             </div>
         </section>
@@ -168,10 +168,11 @@
             <div class="lab-container">
                 <article class="lab-card-white">
                     <h2>Información del Proyecto</h2>
-                    <p><strong>Nombre:</strong> Proyecto 3</p>
+                    <p><strong>Nombre:</strong> PR03 · Operación Narcos: Expediente Kowhai</p>
                     <p><strong>Alumno:</strong> Gasca López Santiago Isaac</p>
                     <p><strong>Matrícula:</strong> 184730</p>
-                    <p><strong>Materia:</strong> CNO IV / Seguridad Informática</p>
+                    <p><strong>Docente:</strong> Ma. Servando López Contreras</p>
+                    <p><strong>Materia:</strong> CNO IV - WAP / Seguridad Informática</p>
                 </article>
             </div>
         </section>
@@ -187,20 +188,20 @@
                     </div>
 
                     <p>
-                        Consulte y descargue el reporte oficial en PDF correspondiente al Proyecto 3.
+                        Consulte y descargue el reporte oficial en PDF correspondiente al PR03 · Operación Narcos: Expediente Kowhai.
                     </p>
 
                     <div class="pf02-actions">
                         <a
                             class="pf02-button pf02-button-secondary"
-                            href="../Recursos/PDF/PF03/Proyecto3.pdf"
-                            download="Proyecto3.pdf">
+                            href="../Recursos/PDF/PF03/Gasca_López_Santiago_Isaac-PR03.pdf"
+                            download="Gasca_López_Santiago_Isaac-PR03.pdf">
                             Descargar PDF
                         </a>
 
                         <a
                             class="pf02-button pf02-button-secondary"
-                            href="../Recursos/PDF/PF03/Proyecto3.pdf"
+                            href="../Recursos/PDF/PF03/Gasca_López_Santiago_Isaac-PR03.pdf"
                             target="_blank"
                             rel="noopener noreferrer">
                             Abrir PDF en otra pestaña
@@ -208,20 +209,131 @@
                     </div>
 
                     <div class="pf02-note">
-                        El documento PDF se conserva como evidencia formal e íntegra del proyecto ejecutado.
+                        El documento PDF se conserva como evidencia formal e íntegra del análisis forense realizado sobre Narcos-1.
                     </div>
                 </div>
             </section>
 
-            <!-- ================= DESARROLLO (OSCURO) ================= -->
+            <!-- VISTA PREVIA DEL PDF -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <article class="lab-card-white pf02-pdf">
+                    <div class="pf02-pdf-head">
+                        <h2 style="font-size: 1.5rem; margin: 0; color: #18212a;">
+                            Vista previa del documento original
+                        </h2>
+                    </div>
+                    <iframe
+                        class="pf02-pdf-frame"
+                        src="../Recursos/PDF/PF03/Gasca_López_Santiago_Isaac-PR03.pdf"
+                        title="Vista previa Proyecto 3 PDF">
+                    </iframe>
+                </article>
+            </section>
+
+            <!-- ================= PARTE I (OSCURO) ================= -->
             <section class="lab-section" style="padding: 0 0 40px 0;">
                 <div class="lab-card-dark">
                     <div class="section-heading" style="border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 12px; margin-bottom: 16px;">
                         <span class="section-number" style="color: #00d9ff;">I</span>
-                        <h2 style="color: #ffffff; display: inline-block; margin: 0;">Desarrollo y Evidencias del Proyecto 3</h2>
+                        <h2 style="color: #ffffff; display: inline-block; margin: 0;">Parte I. Extracción e Identificación de Evidencia Digital</h2>
                     </div>
 
-                    <p>Contenido pendiente de integrar una vez que se tenga el documento final del Proyecto 3.</p>
+                    <p><strong>Integridad y configuración inicial (Narcos-1)</strong></p>
+                    <p>Se calculó el MD5 de las 15 partes de <code>Narcos1.zip.001</code> a <code>Narcos1.zip.015</code> en PowerShell (primera parte: <code>EE10696F32AB2B18C2A915F39D810C5E</code>; última parte: <code>6FEF43606B9CB17B80778685EC59A7BD</code>). El registro <code>Narcos-1.001.txt</code> de FTK Imager reporta MD5 <code>c63a3d19e9c9495b573f45be544e50f9</code> y SHA-1 <code>4d8e5041f47e0b0fc0eacc85d300661946537418</code> (disco virtual VMware de 30,720 MB, adquirido el 17 de febrero de 2019, verificado). El sistema Windows se ubica en <code>vol7</code> (<code>/img_Narcos-1.001/vol_vol7/</code>), y las marcas temporales de Autopsy (CST) se convirtieron a hora de Nueva Zelanda (NZDT, UTC+13) sumando 19 horas.</p>
+
+                    <p style="margin-top: 20px;"><strong>1. Edición y versión de Windows</strong></p>
+                    <p><strong>Edición:</strong> Windows 10 Pro (<code>EditionID = Professional</code>, AMD64, equipo <code>SK-DESKTOP</code>, propietario <code>Steve</code>).<br>
+                    <strong>Versión y compilación:</strong> 1809, compilación 17763.107 (<code>ReleaseId = 1809</code>, <code>CurrentBuild = 17763</code>, <code>UBR = 0x6b</code> / 107 decimal).<br>
+                    <strong>Artefacto y ruta:</strong> Colmena <code>SOFTWARE</code> en clave <code>Microsoft\Windows NT\CurrentVersion</code> (<code>/img_Narcos-1.001/vol_vol7/Windows/System32/config/SOFTWARE</code>).</p>
+
+                    <p style="margin-top: 20px;"><strong>2. Carpeta del perfil principal y ruta absoluta</strong></p>
+                    <p><strong>Perfil principal:</strong> <code>Steve</code> | <strong>Ruta absoluta:</strong> <code>C:\Users\Steve</code> (en imagen: <code>/img_Narcos-1.001/vol_vol7/Users/Steve</code>).</p>
+
+                    <p style="margin-top: 20px;"><strong>3. Ruta de la clave UserAssist</strong></p>
+                    <p><strong>Ruta:</strong> <code>C:\Users\Steve\NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist</code> (en imagen: <code>/img_Narcos-1.001/vol_vol7/Users/Steve/NTUSER.DAT</code>). En la subclave <code>{CEBFF5CD-ACE2-4F4F-9178-9926F41749EA}\Count</code> (entradas ROT13) figuran, entre otros, <code>TrueCrypt Setup 7.1a.exe</code>, <code>ccsetup552.exe</code> y <code>Image Steganography 1.5.2 Setup.exe</code>.</p>
+
+                    <p style="margin-top: 20px;"><strong>4. Navegadores con artefactos de actividad y bases de historial</strong></p>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>Google Chrome:</strong> <code>C:\Users\Steve\AppData\Local\Google\Chrome\User Data\Default\History</code> (base SQLite).</li>
+                        <li><strong>Microsoft Edge:</strong> <code>C:\Users\Steve\AppData\Local\Microsoft\Windows\WebCache\WebCacheV01.dat</code> (base ESE).</li>
+                    </ul>
+
+                    <p style="margin-top: 20px;"><strong>5. Hash MD5 de History (perfil predeterminado de Chrome)</strong></p>
+                    <p><strong>MD5:</strong> <code>f3f979c6dee9fbb7cbdf5818aaa4b723</code> (tamaño: 360,448 bytes; ruta en imagen: <code>/img_Narcos-1.001/vol_vol7/Users/Steve/AppData/Local/Google/Chrome/User Data/Default/History</code>).</p>
+
+                    <p style="margin-top: 20px;"><strong>6 y 7. Archivo airport crystals.jpg (ruta absoluta y fecha/hora de creación en NZDT)</strong></p>
+                    <p><strong>Ruta absoluta:</strong> <code>C:\Users\Steve\Documents\Misc\airport crystals.jpg</code> (en imagen: <code>/img_Narcos-1.001/vol_vol7/Users/Steve/Documents/Misc/airport crystals.jpg</code>; tamaño: 77,643 bytes).<br>
+                    <strong>Creación (NZDT):</strong> <code>2019-01-31 10:25:18 NZDT</code> (2019-01-30 15:25:18 CST + 19 h). Captura de Google Maps con ruta desde el sur de Wellington (cerca del aeropuerto) hasta Eastbourne pasando por Petone.</p>
+
+                    <p style="margin-top: 20px;"><strong>8 y 9. Archivo dropoff.jpg (hash MD5 completo y última modificación en NZDT)</strong></p>
+                    <p><strong>MD5:</strong> <code>7feb763bebe42c3a3464c9ee3bb1d3e8</code> (177,888 bytes; ruta: <code>C:\Users\Steve\Documents\Misc\dropoff.jpg</code>).<br>
+                    <strong>Última modificación (NZDT):</strong> <code>2019-02-02 14:06:06 NZDT</code> (2019-02-01 19:06:06 CST + 19 h). Captura de Google Maps de Eastbourne Library (38 Rimu St, Eastbourne, Lower Hutt, Wellington).</p>
+
+                    <p style="margin-top: 20px;"><strong>10. Imagen relacionada con reservaciones de vuelo en Documents\Misc</strong></p>
+                    <p><strong>Nombre:</strong> <code>flightbookings.PNG</code> | <strong>Ruta:</strong> <code>C:\Users\Steve\Documents\Misc\flightbookings.PNG</code> (52,971 bytes). Cotización de vuelo para 2 pasajeros adultos (Brisbane BNE → Wellington WLG el 16 de febrero de 2019 y regreso WLG → BNE el 23 de febrero de 2019 con escala en AKL).</p>
+
+                    <p style="margin-top: 20px;"><strong>11. Hash MD5 de Method run.jpg</strong></p>
+                    <p><strong>MD5:</strong> <code>69b225bc0ef5a0c003f1e2a6646aaf92</code> (145,213 bytes; ruta: <code>C:\Users\Steve\Documents\Misc\Method run.jpg</code>). Ruta de 42.5 km desde Eastbourne (anotada como "Home") hacia Lower Hutt, Naenae, Stokes Valley y Wainuiomata.</p>
+
+                    <p style="margin-top: 20px;"><strong>12. Hash MD5 de BNE.png</strong></p>
+                    <p><strong>MD5:</strong> <code>dffa98bdd7371d1806adb09db27ba283</code> (4,376,793 bytes; ruta: <code>C:\Users\Steve\Downloads\Misc\BNE.png</code>). Vista nocturna de Brisbane (Story Bridge).</p>
+
+                    <p style="margin-top: 20px;"><strong>13. Instalador de esteganografía en Downloads</strong></p>
+                    <p><strong>Nombre:</strong> <code>Image Steganography 1.5.2 Setup.exe</code> | <strong>Ruta:</strong> <code>C:\Users\Steve\Downloads\Image Steganography 1.5.2 Setup.exe</code> | <strong>MD5:</strong> <code>c9b7c382dea6d7f45ae1bf437860cb69</code> (559,616 bytes).</p>
+
+                    <p style="margin-top: 20px;"><strong>14. Instalador de herramienta de cifrado en Downloads</strong></p>
+                    <p><strong>Nombre:</strong> <code>TrueCrypt Setup 7.1a.exe</code> | <strong>Ruta:</strong> <code>C:\Users\Steve\Downloads\TrueCrypt Setup 7.1a.exe</code> | <strong>MD5:</strong> <code>7a23ac83a0856c352025a6f7c9cc1526</code> (3,466,248 bytes).</p>
+
+                    <p style="margin-top: 20px;"><strong>15. Rutas de caché de Discord y ActivitiesCache.db (Windows Timeline)</strong></p>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>Caché de Discord:</strong> <code>C:\Users\Steve\AppData\Roaming\Discord\Cache\data_0</code> (en imagen: <code>/img_Narcos-1.001/vol_vol7/Users/Steve/AppData/Roaming/Discord/Cache/data_0</code>).</li>
+                        <li><strong>ActivitiesCache.db:</strong> <code>C:\Users\Steve\AppData\Local\ConnectedDevicesPlatform\2418c0082017486a\ActivitiesCache.db</code> (en imagen: <code>/img_Narcos-1.001/vol_vol7/Users/Steve/AppData/Local/ConnectedDevicesPlatform/2418c0082017486a/ActivitiesCache.db</code>; MD5 de copia exportada: <code>66402806620017520d521597d1d49688</code>).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ================= PARTE II (BLANCO) ================= -->
+            <section class="lab-section" style="padding: 0 0 40px 0;">
+                <div class="lab-card-white">
+                    <div class="section-heading">
+                        <span class="section-number">II</span>
+                        <h2>Parte II. Investigación, Interpretación y Análisis del Caso</h2>
+                    </div>
+
+                    <h3 style="color: #087d99; margin-top: 15px;">16. Coincidencias entre flightbookings.PNG, BNE.png y dropoff.jpg</h3>
+                    <p style="line-height: 1.7;">
+                        <strong>Observado:</strong> <code>BNE.png</code> (creado/modificado 2019-02-01 13:13:19–13:13:20 NZDT) muestra Brisbane (código BNE); <code>dropoff.jpg</code> (creado 2019-02-02 14:06:05 NZDT; modificado 14:06:06 NZDT) es una captura con Snip &amp; Sketch de Eastbourne Library; <code>flightbookings.PNG</code> (modificado/MFT 2019-02-02 15:28:26–15:28:44 NZDT) muestra una cotización en dólares australianos para 2 adultos (Brisbane → Wellington el 16 de febrero de 2019; regreso el 23 de febrero de 2019 vía AKL) y su <code>Zone.Identifier</code> apunta a <code>cdn.discordapp.com/attachments/539550615072800768/541074665892741121/Steve_K.PNG</code>.<br>
+                        <strong>Interpretación:</strong> Coincidencia geográfica (Brisbane–Wellington y Eastbourne Library como punto de entrega), coincidencia de dos viajeros adultos con los pasajeros interceptados, secuencia temporal cercana y origen en Discord.<br>
+                        <strong>Lo que NO puede confirmarse:</strong> Que el vuelo se comprara o abordara efectivamente (es una cotización "Book now"), quién subió o creó el archivo ni el desplazamiento físico al lugar.
+                    </p>
+
+                    <h3 style="color: #087d99; margin-top: 20px;">17. Contraste de airport crystals.jpg y Method run.jpg</h3>
+                    <p style="line-height: 1.7;">
+                        <strong>Observado:</strong> Registros en Windows Timeline (<code>ActivitiesCache.db</code>), <code>Zone.Identifier</code> (<code>Microsoft.ScreenSketch</code>), accesos directos <code>.lnk</code>, MFT y registro USB: apertura de Snip &amp; Sketch (2019-01-31 10:20:30 NZDT), creación/escritura de <code>Method run.jpg</code> (10:21:24–10:22:24 NZDT), Snip &amp; Sketch en primer plano y creación de <code>airport crystals.jpg</code> (10:24:59–10:25:19 NZDT), conexión de unidad Seagate Backup Plus Slim Portable Drive 1 TB (16:04:08 NZDT) y último acceso a ambas imágenes a las 16:04:13 NZDT.<br>
+                        <strong>Interpretación:</strong> Planeación de rutas/traslados en una misma sesión (aeropuerto de Wellington–Petone–Eastbourne y recorrido de 42.5 km desde "Home" en Eastbourne).<br>
+                        <strong>Lo que NO puede confirmarse:</strong> Quién hizo las capturas, si las rutas se recorrieron o si se copiaron efectivamente a la unidad externa.
+                    </p>
+
+                    <h3 style="color: #087d99; margin-top: 20px;">18. Evidencia sobre Discord y límites de atribución</h3>
+                    <p style="line-height: 1.7;">
+                        <strong>Observado:</strong> <code>SquirrelSetup.log</code> (instalación v0.0.304 el 2019-01-29 09:56:46 NZDT), caché en <code>AppData\Roaming\Discord\Cache\data_1</code> (incluyendo <code>Steve_K.PNG</code> el 2019-02-02 15:28:16 NZDT / 2019-02-01 20:28:16 CST), historial/Timeline, UserAssist y SRUM.<br>
+                        <strong>Interpretación:</strong> Discord se instaló, ejecutó y usó bajo el perfil Steve, y se visualizó/descargó el adjunto <code>Steve_K.PNG</code>.<br>
+                        <strong>Lo que NO puede confirmarse:</strong> El contenido completo de las conversaciones de texto en servidores remotos, la identidad de otros participantes ni si el usuario del equipo subió o recibió el archivo.
+                    </p>
+
+                    <h3 style="color: #087d99; margin-top: 20px;">19. Herramientas de esteganografía y cifrado por niveles de actividad</h3>
+                    <p style="line-height: 1.7;">
+                        <strong>Image Steganography 1.5.2:</strong> <em>Descarga</em> (instalador en Downloads, 2019-02-01 13:16:32 NZDT); <em>Instalación</em> (en <code>AppData\Roaming\CPascoe\Image Steganography</code>, UserAssist y BAM); <em>Ejecución</em> (2019-02-01 NZDT en BAM, SRUM y UserAssist); <em>Uso efectivo</em> (no demostrado: no se identificó archivo generado ni prueba de datos ocultos en <code>BNE.png</code>).<br>
+                        <strong>TrueCrypt 7.1a:</strong> <em>Descarga</em> (instalador en Downloads, 2019-01-30 12:27:43 NZDT); <em>Instalación</em> (registrado en Installed Programs y ejecutables en <code>C:\Program Files\TrueCrypt\</code>); <em>Ejecución</em> (2019-01-30 NZDT en BAM, Timeline, SRUM y UserAssist); <em>Uso efectivo</em> (no demostrado: no se halló contenedor cifrado ni registro de montaje). También se observó <code>CCleaner</code> instalado (2019-01-30 12:42 NZDT) y en primer plano el 2019-02-01 (15:41:18–15:50:32 NZDT), sin poder confirmarse qué eliminó.
+                    </p>
+
+                    <h3 style="color: #087d99; margin-top: 20px;">20. Hipótesis, explicación alternativa y evidencias adicionales</h3>
+                    <p style="line-height: 1.7;">
+                        <strong>Cuatro hallazgos:</strong> (1) Correspondencia de itinerario aéreo, lugares y número de pasajeros; (2) Capturas de rutas y punto de entrega creadas en el equipo con Snip &amp; Sketch; (3) Uso continuo de Discord y recepción/descarga de <code>Steve_K.PNG</code>; (4) Instalación/ejecución de herramientas de cifrado, esteganografía y limpieza, además de tres imágenes en la Recycle Bin eliminadas el 2019-02-01 15:48:41 NZDT durante la sesión de CCleaner y tras conectar una unidad Western Digital.<br>
+                        <strong>Hipótesis:</strong> El equipo <code>SK-DESKTOP</code> (cuenta Steve) se empleó para coordinar y planear la logística de ingreso y entrega vinculada al caso, además de reunir herramientas para ocultar o limpiar rastros.<br>
+                        <strong>Explicación alternativa:</strong> Cotizar vuelos, consultar mapas o instalar herramientas de privacidad/limpieza puede responder a fines lícitos o de curiosidad, y la cuenta Steve no acredita por sí sola la identidad física del operador; aunque pierde fuerza por la convergencia de indicios, el disco por sí solo no la descarta.<br>
+                        <strong>Evidencias adicionales necesarias:</strong> (1) Recuperación/requerimiento legal de comunicaciones y metadatos de Discord (canal <code>539550615072800768</code> y adjunto <code>541074665892741121</code>); (2) Análisis estegoanalítico, búsqueda de contenedores de alta entropía y análisis del volcado de memoria RAM incluido en la evidencia (además de registros de aerolínea y peritaje de las unidades externas conectadas).
+                    </p>
                 </div>
             </section>
 
